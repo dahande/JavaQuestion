@@ -9,20 +9,87 @@
 <body>
     <div class="container">
         <h1>Javaの基礎</h1>
+
+        <!-- 問題1: メソッド -->
         <div class="section">
-            <h2>メソッドとはなにか？</h2>
-            <p>次のうち、Javaのメソッドの正しい説明はどれですか？</p>
+            <h2>問題1: メソッド</h2>
+            <p>Javaでメソッド（method）とは何ですか？</p>
             <ul>
-                <li>A) クラスの属性を定義する要素。</li>
-                <li>B) オブジェクトが作成されるときに呼び出される特別な関数。</li>
-                <li>C) オブジェクトの動作を定義するための関数。</li>
-                <li>D) クラスをインスタンス化するための関数。</li>
+                <li>A) クラスのインスタンスを生成するための特別な関数。</li>
+                <li>B) クラスで定義された処理の塊で、特定の動作を実行するために使用される。</li>
+                <li>C) クラスの静的なプロパティを操作する関数。</li>
+                <li>D) クラスのコンストラクタを呼び出す特別な処理。</li>
             </ul>
-            <button id="toggleAnswer">答えを見る</button>
-            <p id="answer" style="display: none;">
-                正解はC) オブジェクトの動作を定義するための関数です。メソッドはクラス内に定義され、オブジェクトがどのように動作するかを指定します。
+            <button id="toggleAnswer1">答えを見る</button>
+            <p id="answer1" style="display: none;">
+                正解はB) クラスで定義された処理の塊で、特定の動作を実行するために使用されることです。メソッドはクラス内で定義され、オブジェクト指向プログラミングにおいてオブジェクトの振る舞いを定義します。
             </p>
         </div>
+
+        <!-- 問題2: メソッドの定義 -->
+        <div class="section">
+            <h2>問題2: メソッドの定義</h2>
+            <p>Javaでメソッドを定義する際、必須ではない要素はどれですか？</p>
+            <ul>
+                <li>A) 戻り値の型。</li>
+                <li>B) メソッド名。</li>
+                <li>C) 引数リスト。</li>
+                <li>D) メソッドのアクセス修飾子。</li>
+            </ul>
+            <button id="toggleAnswer2">答えを見る</button>
+            <p id="answer2" style="display: none;">
+                正解はD) メソッドのアクセス修飾子です。メソッドの定義では、戻り値の型、メソッド名、および必要に応じて引数リストを指定しますが、アクセス修飾子は省略可能です。
+            </p>
+        </div>
+
+        <!-- 問題3: メソッドのオーバーロード -->
+        <div class="section">
+            <h2>問題3: メソッドのオーバーロード</h2>
+            <p>Javaでメソッドをオーバーロードするとは何ですか？</p>
+            <ul>
+                <li>A) メソッド内で別のメソッドを定義すること。</li>
+                <li>B) 1つのクラスに同じ名前のメソッドを複数定義すること。</li>
+                <li>C) メソッドの引数の型を変更すること。</li>
+                <li>D) メソッドの実装を一部上書きすること。</li>
+            </ul>
+            <button id="toggleAnswer3">答えを見る</button>
+            <p id="answer3" style="display: none;">
+                正解はB) 1つのクラスに同じ名前のメソッドを複数定義することです。メソッドのオーバーロードにより、同じ名前のメソッドを異なる引数リストで定義できます。
+            </p>
+        </div>
+
+        <!-- 問題4: メソッドの戻り値 -->
+        <div class="section">
+            <h2>問題4: メソッドの戻り値</h2>
+            <p>Javaのメソッドで戻り値を持たない場合、その戻り値の型は何ですか？</p>
+            <ul>
+                <li>A) void</li>
+                <li>B) null</li>
+                <li>C) int</li>
+                <li>D) String</li>
+            </ul>
+            <button id="toggleAnswer4">答えを見る</button>
+            <p id="answer4" style="display: none;">
+                正解はA) voidです。Javaでメソッドが戻り値を持たない場合、そのメソッドの戻り値の型としてvoidを指定します。
+            </p>
+        </div>
+
+        <!-- 問題5: メソッドの特性 -->
+        <div class="section">
+            <h2>問題5: メソッドの特性</h2>
+            <p>Javaのメソッドの特性として正しいものはどれですか？</p>
+            <ul>
+                <li>A) 1つのメソッド内で複数の戻り値を返すことができる。</li>
+                <li>B) メソッドは必ずしもクラス内に定義する必要がある。</li>
+                <li>C) メソッドは静的に宣言された変数のみを操作できる。</li>
+                <li>D) メソッドはクラス内のデータを操作するために利用される。</li>
+            </ul>
+            <button id="toggleAnswer5">答えを見る</button>
+            <p id="answer5" style="display: none;">
+                正解はD) メソッドはクラス内のデータを操作するために利用されることです。メソッドはクラス内で定義され、そのクラスの属性や状態を操作するために使用されます。
+            </p>
+        </div>
+
         <div class="navigation">
             <a href="question6.html" class="next-page-button">次のページに行く</a>
             <button onclick="goBack()" class="back-button">前に戻る</button>
@@ -30,8 +97,44 @@
     </div>
 
     <script>
-        document.getElementById('toggleAnswer').addEventListener('click', function() {
-            var answer = document.getElementById('answer');
+        document.getElementById('toggleAnswer1').addEventListener('click', function() {
+            var answer = document.getElementById('answer1');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer2').addEventListener('click', function() {
+            var answer = document.getElementById('answer2');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer3').addEventListener('click', function() {
+            var answer = document.getElementById('answer3');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer4').addEventListener('click', function() {
+            var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer5').addEventListener('click', function() {
+            var answer = document.getElementById('answer5');
             if (answer.style.display === 'none') {
                 answer.style.display = 'block';
             } else {
@@ -45,3 +148,4 @@
     </script>
 </body>
 </html>
+``

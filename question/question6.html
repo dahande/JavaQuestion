@@ -9,20 +9,87 @@
 <body>
     <div class="container">
         <h1>Javaの基礎</h1>
+
+        <!-- 問題1: プロパティ -->
         <div class="section">
-            <h2>プロパティとはなにか？</h2>
-            <p>次のうち、Javaのプロパティの正しい説明はどれですか？</p>
+            <h2>問題1: プロパティ</h2>
+            <p>Javaでプロパティ（property）とは何ですか？</p>
             <ul>
-                <li>A) クラスの属性や状態を表す変数。</li>
-                <li>B) クラス内に定義される関数。</li>
-                <li>C) クラスから作成された具体的なオブジェクト。</li>
-                <li>D) クラスのデータを永続的に保存するメカニズム。</li>
+                <li>A) クラスの静的な変数。</li>
+                <li>B) クラスの属性や状態を表す変数。</li>
+                <li>C) メソッドの定義。</li>
+                <li>D) インターフェースの実装。</li>
             </ul>
-            <button id="toggleAnswer">答えを見る</button>
-            <p id="answer" style="display: none;">
-                正解はA) クラスの属性や状態を表す変数です。プロパティはオブジェクトのデータを保持し、そのデータにアクセスするための方法を提供します。
+            <button id="toggleAnswer1">答えを見る</button>
+            <p id="answer1" style="display: none;">
+                正解はB) クラスの属性や状態を表す変数です。プロパティはクラスやオブジェクトの状態を保持し、その状態に対するアクセスや操作を提供します。
             </p>
         </div>
+
+        <!-- 問題2: プロパティの特性 -->
+        <div class="section">
+            <h2>問題2: プロパティの特性</h2>
+            <p>Javaのプロパティの特性として正しいものはどれですか？</p>
+            <ul>
+                <li>A) 他のクラスから直接操作が可能。</li>
+                <li>B) インスタンスごとに異なるデータを持つ。</li>
+                <li>C) インターフェースを実装する。</li>
+                <li>D) プログラムの実行時に動的に変化する。</li>
+            </ul>
+            <button id="toggleAnswer2">答えを見る</button>
+            <p id="answer2" style="display: none;">
+                正解はB) インスタンスごとに異なるデータを持つことです。プロパティはそれぞれのインスタンスに固有の値を持ち、オブジェクト指向プログラミングにおいてデータのカプセル化を支援します。
+            </p>
+        </div>
+
+        <!-- 問題3: プロパティのアクセス修飾子 -->
+        <div class="section">
+            <h2>問題3: プロパティのアクセス修飾子</h2>
+            <p>Javaでプロパティのアクセス修飾子として適切なものはどれですか？</p>
+            <ul>
+                <li>A) private</li>
+                <li>B) static</li>
+                <li>C) final</li>
+                <li>D) protected</li>
+            </ul>
+            <button id="toggleAnswer3">答えを見る</button>
+            <p id="answer3" style="display: none;">
+                正解はA) privateです。プロパティにアクセス修飾子を付けることで、そのプロパティへの直接アクセスを制限することができます。
+            </p>
+        </div>
+
+        <!-- 問題4: プロパティの初期化 -->
+        <div class="section">
+            <h2>問題4: プロパティの初期化</h2>
+            <p>Javaでクラスのプロパティを初期化する際に使用するキーワードは何ですか？</p>
+            <ul>
+                <li>A) initialize</li>
+                <li>B) setup</li>
+                <li>C) default</li>
+                <li>D) this</li>
+            </ul>
+            <button id="toggleAnswer4">答えを見る</button>
+            <p id="answer4" style="display: none;">
+                正解はD) thisです。Javaでは、thisキーワードを使用してクラス内のプロパティを初期化することができます。
+            </p>
+        </div>
+
+        <!-- 問題5: プロパティの利用 -->
+        <div class="section">
+            <h2>問題5: プロパティの利用</h2>
+            <p>Javaのプロパティを利用する主な理由は何ですか？</p>
+            <ul>
+                <li>A) メモリ使用量を節約するため。</li>
+                <li>B) オブジェクトの状態を保持するため。</li>
+                <li>C) メソッドの実装を簡略化するため。</li>
+                <li>D) クラスのインターフェースを強化するため。</li>
+            </ul>
+            <button id="toggleAnswer5">答えを見る</button>
+            <p id="answer5" style="display: none;">
+                正解はB) オブジェクトの状態を保持するためです。プロパティはクラスやオブジェクトの状態を表し、それらの状態を安全に管理するために使用されます。
+            </p>
+        </div>
+
         <div class="navigation">
             <a href="question7.html" class="next-page-button">次のページに行く</a>
             <button onclick="goBack()" class="back-button">前に戻る</button>
@@ -30,8 +97,44 @@
     </div>
 
     <script>
-        document.getElementById('toggleAnswer').addEventListener('click', function() {
-            var answer = document.getElementById('answer');
+        document.getElementById('toggleAnswer1').addEventListener('click', function() {
+            var answer = document.getElementById('answer1');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer2').addEventListener('click', function() {
+            var answer = document.getElementById('answer2');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer3').addEventListener('click', function() {
+            var answer = document.getElementById('answer3');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer4').addEventListener('click', function() {
+            var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer5').addEventListener('click', function() {
+            var answer = document.getElementById('answer5');
             if (answer.style.display === 'none') {
                 answer.style.display = 'block';
             } else {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,19 +11,83 @@
     <div class="container">
         <h1>Javaの基礎</h1>
 
-        <!-- ガベージコレクションとは何か？ -->
+        <!-- 問題1: ガベージコレクション -->
         <div class="section">
-            <h2>ガベージコレクションとは何か？</h2>
-            <p>次のうち、Javaのガベージコレクションの正しい説明はどれですか？</p>
+            <h2>問題1: ガベージコレクション</h2>
+            <p>Javaにおける「ガベージコレクション（garbage collection）」とは何ですか？</p>
             <ul>
-                <li>A) メモリ内の不要なオブジェクトを自動的に検出し、解放するプロセス。</li>
-                <li>B) メモリを永続的に保存するためのメカニズム。</li>
-                <li>C) オブジェクトの生成と破棄を管理するためのメカニズム。</li>
-                <li>D) オブジェクトの属性や動作を定義するためのメカニズム。</li>
+                <li>A) メモリ内の不要なオブジェクトを自動的に解放する仕組み。</li>
+                <li>B) プログラムのエラーを自動的に修正する機能。</li>
+                <li>C) メモリの使用状況をリアルタイムで監視する機能。</li>
+                <li>D) メモリ内のデータを暗号化する機能。</li>
             </ul>
-            <button id="toggleAnswer">答えを見る</button>
-            <p id="answer" style="display: none;">
-                正解はA) メモリ内の不要なオブジェクトを自動的に検出し、解放するプロセスです。ガベージコレクションはJava仮想マシンによって自動的に行われ、プログラマが明示的に管理する必要はありません。
+            <button id="toggleAnswer1">答えを見る</button>
+            <p id="answer1" style="display: none;">
+                正解はA) メモリ内の不要なオブジェクトを自動的に解放する仕組みです。ガベージコレクションは、プログラム実行中に不要になったメモリを自動的に回収して再利用可能にする機能です。
+            </p>
+        </div>
+
+        <!-- 問題2: ガベージコレクションの利点 -->
+        <div class="section">
+            <h2>問題2: ガベージコレクションの利点</h2>
+            <p>ガベージコレクションを使用する主な利点は何ですか？</p>
+            <ul>
+                <li>A) プログラムの実行速度を向上させる。</li>
+                <li>B) メモリリークを防止する。</li>
+                <li>C) メモリの使用量を最小限に抑える。</li>
+                <li>D) メモリ内のデータを暗号化する。</li>
+            </ul>
+            <button id="toggleAnswer2">答えを見る</button>
+            <p id="answer2" style="display: none;">
+                正解はB) メモリリークを防止することです。ガベージコレクションにより、プログラム実行中に不要になったメモリを自動的に解放することで、メモリリークを防止し、安全性と安定性を向上させます。
+            </p>
+        </div>
+
+        <!-- 問題3: ガベージコレクションの実装 -->
+        <div class="section">
+            <h2>問題3: ガベージコレクションの実装</h2>
+            <p>Javaにおけるガベージコレクションの実装はどのように行われますか？</p>
+            <ul>
+                <li>A) プログラマが明示的にガベージコレクションを呼び出す。</li>
+                <li>B) JVMが自動的にメモリを監視し、不要なオブジェクトを解放する。</li>
+                <li>C) ガベージコレクションはJavaには存在しない。</li>
+                <li>D) ガベージコレクションはプログラムの実行速度に負荷をかけるため、推奨されない。</li>
+            </ul>
+            <button id="toggleAnswer3">答えを見る</button>
+            <p id="answer3" style="display: none;">
+                正解はB) JVMが自動的にメモリを監視し、不要なオブジェクトを解放することです。Javaのガベージコレクションは、JVM（Java Virtual Machine）によって自動的に管理され、プログラマが明示的に処理をする必要はありません。
+            </p>
+        </div>
+
+        <!-- 問題4: ガベージコレクションのタイミング -->
+        <div class="section">
+            <h2>問題4: ガベージコレクションのタイミング</h2>
+            <p>Javaにおけるガベージコレクションの実行タイミングはどのように決定されますか？</p>
+            <ul>
+                <li>A) プログラム実行中に任意のタイミングで実行することができる。</li>
+                <li>B) 定期的なスケジュールに基づいて実行される。</li>
+                <li>C) メモリ使用量が一定の閾値を超えたときに自動的に実行される。</li>
+                <li>D) プログラマが手動で指定する必要がある。</li>
+            </ul>
+            <button id="toggleAnswer4">答えを見る</button>
+            <p id="answer4" style="display: none;">
+                正解はC) メモリ使用量が一定の閾値を超えたときに自動的に実行されることです。Javaのガベージコレクションは、JVMがメモリ使用量を監視し、一定の閾値を超えた場合に自動的に実行されます。
+            </p>
+        </div>
+
+        <!-- 問題5: メモリ管理 -->
+        <div class="section">
+            <h2>問題5: メモリ管理</h2>
+            <p>ガベージコレクションによって行われる主な作業は何ですか？</p>
+            <ul>
+                <li>A) メモリ内のデータの暗号化。</li>
+                <li>B) メモリリークの検出と修正。</li>
+                <li>C) プログラムの実行速度の最適化。</li>
+                <li>D) メモリ使用量の可視化と分析。</li>
+            </ul>
+            <button id="toggleAnswer5">答えを見る</button>
+            <p id="answer5" style="display: none;">
+                正解はB) メモリリークの検出と修正です。ガベージコレクションは、不要なメモリリソースを解放してメモリリークを防止し、プログラムの安全性と効率性を確保します。
             </p>
         </div>
 
@@ -33,8 +98,44 @@
     </div>
 
     <script>
-        document.getElementById('toggleAnswer').addEventListener('click', function() {
-            var answer = document.getElementById('answer');
+        document.getElementById('toggleAnswer1').addEventListener('click', function() {
+            var answer = document.getElementById('answer1');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer2').addEventListener('click', function() {
+            var answer = document.getElementById('answer2');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer3').addEventListener('click', function() {
+            var answer = document.getElementById('answer3');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer4').addEventListener('click', function() {
+            var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer5').addEventListener('click', function() {
+            var answer = document.getElementById('answer5');
             if (answer.style.display === 'none') {
                 answer.style.display = 'block';
             } else {
