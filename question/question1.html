@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+
+        <!-- 問題1: オーバーライド -->
+        <div class="section">
+            <h2>問題1: オーバーライド</h2>
+            <p>Javaにおけるオーバーライド（override）とは何ですか？</p>
+            <ul>
+                <li>A) 同じクラス内で異なるメソッド名を持つこと。</li>
+                <li>B) 異なるクラスで同じメソッド名を持つこと。</li>
+                <li>C) 継承されたメソッドをサブクラスで再定義すること。</li>
+                <li>D) 既存のメソッドを修正すること。</li>
+            </ul>
+            <button id="toggleAnswer1">答えを見る</button>
+            <p id="answer1" style="display: none;">
+                正解はC) 継承されたメソッドをサブクラスで再定義することです。オーバーライドを使用すると、サブクラスでスーパークラスのメソッドをカスタマイズできます。
+            </p>
+        </div>
+
+        <!-- 問題2: オーバーライドの条件 -->
+        <div class="section">
+            <h2>問題2: オーバーライドの条件</h2>
+            <p>Javaでメソッドをオーバーライドするための条件はどれですか？</p>
+            <ul>
+                <li>A) サブクラスのメソッド名とスーパークラスのメソッド名が同じであること。</li>
+                <li>B) サブクラスのメソッドがstatic修飾子を持っていること。</li>
+                <li>C) スーパークラスのメソッドがprivate修飾子で宣言されていること。</li>
+                <li>D) スーパークラスとサブクラスのメソッドが完全に同じ実装を持つこと。</li>
+            </ul>
+            <button id="toggleAnswer2">答えを見る</button>
+            <p id="answer2" style="display: none;">
+                正解はA) サブクラスのメソッド名とスーパークラスのメソッド名が同じであることです。オーバーライドするメソッドは名前が一致していなければなりません。
+            </p>
+        </div>
+
+        <!-- 問題3: オーバーライドの利点 -->
+        <div class="section">
+            <h2>問題3: オーバーライドの利点</h2>
+            <p>Javaでオーバーライドを使用する利点は何ですか？</p>
+            <ul>
+                <li>A) メソッドの可視性を変更できる。</li>
+                <li>B) サブクラスでスーパークラスの機能をカスタマイズできる。</li>
+                <li>C) メソッドのパラメータを変更できる。</li>
+                <li>D) staticメソッドをオーバーライドできる。</li>
+            </ul>
+            <button id="toggleAnswer3">答えを見る</button>
+            <p id="answer3" style="display: none;">
+                正解はB) サブクラスでスーパークラスの機能をカスタマイズできることです。オーバーライドを使うと、既存のメソッドの振る舞いを変更できます。
+            </p>
+        </div>
+
+        <!-- 問題4: オーバーライドとオーバーロードの違い -->
+        <div class="section">
+            <h2>問題4: オーバーライドとオーバーロードの違い</h2>
+            <p>Javaにおけるオーバーライドとオーバーロードの主な違いは何ですか？</p>
+            <ul>
+                <li>A) オーバーライドは同じクラス内で異なるメソッド名を持つこと、オーバーロードは異なるクラスで同じメソッド名を持つこと。</li>
+                <li>B) オーバーライドはスーパークラスとサブクラスで同じメソッド名を持つこと、オーバーロードは同じクラス内で異なるメソッド名を持つこと。</li>
+                <li>C) オーバーライドは継承されたメソッドを再定義すること、オーバーロードは同じクラス内で同じメソッド名を持つこと。</li>
+                <li>D) オーバーライドはメソッドのパラメータを変更すること、オーバーロードはメソッドの戻り値を変更すること。</li>
+            </ul>
+            <button id="toggleAnswer4">答えを見る</button>
+            <p id="answer4" style="display: none;">
+                正解はC) オーバーライドは継承されたメソッドを再定義すること、オーバーロードは同じクラス内で同じメソッド名を持つことです。
+            </p>
+        </div>
+
+        <div class="navigation">
+            <a href="question2.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer1').addEventListener('click', function() {
+            var answer = document.getElementById('answer1');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer2').addEventListener('click', function() {
+            var answer = document.getElementById('answer2');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer3').addEventListener('click', function() {
+            var answer = document.getElementById('answer3');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer4').addEventListener('click', function() {
+            var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

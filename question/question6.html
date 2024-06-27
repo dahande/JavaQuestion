@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+        <div class="section">
+            <h2>プロパティとはなにか？</h2>
+            <p>次のうち、Javaのプロパティの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) クラスの属性や状態を表す変数。</li>
+                <li>B) クラス内に定義される関数。</li>
+                <li>C) クラスから作成された具体的なオブジェクト。</li>
+                <li>D) クラスのデータを永続的に保存するメカニズム。</li>
+            </ul>
+            <button id="toggleAnswer">答えを見る</button>
+            <p id="answer" style="display: none;">
+                正解はA) クラスの属性や状態を表す変数です。プロパティはオブジェクトのデータを保持し、そのデータにアクセスするための方法を提供します。
+            </p>
+        </div>
+        <div class="navigation">
+            <a href="question7.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer').addEventListener('click', function() {
+            var answer = document.getElementById('answer');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

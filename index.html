@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+        <div class="section">
+            <h2>オーバーロードとはなにか？</h2>
+            <button id="toggleAnswer">答えを見る</button>
+            <p id="answer" style="display: none;">
+                オーバーロード（メソッドのオーバーロード）とは、同じ名前のメソッドを複数定義することです。これにより、異なる引数の組み合わせでメソッドを呼び出すことができます。
+            </p>
+        </div>
+        <div class="navigation">
+            <a href="question/question1.html" class="next-page-button">次のページに行く</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer').addEventListener('click', function() {
+            var answer = document.getElementById('answer');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎総合問題</h1>
+
+        <!-- クラスとは何か？ -->
+        <div class="section">
+            <h2>クラスとは何か？</h2>
+            <p>次のうち、Javaのクラスの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) Javaプログラムのエントリーポイント。</li>
+                <li>B) オブジェクトの設計図。</li>
+                <li>C) データの保存と管理を行う構造。</li>
+                <li>D) 他のクラスからインスタンス化できないクラス。</li>
+            </ul>
+            <button id="toggleAnswer1">答えを見る</button>
+            <p id="answer1" style="display: none;">
+                正解はB) オブジェクトの設計図です。クラスはオブジェクトの属性やメソッドを定義します。
+            </p>
+        </div>
+
+        <!-- オブジェクトとは何か？ -->
+        <div class="section">
+            <h2>オブジェクトとは何か？</h2>
+            <p>次のうち、Javaのオブジェクトの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) Javaプログラムのエントリーポイント。</li>
+                <li>B) クラスから作成された具体的なインスタンス。</li>
+                <li>C) データの保存と管理を行う構造。</li>
+                <li>D) 他のクラスからインスタンス化できないクラス。</li>
+            </ul>
+            <button id="toggleAnswer2">答えを見る</button>
+            <p id="answer2" style="display: none;">
+                正解はB) クラスから作成された具体的なインスタンスです。オブジェクトはクラスのインスタンスとして生成されます。
+            </p>
+        </div>
+
+        <!-- メソッドとは何か？ -->
+        <div class="section">
+            <h2>メソッドとは何か？</h2>
+            <p>次のうち、Javaのメソッドの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) クラスの属性を定義する要素。</li>
+                <li>B) オブジェクトの動作を定義するための関数。</li>
+                <li>C) オブジェクトの状態を表す変数。</li>
+                <li>D) クラスをインスタンス化するための関数。</li>
+            </ul>
+            <button id="toggleAnswer3">答えを見る</button>
+            <p id="answer3" style="display: none;">
+                正解はB) オブジェクトの動作を定義するための関数です。メソッドはクラス内に定義され、オブジェクトがどのように動作するかを指定します。
+            </p>
+        </div>
+
+        <!-- プロパティとは何か？ -->
+        <div class="section">
+            <h2>プロパティとは何か？</h2>
+            <p>次のうち、Javaのプロパティの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) クラスの属性や状態を表す変数。</li>
+                <li>B) クラス内に定義される関数。</li>
+                <li>C) クラスから作成された具体的なオブジェクト。</li>
+                <li>D) クラスのデータを永続的に保存するメカニズム。</li>
+            </ul>
+            <button id="toggleAnswer4">答えを見る</button>
+            <p id="answer4" style="display: none;">
+                正解はA) クラスの属性や状態を表す変数です。プロパティはオブジェクトのデータを保持し、そのデータにアクセスするための方法を提供します。
+            </p>
+        </div>
+
+        <div class="navigation">
+            <a href="next_page.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer1').addEventListener('click', function() {
+            var answer = document.getElementById('answer1');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer2').addEventListener('click', function() {
+            var answer = document.getElementById('answer2');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer3').addEventListener('click', function() {
+            var answer = document.getElementById('answer3');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer4').addEventListener('click', function() {
+            var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

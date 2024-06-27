@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+        <div class="section">
+            <h2>メソッドとはなにか？</h2>
+            <p>次のうち、Javaのメソッドの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) クラスの属性を定義する要素。</li>
+                <li>B) オブジェクトが作成されるときに呼び出される特別な関数。</li>
+                <li>C) オブジェクトの動作を定義するための関数。</li>
+                <li>D) クラスをインスタンス化するための関数。</li>
+            </ul>
+            <button id="toggleAnswer">答えを見る</button>
+            <p id="answer" style="display: none;">
+                正解はC) オブジェクトの動作を定義するための関数です。メソッドはクラス内に定義され、オブジェクトがどのように動作するかを指定します。
+            </p>
+        </div>
+        <div class="navigation">
+            <a href="question6.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer').addEventListener('click', function() {
+            var answer = document.getElementById('answer');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

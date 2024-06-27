@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+
+        <!-- 問題1: インスタンス生成 -->
+        <div class="section">
+            <h2>問題1: インスタンス生成</h2>
+            <p>次のうち、Javaでインスタンスを生成するための適切なキーワードはどれですか？</p>
+            <ul>
+                <li>A) new</li>
+                <li>B) class</li>
+                <li>C) static</li>
+                <li>D) void</li>
+            </ul>
+            <button id="toggleAnswer1">答えを見る</button>
+            <p id="answer1" style="display: none;">
+                正解はA) newです。Javaでは、クラスからオブジェクト（インスタンス）を生成する際に「new」キーワードを使用します。
+            </p>
+        </div>
+
+        <!-- 問題2: インスタンス変数とローカル変数 -->
+        <div class="section">
+            <h2>問題2: インスタンス変数とローカル変数</h2>
+            <p>Javaでクラスのインスタンス変数とローカル変数の違いは何ですか？</p>
+            <ul>
+                <li>A) インスタンス変数はstatic修飾子を持つが、ローカル変数は持たない。</li>
+                <li>B) インスタンス変数はクラス内のどこからでもアクセス可能だが、ローカル変数は定義されたブロック内でのみ有効。</li>
+                <li>C) インスタンス変数はfinal修飾子を持つが、ローカル変数は持たない。</li>
+                <li>D) インスタンス変数はクラスのメソッドでのみ使用可能だが、ローカル変数は全てのメソッドで使用可能。</li>
+            </ul>
+            <button id="toggleAnswer2">答えを見る</button>
+            <p id="answer2" style="display: none;">
+                正解はB) インスタンス変数はクラス内のどこからでもアクセス可能ですが、ローカル変数は定義されたブロック内でのみ有効です。
+            </p>
+        </div>
+
+        <!-- 問題3: インスタンスの初期化 -->
+        <div class="section">
+            <h2>問題3: インスタンスの初期化</h2>
+            <p>Javaでクラスのインスタンスを初期化するために必要なものは何ですか？</p>
+            <ul>
+                <li>A) クラス名</li>
+                <li>B) メソッド名</li>
+                <li>C) newキーワード</li>
+                <li>D) インターフェース</li>
+            </ul>
+            <button id="toggleAnswer3">答えを見る</button>
+            <p id="answer3" style="display: none;">
+                正解はC) newキーワードです。Javaではインスタンスを生成する際には「new」キーワードを使用します。
+            </p>
+        </div>
+
+        <!-- 問題4: インスタンス生成の流れ -->
+        <div class="section">
+            <h2>問題4: インスタンス生成の流れ</h2>
+            <p>次のJavaコードのうち、正しいインスタンス生成の流れを示しているものはどれですか？</p>
+            <pre><code>class Car {
+    String brand;
+
+    Car(String b) {
+        brand = b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Toyota");
+        myCar.start();
+    }
+}</code></pre>
+            <ul>
+                <li>A) Carクラスのインスタンスが生成され、その後myCarのメソッドが呼び出される。</li>
+                <li>B) mainメソッドが呼び出され、その後Carクラスのインスタンスが生成される。</li>
+                <li>C) インスタンスが生成される前にmainメソッドが実行される。</li>
+                <li>D) myCarのインスタンス生成の後、Carクラスのメソッドが呼び出される。</li>
+            </ul>
+            <button id="toggleAnswer4">答えを見る</button>
+            <p id="answer4" style="display: none;">
+                正解はB) mainメソッドが呼び出され、その後Carクラスのインスタンスが生成されるです。Javaではmainメソッドがプログラムの実行を開始し、インスタンスはその後に生成されます。
+            </p>
+        </div>
+
+        <div class="navigation">
+            <a href="question10.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer1').addEventListener('click', function() {
+            var answer = document.getElementById('answer1');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer2').addEventListener('click', function() {
+            var answer = document.getElementById('answer2');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer3').addEventListener('click', function() {
+            var answer = document.getElementById('answer3');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer4').addEventListener('click', function() {
+            var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

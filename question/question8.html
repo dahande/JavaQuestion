@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+
+        <!-- ガベージコレクションとは何か？ -->
+        <div class="section">
+            <h2>ガベージコレクションとは何か？</h2>
+            <p>次のうち、Javaのガベージコレクションの正しい説明はどれですか？</p>
+            <ul>
+                <li>A) メモリ内の不要なオブジェクトを自動的に検出し、解放するプロセス。</li>
+                <li>B) メモリを永続的に保存するためのメカニズム。</li>
+                <li>C) オブジェクトの生成と破棄を管理するためのメカニズム。</li>
+                <li>D) オブジェクトの属性や動作を定義するためのメカニズム。</li>
+            </ul>
+            <button id="toggleAnswer">答えを見る</button>
+            <p id="answer" style="display: none;">
+                正解はA) メモリ内の不要なオブジェクトを自動的に検出し、解放するプロセスです。ガベージコレクションはJava仮想マシンによって自動的に行われ、プログラマが明示的に管理する必要はありません。
+            </p>
+        </div>
+
+        <div class="navigation">
+            <a href="question9.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer').addEventListener('click', function() {
+            var answer = document.getElementById('answer');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

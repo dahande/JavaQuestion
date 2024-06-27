@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの基礎</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの基礎</h1>
+
+        <!-- 継承とは何か？ -->
+        <div class="section">
+            <h2>継承とは何か？</h2>
+            <p>次のうち、Javaの継承の正しい説明はどれですか？</p>
+            <ul>
+                <li>A) オブジェクトの属性や動作を定義するためのメカニズム。</li>
+                <li>B) クラスから新しいクラスを作成するためのメカニズム。</li>
+                <li>C) クラス内に定義される関数や変数。</li>
+                <li>D) クラスのデータを永続的に保存するためのメカニズム。</li>
+            </ul>
+            <button id="toggleAnswer">答えを見る</button>
+            <p id="answer" style="display: none;">
+                正解はB) クラスから新しいクラスを作成するためのメカニズムです。継承を使用すると、既存のクラスの機能を再利用し、拡張することができます。
+            </p>
+        </div>
+
+        <div class="navigation">
+            <a href="question8.html" class="next-page-button">次のページに行く</a>
+            <button onclick="goBack()" class="back-button">前に戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggleAnswer').addEventListener('click', function() {
+            var answer = document.getElementById('answer');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
