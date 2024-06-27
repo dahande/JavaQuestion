@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのインタフェース</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* 追加のスタイル */
+        .code-block {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .code-block code {
+            font-size: 14px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのインタフェース</h1>
+
+        <!-- インタフェースの説明 -->
+        <div class="section">
+            <h2>Javaでインタフェース（interface）とは？</h2>
+            <p>Javaにおけるインタフェースは、クラスの一種で、実装を持たないメソッドの集まりです。具体的な実装を持たず、メソッドのシグネチャ（宣言部分）だけを提供します。これにより、異なるクラスが同じインタフェースを実装することで、共通の振る舞いを保証します。</p>
+        </div>
+
+        <!-- インタフェースの定義例 -->
+        <div class="section">
+            <h2>インタフェースの定義例</h2>
+            <p>以下は、Javaでインタフェースを定義し、それを実装するクラスの例です。</p>
+            <div class="code-block">
+                <code class="java">
+// インタフェースの定義
+public interface A {
+    // デフォルトメソッドの定義
+    default void sample() {
+        System.out.println("sample");
+    }
+}
+
+// インタフェースを実装するクラスの定義
+public class B implements A {
+    // インタフェースのメソッドをオーバーライドする必要はありません
+}
+
+// メインクラスの定義
+public class Main {
+    public static void main(String[] args) {
+        // インタフェース型の変数にクラスのインスタンスを代入
+        A a = new B();
+        // インタフェースのメソッドを呼び出す
+        a.sample(); // 出力: "sample"
+    }
+}
+                </code>
+            </div>
+        </div>
+
+        <!-- インタフェースの利点 -->
+        <div class="section">
+            <h2>インタフェースの利点</h2>
+            <p>インタフェースを使用すると、以下のような利点があります。</p>
+            <ul>
+                <li><strong>多重継承の代替:</strong> Javaでは単一継承しかサポートしていないため、複数のインタフェースを実装することで多重継承の効果を得ることができます。</li>
+                <li><strong>柔軟性と拡張性:</strong> インタフェースを実装するクラスは自由に切り替えることができ、プログラムの柔軟性と拡張性を高めます。</li>
+                <li><strong>コードの再利用:</strong> 同じインタフェースを実装するクラスは同じ振る舞いを持ち、コードの再利用が容易になります。</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="home-button">ホームに戻る</a>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
