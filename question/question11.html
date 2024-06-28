@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題</h1>
+
+        <!-- 問題1 -->
+        <div class="section">
+            <h2>問題1: アクセス修飾子</h2>
+            <p>以下のうち、どのアクセス修飾子を使用すると、クラス外からアクセスできなくなりますか？</p>
+            <ul>
+                <li>A) public</li>
+                <li>B) private</li>
+                <li>C) protected</li>
+                <li>D) デフォルト（パッケージプライベート）</li>
+            </ul>
+            <button onclick="toggleAnswer(1)">答えを見る</button>
+            <div id="answer1" class="answer">
+                正解はB) privateです。<br>
+                <b>解説:</b> private修飾子は、そのメンバにクラス外からアクセスできないようにします。
+            </div>
+        </div>
+
+        <!-- 問題2 -->
+        <div class="section">
+            <h2>問題2: コンストラクタ</h2>
+            <p>コンストラクタの役割は何ですか？</p>
+            <ul>
+                <li>A) オブジェクトの初期化</li>
+                <li>B) メソッドのオーバーロード</li>
+                <li>C) インタフェースの実装</li>
+                <li>D) 継承の定義</li>
+            </ul>
+            <button onclick="toggleAnswer(2)">答えを見る</button>
+            <div id="answer2" class="answer">
+                正解はA) オブジェクトの初期化です。<br>
+                <b>解説:</b> コンストラクタは、クラスの新しいインスタンスが作成されるときに呼び出され、そのオブジェクトの初期化を行います。
+            </div>
+        </div>
+
+        <!-- 問題3 -->
+        <div class="section">
+            <h2>問題3: オーバーロード</h2>
+            <p>Javaでオーバーロードを行う際に必要な条件はどれですか？</p>
+            <ul>
+                <li>A) メソッド名が異なる</li>
+                <li>B) 戻り値の型が異なる</li>
+                <li>C) 引数の数や型が異なる</li>
+                <li>D) パッケージが異なる</li>
+            </ul>
+            <button onclick="toggleAnswer(3)">答えを見る</button>
+            <div id="answer3" class="answer">
+                正解はC) 引数の数や型が異なるです。<br>
+                <b>解説:</b> オーバーロードは、同じ名前のメソッドで異なる引数リストを持つ複数のメソッドを定義することです。
+            </div>
+        </div>
+
+        <!-- 問題4 -->
+        <div class="section">
+            <h2>問題4: 継承</h2>
+            <p>Javaでクラスが他のクラスを継承するために使用するキーワードは何ですか？</p>
+            <ul>
+                <li>A) implements</li>
+                <li>B) extends</li>
+                <li>C) inherit</li>
+                <li>D) super</li>
+            </ul>
+            <button onclick="toggleAnswer(4)">答えを見る</button>
+            <div id="answer4" class="answer">
+                正解はB) extendsです。<br>
+                <b>解説:</b> extendsキーワードを使用して、クラスが他のクラスを継承します。
+            </div>
+        </div>
+
+        <!-- 問題5 -->
+        <div class="section">
+            <h2>問題5: インタフェース</h2>
+            <p>インタフェースを実装するために使用するキーワードは何ですか？</p>
+            <ul>
+                <li>A) extend</li>
+                <li>B) implements</li>
+                <li>C) interface</li>
+                <li>D) inherit</li>
+            </ul>
+            <button onclick="toggleAnswer(5)">答えを見る</button>
+            <div id="answer5" class="answer">
+                正解はB) implementsです。<br>
+                <b>解説:</b> implementsキーワードを使用して、クラスがインタフェースを実装します。
+            </div>
+        </div>
+
+        <!-- 問題6 -->
+        <div class="section">
+            <h2>問題6: ポリモーフィズム</h2>
+            <p>ポリモーフィズムとは何ですか？</p>
+            <ul>
+                <li>A) オブジェクト指向プログラミングの概念で、同じメソッド名が異なる引数で複数存在すること。</li>
+                <li>B) 異なるクラスが同じインタフェースを実装できること。</li>
+                <li>C) 同じ操作が異なるクラスのオブジェクトで異なる動作をすること。</li>
+                <li>D) メソッドの戻り値の型が異なること。</li>
+            </ul>
+            <button onclick="toggleAnswer(6)">答えを見る</button>
+            <div id="answer6" class="answer">
+                正解はC) 同じ操作が異なるクラスのオブジェクトで異なる動作をすることです。<br>
+                <b>解説:</b> ポリモーフィズムは、異なるクラスのオブジェクトが同じメソッドを持ち、異なる動作をすることです。
+            </div>
+        </div>
+
+        <!-- 問題7 -->
+        <div class="section">
+            <h2>問題7: ガベージコレクション</h2>
+            <p>ガベージコレクションの目的は何ですか？</p>
+            <ul>
+                <li>A) メモリリークを防ぐため</li>
+                <li>B) プログラムの速度を上げるため</li>
+                <li>C) オブジェクトの重複を避けるため</li>
+                <li>D) 例外処理を簡素化するため</li>
+            </ul>
+            <button onclick="toggleAnswer(7)">答えを見る</button>
+            <div id="answer7" class="answer">
+                正解はA) メモリリークを防ぐためです。<br>
+                <b>解説:</b> ガベージコレクションは、不要になったオブジェクトを自動的に回収してメモリを解放する仕組みです。
+            </div>
+        </div>
+
+        <!-- 問題8 -->
+        <div class="section">
+            <h2>問題8: 例外処理</h2>
+            <p>Javaで例外をキャッチするために使用されるキーワードは何ですか？</p>
+            <ul>
+                <li>A) try</li>
+                <li>B) catch</li>
+                <li>C) throw</li>
+                <li>D) throws</li>
+            </ul>
+            <button onclick="toggleAnswer(8)">答えを見る</button>
+            <div id="answer8" class="answer">
+                正解はB) catchです。<br>
+                <b>解説:</b> catchキーワードを使用して、tryブロック内で発生した例外をキャッチし、処理します。
+            </div>
+        </div>
+
+        <!-- 問題9 -->
+        <div class="section">
+            <h2>問題9: パッケージ</h2>
+            <p>Javaの標準ライブラリはどのパッケージに含まれますか？</p>
+            <ul>
+                <li>A) java.standard</li>
+                <li>B) java.library</li>
+                <li>C) java.lang</li>
+                <li>D) java.util</li>
+            </ul>
+            <button onclick="toggleAnswer(9)">答えを見る</button>
+            <div id="answer9" class="answer">
+                正解はC) java.langです。<br>
+                <b>解説:</b> java.langパッケージは、Javaの標準ライブラリを含むパッケージで、import宣言なしで使用できます。
+            </div>
+        </div>
+
+        <!-- 問題10 -->
+        <div class="section">
+            <h2>問題10: 文字列操作</h2>
+            <p>以下のうち、Javaで文字列を比較するために使用するメソッドはどれですか？</p>
+            <ul>
+                <li>A) equals()</li>
+                <li>B) compareTo()</li>
+                <li>C) ==</li>
+                <li>D) isEqual()</li>
+            </ul>
+            <button onclick="toggleAnswer(10)">答えを見る</button>
+            <div id="answer10" class="answer">
+                正解はA) equals()です。<br>
+                <b>解説:</b> equals()メソッドは、文字列の内容を比較するために使用されます。==演算子は、オブジェクトの参照を比較します。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
