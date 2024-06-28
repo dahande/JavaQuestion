@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 6</h1>
+
+        <!-- 問題41 -->
+        <div class="section">
+            <h2>問題41</h2>
+            <p>Javaのインタフェースで宣言されたフィールドはデフォルトで何で初期化されますか？</p>
+            <ul>
+                <li>A) null</li>
+                <li>B) 0</li>
+                <li>C) false</li>
+                <li>D) コンパイルエラー</li>
+            </ul>
+            <button onclick="toggleAnswer(41)">答えを見る</button>
+            <div id="answer41" class="answer">
+                正解はA) nullです。<br>
+                <b>解説:</b> インタフェースで宣言されたフィールドはデフォルトでnullで初期化されます。
+            </div>
+        </div>
+
+        <!-- 問題42 -->
+        <div class="section">
+            <h2>問題42</h2>
+            <p>Javaの抽象クラスについて正しい記述はどれですか？</p>
+            <ul>
+                <li>A) 抽象クラスは複数のクラスを継承できます。</li>
+                <li>B) 抽象クラスはnew演算子でインスタンス化できます。</li>
+                <li>C) 抽象クラスは必ずabstractキーワードを使用して宣言されます。</li>
+                <li>D) 抽象クラスはすべてのメソッドを実装している必要があります。</li>
+            </ul>
+            <button onclick="toggleAnswer(42)">答えを見る</button>
+            <div id="answer42" class="answer">
+                正解はC) 抽象クラスは必ずabstractキーワードを使用して宣言されます。<br>
+                <b>解説:</b> 抽象クラスはabstractキーワードを使用して宣言され、abstractメソッドを含むことができます。
+            </div>
+        </div>
+
+        <!-- 問題43 -->
+        <div class="section">
+            <h2>問題43</h2>
+            <p>Javaのジェネリクスを使用すると何が達成できますか？</p>
+            <ul>
+                <li>A) パフォーマンスの向上</li>
+                <li>B) 型安全性の確保</li>
+                <li>C) コードの簡略化</li>
+                <li>D) すべての選択肢</li>
+            </ul>
+            <button onclick="toggleAnswer(43)">答えを見る</button>
+            <div id="answer43" class="answer">
+                正解はD) すべての選択肢です。<br>
+                <b>解説:</b> ジェネリクスを使用することで、パフォーマンスの向上、型安全性の確保、およびコードの簡略化が達成できます。
+            </div>
+        </div>
+
+        <!-- 問題44 -->
+        <div class="section">
+            <h2>問題44</h2>
+            <p>Javaでスレッドを実装するために推奨されている方法は何ですか？</p>
+            <ul>
+                <li>A) Runnableインタフェースを実装する</li>
+                <li>B) Threadクラスを継承する</li>
+                <li>C) Timerクラスを使用する</li>
+                <li>D) Executorサービスを使用する</li>
+            </ul>
+            <button onclick="toggleAnswer(44)">答えを見る</button>
+            <div id="answer44" class="answer">
+                正解はA) Runnableインタフェースを実装するです。<br>
+                <b>解説:</b> Javaでは、Runnableインタフェースを実装することが推奨されています。
+            </div>
+        </div>
+
+        <!-- 問題45 -->
+        <div class="section">
+            <h2>問題45</h2>
+            <p>JavaのストリームAPIで提供される主な機能は何ですか？</p>
+            <ul>
+                <li>A) 並列処理のサポート</li>
+                <li>B) ファイルの操作</li>
+                <li>C) データのフィルタリングと変換</li>
+                <li>D) すべての選択肢</li>
+            </ul>
+            <button onclick="toggleAnswer(45)">答えを見る</button>
+            <div id="answer45" class="answer">
+                正解はD) すべての選択肢です。<br>
+                <b>解説:</b> JavaのストリームAPIは、並列処理のサポート、ファイルの操作、データのフィルタリングと変換などの機能を提供します。
+            </div>
+        </div>
+
+        <!-- 問題46 -->
+        <div class="section">
+            <h2>問題46</h2>
+            <p>Javaのラムダ式を使用する主な目的は何ですか？</p>
+            <ul>
+                <li>A) コードの簡略化</li>
+                <li>B) メモリ使用量の削減</li>
+                <li>C) シングルトンパターンの実装</li>
+                <li>D) オーバーライドの強制</li>
+            </ul>
+            <button onclick="toggleAnswer(46)">答えを見る</button>
+            <div id="answer46" class="answer">
+                正解はA) コードの簡略化です。<br>
+                <b>解説:</b> ラムダ式を使用すると、コードを簡潔に記述することができます。
+            </div>
+        </div>
+
+        <!-- 問題47 -->
+        <div class="section">
+            <h2>問題47</h2>
+            <p>Javaのストリームで終端操作として適切なものはどれですか？</p>
+            <ul>
+                <li>A) map()</li>
+                <li>B) reduce()</li>
+                <li>C) filter()</li>
+                <li>D) collect()</li>
+            </ul>
+            <button onclick="toggleAnswer(47)">答えを見る</button>
+            <div id="answer47" class="answer">
+                正解はD) collect()です。<br>
+                <b>解説:</b> collect()はストリームの要素を集約して結果を返す終端操作です。
+            </div>
+        </div>
+
+        <!-- 問題48 -->
+        <div class="section">
+            <h2>問題48</h2>
+            <p>Javaでインターフェースを実装するために使用するキーワードは何ですか？</p>
+            <ul>
+                <li>A) extends</li>
+                <li>B) implements</li>
+                <li>C) inherits</li>
+                <li>D) includes</li>
+            </ul>
+            <button onclick="toggleAnswer(48)">答えを見る</button>
+            <div id="answer48" class="answer">
+                正解はB) implementsです。<br>
+                <b>解説:</b> インターフェースを実装する際にはimplementsキーワードを使用します。
+            </div>
+        </div>
+
+        <!-- 問題49 -->
+        <div class="section">
+            <h2>問題49</h2>
+            <p>Javaで複数のスレッドから安全にアクセスできるコードを何と呼びますか？</p>
+            <ul>
+                <li>A) マルチスレッドコード</li>
+                <li>B) スレッドセーフコード</li>
+                <li>C) マルチプロセスコード</li>
+                <li>D) 並行コード</li>
+            </ul>
+            <button onclick="toggleAnswer(49)">答えを見る</button>
+            <div id="answer49" class="answer">
+                正解はB) スレッドセーフコードです。<br>
+                <b>解説:</b> スレッドセーフコードは、複数のスレッドから安全にアクセスできるように設計されたコードです。
+            </div>
+        </div>
+
+        <!-- 問題50 -->
+        <div class="section">
+            <h2>問題50</h2>
+            <p>Javaのジェネリクスで使用されるワイルドカードの記号は何ですか？</p>
+            <ul>
+                <li>A) ?</li>
+                <li>B) *</li>
+                <li>C) $</li>
+                <li>D) @</li>
+            </ul>
+            <button onclick="toggleAnswer(50)">答えを見る</button>
+            <div id="answer50" class="answer">
+                正解はA) ?です。<br>
+                <b>解説:</b> ジェネリクスでワイルドカードを使用する場合、?を記述します。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

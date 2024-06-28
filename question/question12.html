@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 3</h1>
+
+        <!-- 問題11 -->
+        <div class="section">
+            <h2>問題11</h2>
+            <p>Javaで使用される基本的なデータ型は何ですか？</p>
+            <ul>
+                <li>A) int, float, double, char, boolean</li>
+                <li>B) integer, float, double, character, boolean</li>
+                <li>C) int, float, double, char, string</li>
+                <li>D) integer, float, double, char, boolean</li>
+            </ul>
+            <button onclick="toggleAnswer(11)">答えを見る</button>
+            <div id="answer11" class="answer">
+                正解はA) int, float, double, char, booleanです。<br>
+                <b>解説:</b> Javaの基本的なデータ型は、プリミティブ型として知られており、これらはメモリ上に直接の値を保持します。
+            </div>
+        </div>
+
+        <!-- 問題12 -->
+        <div class="section">
+            <h2>問題12</h2>
+            <p>サブクラスでスーパークラスのメソッドを上書きすることを何と呼びますか？</p>
+            <ul>
+                <li>A) メソッドオーバーライド</li>
+                <li>B) メソッドオーバーロード</li>
+                <li>C) メソッドインターフェース</li>
+                <li>D) メソッド継承</li>
+            </ul>
+            <button onclick="toggleAnswer(12)">答えを見る</button>
+            <div id="answer12" class="answer">
+                正解はA) メソッドオーバーライドです。<br>
+                <b>解説:</b> サブクラスでスーパークラスの同じシグネチャを持つメソッドを再定義することをメソッドオーバーライドと呼びます。
+            </div>
+        </div>
+
+        <!-- 問題13 -->
+        <div class="section">
+            <h2>問題13</h2>
+            <p>Javaのプリミティブ型に対応するラッパークラスは何ですか？</p>
+            <ul>
+                <li>A) Integer, Float, Double, Char, Boolean</li>
+                <li>B) Int, Float, Double, Character, Boolean</li>
+                <li>C) Integer, Float, Double, Character, String</li>
+                <li>D) Int, Float, Double, Char, Boolean</li>
+            </ul>
+            <button onclick="toggleAnswer(13)">答えを見る</button>
+            <div id="answer13" class="answer">
+                正解はA) Integer, Float, Double, Character, Booleanです。<br>
+                <b>解説:</b> ラッパークラスは、プリミティブ型のデータをオブジェクトとして扱うためのクラスです。
+            </div>
+        </div>
+
+        <!-- 問題14 -->
+        <div class="section">
+            <h2>問題14</h2>
+            <p>Javaで配列を宣言する際に使用する記号は何ですか？</p>
+            <ul>
+                <li>A) ( )</li>
+                <li>B) [ ]</li>
+                <li>C) { }</li>
+                <li>D) &lt; &gt;</li>
+            </ul>
+            <button onclick="toggleAnswer(14)">答えを見る</button>
+            <div id="answer14" class="answer">
+                正解はB) [ ]です。<br>
+                <b>解説:</b> 配列を宣言する際には、変数の型に続いて角括弧 [ ] を使用します。
+            </div>
+        </div>
+
+        <!-- 問題15 -->
+        <div class="section">
+            <h2>問題15</h2>
+            <p>Javaで指定された回数だけ繰り返し処理を行うために使用する制御構造は何ですか？</p>
+            <ul>
+                <li>A) if文</li>
+                <li>B) whileループ</li>
+                <li>C) forループ</li>
+                <li>D) switch文</li>
+            </ul>
+            <button onclick="toggleAnswer(15)">答えを見る</button>
+            <div id="answer15" class="answer">
+                正解はC) forループです。<br>
+                <b>解説:</b> forループは、指定された回数だけ処理を繰り返すために使用されます。
+            </div>
+        </div>
+
+        <!-- 問題16 -->
+        <div class="section">
+            <h2>問題16</h2>
+            <p>Javaのswitch文で、case節の最後には何が必要ですか？</p>
+            <ul>
+                <li>A) 改行</li>
+                <li>B) ブレーク</li>
+                <li>C) コロン</li>
+                <li>D) ダブルクォーテーション</li>
+            </ul>
+            <button onclick="toggleAnswer(16)">答えを見る</button>
+            <div id="answer16" class="answer">
+                正解はB) ブレークです。<br>
+                <b>解説:</b> switch文の各case節の最後には、break文または他の制御文（returnやthrow）を使用して制御を終了させる必要があります。
+            </div>
+        </div>
+
+        <!-- 問題17 -->
+        <div class="section">
+            <h2>問題17</h2>
+            <p>Javaで型安全なコレクションを実現するために使用される機能は何ですか？</p>
+            <ul>
+                <li>A) 反復子</li>
+                <li>B) インタフェース</li>
+                <li>C) ジェネリクス</li>
+                <li>D) ラムダ式</li>
+            </ul>
+            <button onclick="toggleAnswer(17)">答えを見る</button>
+            <div id="answer17" class="answer">
+                正解はC) ジェネリクスです。<br>
+                <b>解説:</b> ジェネリクスを使用すると、コレクションやメソッドなどで使用するオブジェクトの型を指定し、型安全性を確保できます。
+            </div>
+        </div>
+
+        <!-- 問題18 -->
+        <div class="section">
+            <h2>問題18</h2>
+            <p>Javaで関数型インタフェースをシンプルに実装するために使用される機能は何ですか？</p>
+            <ul>
+                <li>A) ジェネリクス</li>
+                <li>B) 反復子</li>
+                <li>C) ラムダ式</li>
+                <li>D) インターフェース</li>
+            </ul>
+            <button onclick="toggleAnswer(18)">答えを見る</button>
+            <div id="answer18" class="answer">
+                正解はC) ラムダ式です。<br>
+                <b>解説:</b> ラムダ式を使用すると、関数型インタフェースのインスタンスをシンプルに生成できます。
+            </div>
+        </div>
+
+        <!-- 問題19 -->
+        <div class="section">
+            <h2>問題19</h2>
+            <p>Javaでコレクションを処理するための新しいAPIは何ですか？</p>
+            <ul>
+                <li>A) ジェネリクス</li>
+                <li>B) ラムダ式</li>
+                <li>C) 反復子</li>
+                <li>D) ストリームAPI</li>
+            </ul>
+            <button onclick="toggleAnswer(19)">答えを見る</button>
+            <div id="answer19" class="answer">
+                正解はD) ストリームAPIです。<br>
+                <b>解説:</b> ストリームAPIを使用すると、コレクションを簡潔に操作して処理することができます。
+            </div>
+        </div>
+
+        <!-- 問題20 -->
+        <div class="section">
+            <h2>問題20</h2>
+            <p>Javaで複数のスレッドを同時に実行するための機能は何ですか？</p>
+            <ul>
+                <li>A) ジェネリクス</li>
+                <li>B) ラムダ式</li>
+                <li>C) ストリームAPI</li>
+                <li>D) マルチスレッド処理</li>
+            </ul>
+            <button onclick="toggleAnswer(20)">答えを見る</button>
+            <div id="answer20" class="answer">
+                正解はD) マルチスレッド処理です。<br>
+                <b>解説:</b> Javaでは、複数のスレッドを使用してプログラムを並行処理することができます。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

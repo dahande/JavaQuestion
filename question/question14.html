@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 5</h1>
+
+        <!-- 問題31 -->
+        <div class="section">
+            <h2>問題31</h2>
+            <p>Javaのジェネリクスを使用する主な目的は何ですか？</p>
+            <ul>
+                <li>A) パフォーマンスの向上</li>
+                <li>B) コードの簡略化</li>
+                <li>C) デバッグの容易化</li>
+                <li>D) セキュリティの強化</li>
+            </ul>
+            <button onclick="toggleAnswer(31)">答えを見る</button>
+            <div id="answer31" class="answer">
+                正解はB) コードの簡略化です。<br>
+                <b>解説:</b> ジェネリクスを使用すると、型安全性を保ちながらコードを簡潔に記述することができます。
+            </div>
+        </div>
+
+        <!-- 問題32 -->
+        <div class="section">
+            <h2>問題32</h2>
+            <p>Javaでオブジェクトの初期化を行う特別なメソッドを何と呼びますか？</p>
+            <ul>
+                <li>A) インスタンス化</li>
+                <li>B) メソッド化</li>
+                <li>C) コンストラクタ</li>
+                <li>D) メソッドオーバーライド</li>
+            </ul>
+            <button onclick="toggleAnswer(32)">答えを見る</button>
+            <div id="answer32" class="answer">
+                正解はC) コンストラクタです。<br>
+                <b>解説:</b> コンストラクタはクラスと同じ名前で、オブジェクトの初期化を行うための特別なメソッドです。
+            </div>
+        </div>
+
+        <!-- 問題33 -->
+        <div class="section">
+            <h2>問題33</h2>
+            <p>Javaのインターフェースは、複数のインターフェースを実装する際に使用されるキーワードは何ですか？</p>
+            <ul>
+                <li>A) extends</li>
+                <li>B) implements</li>
+                <li>C) abstract</li>
+                <li>D) interface</li>
+            </ul>
+            <button onclick="toggleAnswer(33)">答えを見る</button>
+            <div id="answer33" class="answer">
+                正解はB) implementsです。<br>
+                <b>解説:</b> インターフェースを実装する場合にはimplementsキーワードを使用します。
+            </div>
+        </div>
+
+        <!-- 問題34 -->
+        <div class="section">
+            <h2>問題34</h2>
+            <p>Javaで例外が発生した際に実行されるブロックを何と呼びますか？</p>
+            <ul>
+                <li>A) finallyブロック</li>
+                <li>B) catchブロック</li>
+                <li>C) throwブロック</li>
+                <li>D) tryブロック</li>
+            </ul>
+            <button onclick="toggleAnswer(34)">答えを見る</button>
+            <div id="answer34" class="answer">
+                正解はA) finallyブロックです。<br>
+                <b>解説:</b> finallyブロックは、例外の有無にかかわらず必ず実行されるブロックです。
+            </div>
+        </div>
+
+        <!-- 問題35 -->
+        <div class="section">
+            <h2>問題35</h2>
+            <p>Javaで複数の処理を並行して実行するために使用される機能は何ですか？</p>
+            <ul>
+                <li>A) ジェネリクス</li>
+                <li>B) インターフェース</li>
+                <li>C) スレッド</li>
+                <li>D) コンストラクタ</li>
+            </ul>
+            <button onclick="toggleAnswer(35)">答えを見る</button>
+            <div id="answer35" class="answer">
+                正解はC) スレッドです。<br>
+                <b>解説:</b> Javaのスレッドを使用すると、複数の処理を並行して実行することができます。
+            </div>
+        </div>
+
+        <!-- 問題36 -->
+        <div class="section">
+            <h2>問題36</h2>
+            <p>Javaのプリミティブ型をオブジェクトとして扱うためのクラスを何と呼びますか？</p>
+            <ul>
+                <li>A) ラッパークラス</li>
+                <li>B) ジェネリクスクラス</li>
+                <li>C) インターフェースクラス</li>
+                <li>D) プリミティブクラス</li>
+            </ul>
+            <button onclick="toggleAnswer(36)">答えを見る</button>
+            <div id="answer36" class="answer">
+                正解はA) ラッパークラスです。<br>
+                <b>解説:</b> プリミティブ型をオブジェクトとして扱うためには、対応するラッパークラスを使用します。
+            </div>
+        </div>
+
+        <!-- 問題37 -->
+        <div class="section">
+            <h2>問題37</h2>
+            <p>Javaでサブクラスが親クラスのメソッドを再定義することを何と呼びますか？</p>
+            <ul>
+                <li>A) メソッドオーバロード</li>
+                <li>B) メソッドオーバーライド</li>
+                <li>C) メソッドインターフェース</li>
+                <li>D) メソッド継承</li>
+            </ul>
+            <button onclick="toggleAnswer(37)">答えを見る</button>
+            <div id="answer37" class="answer">
+                正解はB) メソッドオーバーライドです。<br>
+                <b>解説:</b> サブクラスが親クラスの同名メソッドを再定義することをメソッドオーバーライドと言います。
+            </div>
+        </div>
+
+        <!-- 問題38 -->
+        <div class="section">
+            <h2>問題38</h2>
+            <p>Javaでオブジェクトの型変換を行うために使用するキーワードは何ですか？</p>
+            <ul>
+                <li>A) cast</li>
+                <li>B) convert</li>
+                <li>C) type</li>
+                <li>D) object</li>
+            </ul>
+            <button onclick="toggleAnswer(38)">答えを見る</button>
+            <div id="answer38" class="answer">
+                正解はA) castです。<br>
+                <b>解説:</b> クラスキャストはオブジェクトの型を変換するためにcastキーワードを使用します。
+            </div>
+        </div>
+
+        <!-- 問題39 -->
+        <div class="section">
+            <h2>問題39</h2>
+            <p>Javaのジェネリクスを使用することで得られる利点は何ですか？</p>
+            <ul>
+                <li>A) パフォーマンスの向上</li>
+                <li>B) コンパイル時の型安全性</li>
+                <li>C) メモリ使用量の削減</li>
+                <li>D) すべての選択肢</li>
+            </ul>
+            <button onclick="toggleAnswer(39)">答えを見る</button>
+            <div id="answer39" class="answer">
+                正解はD) すべての選択肢です。<br>
+                <b>解説:</b> ジェネリクスを使用すると、コンパイル時の型安全性が向上し、パフォーマンスも改善されます。
+            </div>
+        </div>
+
+        <!-- 問題40 -->
+        <div class="section">
+            <h2>問題40</h2>
+            <p>Javaで例外を発生させるために使用するキーワードは何ですか？</p>
+            <ul>
+                <li>A) throw</li>
+                <li>B) catch</li>
+                <li>C) try</li>
+                <li>D) finally</li>
+            </ul>
+            <button onclick="toggleAnswer(40)">答えを見る</button>
+            <div id="answer40" class="answer">
+                正解はA) throwです。<br>
+                <b>解説:</b> throwキーワードを使用して、例外を明示的に発生させることができます。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

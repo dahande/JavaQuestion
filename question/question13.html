@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 4</h1>
+
+        <!-- 問題21 -->
+        <div class="section">
+            <h2>問題21</h2>
+            <p>Javaで同じメソッド名を持ち、引数の数または型が異なるメソッドを定義することを何と呼びますか？</p>
+            <ul>
+                <li>A) メソッドオーバライド</li>
+                <li>B) メソッドインターフェース</li>
+                <li>C) メソッドオーバーロード</li>
+                <li>D) メソッド継承</li>
+            </ul>
+            <button onclick="toggleAnswer(21)">答えを見る</button>
+            <div id="answer21" class="answer">
+                正解はC) メソッドオーバーロードです。<br>
+                <b>解説:</b> メソッドオーバーロードは、同じメソッド名で異なる引数の組み合わせを持つ複数のメソッドを定義することです。
+            </div>
+        </div>
+
+        <!-- 問題22 -->
+        <div class="section">
+            <h2>問題22</h2>
+            <p>Javaのインターフェースは、どのような機能を提供しますか？</p>
+            <ul>
+                <li>A) 実装を持たないメソッドの集まり</li>
+                <li>B) 実装を持ったメソッドの集まり</li>
+                <li>C) 他のクラスのコードを継承する機能</li>
+                <li>D) 静的なメソッドの集まり</li>
+            </ul>
+            <button onclick="toggleAnswer(22)">答えを見る</button>
+            <div id="answer22" class="answer">
+                正解はA) 実装を持たないメソッドの集まりです。<br>
+                <b>解説:</b> インターフェースはメソッドの宣言だけを含み、具体的な実装は持ちません。
+            </div>
+        </div>
+
+        <!-- 問題23 -->
+        <div class="section">
+            <h2>問題23</h2>
+            <p>Javaでエラーが発生した際にプログラムの異常終了を防ぐために使用する機能は何ですか？</p>
+            <ul>
+                <li>A) スレッド</li>
+                <li>B) 例外処理</li>
+                <li>C) デバッグ</li>
+                <li>D) インタフェース</li>
+            </ul>
+            <button onclick="toggleAnswer(23)">答えを見る</button>
+            <div id="answer23" class="answer">
+                正解はB) 例外処理です。<br>
+                <b>解説:</b> Javaの例外処理は、プログラム実行中に発生するエラーや例外をキャッチし、適切に処理するための仕組みです。
+            </div>
+        </div>
+
+        <!-- 問題24 -->
+        <div class="section">
+            <h2>問題24</h2>
+            <p>Javaでクラスからオブジェクトを生成することを何と呼びますか？</p>
+            <ul>
+                <li>A) 初期化</li>
+                <li>B) 宣言</li>
+                <li>C) インスタンス化</li>
+                <li>D) 継承</li>
+            </ul>
+            <button onclick="toggleAnswer(24)">答えを見る</button>
+            <div id="answer24" class="answer">
+                正解はC) インスタンス化です。<br>
+                <b>解説:</b> クラスからオブジェクトを生成することをインスタンス化と言います。
+            </div>
+        </div>
+
+        <!-- 問題25 -->
+        <div class="section">
+            <h2>問題25</h2>
+            <p>Javaでメソッドを実行するために使用する演算子は何ですか？</p>
+            <ul>
+                <li>A) + 演算子</li>
+                <li>B) * 演算子</li>
+                <li>C) . 演算子</li>
+                <li>D) , 演算子</li>
+            </ul>
+            <button onclick="toggleAnswer(25)">答えを見る</button>
+            <div id="answer25" class="answer">
+                正解はC) . 演算子です。<br>
+                <b>解説:</b> オブジェクトのメソッドを呼び出す際には、インスタンス名の後にドット演算子を使用します。
+            </div>
+        </div>
+
+        <!-- 問題26 -->
+        <div class="section">
+            <h2>問題26</h2>
+            <p>Javaで親クラスの特性を子クラスが取り込むことを何と呼びますか？</p>
+            <ul>
+                <li>A) 組み込み</li>
+                <li>B) 拡張</li>
+                <li>C) 継承</li>
+                <li>D) 実装</li>
+            </ul>
+            <button onclick="toggleAnswer(26)">答えを見る</button>
+            <div id="answer26" class="answer">
+                正解はC) 継承です。<br>
+                <b>解説:</b> 継承を使用すると、既存のクラスから新しいクラスを派生させることができ、親クラスの特性を子クラスが取り込むことができます。
+            </div>
+        </div>
+
+        <!-- 問題27 -->
+        <div class="section">
+            <h2>問題27</h2>
+            <p>Javaのインターフェースは、どのような特性を持っていますか？</p>
+            <ul>
+                <li>A) 継承のみ</li>
+                <li>B) メソッド実装のみ</li>
+                <li>C) 実装を持たないメソッドの宣言</li>
+                <li>D) 抽象クラスと同等の機能</li>
+            </ul>
+            <button onclick="toggleAnswer(27)">答えを見る</button>
+            <div id="answer27" class="answer">
+                正解はC) 実装を持たないメソッドの宣言です。<br>
+                <b>解説:</b> インターフェースはメソッドの宣言だけを含み、具体的な実装は持ちません。
+            </div>
+        </div>
+
+        <!-- 問題28 -->
+        <div class="section">
+            <h2>問題28</h2>
+            <p>Javaのジェネリクスは、どのような目的で使用されますか？</p>
+            <ul>
+                <li>A) コードの再利用</li>
+                <li>B) データの格納</li>
+                <li>C) 型安全性</li>
+                <li>D) デバッグ</li>
+            </ul>
+            <button onclick="toggleAnswer(28)">答えを見る</button>
+            <div id="answer28" class="answer">
+                正解はC) 型安全性です。<br>
+                <b>解説:</b> ジェネリクスを使用すると、コンパイル時に型安全性を確保できます。
+            </div>
+        </div>
+
+        <!-- 問題29 -->
+        <div class="section">
+            <h2>問題29</h2>
+            <p>Javaのラムダ式は、どのような機能を提供しますか？</p>
+            <ul>
+                <li>A) ショートカット構文</li>
+                <li>B) 型安全性</li>
+                <li>C) メソッドオーバーロード</li>
+                <li>D) 継承</li>
+            </ul>
+            <button onclick="toggleAnswer(29)">答えを見る</button>
+            <div id="answer29" class="answer">
+                正解はA) ショートカット構文です。<br>
+                <b>解説:</b> ラムダ式を使用すると、関数型インタフェースのインスタンスを簡潔に生成できます。
+            </div>
+        </div>
+
+        <!-- 問題30 -->
+        <div class="section">
+            <h2>問題30</h2>
+            <p>Javaで外部ファイルからデータを読み込むために使用するクラスは何ですか？</p>
+            <ul>
+                <li>A) InputStream</li>
+                <li>B) Reader</li>
+                <li>C) File</li>
+                <li>D) Scanner</li>
+            </ul>
+            <button onclick="toggleAnswer(30)">答えを見る</button>
+            <div id="answer30" class="answer">
+                正解はD) Scannerです。<br>
+                <b>解説:</b> Scannerクラスを使用すると、外部ファイルからデータを読み込むことができます。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
