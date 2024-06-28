@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 9</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 9</h1>
+
+        <!-- 問題71 -->
+        <div class="section">
+            <h2>問題71: ラムダ式の例外処理</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+import java.util.function.Consumer;
+
+public class Test {
+    public static void main(String[] args) {
+        Consumer&lt;String> consumer = str -> {
+            try {
+                System.out.println(Integer.parseInt(str));
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number");
+            }
+        };
+
+        consumer.accept("123");
+        consumer.accept("abc");
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(71)">答えを見る</button>
+            <div id="answer71" class="answer">
+                正解はA) 123<br>Invalid numberが出力されます。<br>
+                <b>解説:</b> ラムダ式内でNumberFormatExceptionが発生し、catchブロックで"Invalid number"が出力されます。
+            </div>
+        </div>
+
+        <!-- 問題72 -->
+        <div class="section">
+            <h2>問題72: ストリームAPI</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+import java.util.stream.Stream;
+
+public class Test {
+    public static void main(String[] args) {
+        Stream&lt;Integer> stream = Stream.of(1, 2, 3, 4, 5);
+        int sum = stream.reduce(0, Integer::sum);
+        System.out.println(sum);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(72)">答えを見る</button>
+            <div id="answer72" class="answer">
+                正解はC) 15が出力されます。<br>
+                <b>解説:</b> reduceメソッドは初期値0から始めて、Integer::sumで要素を加算し、合計を求めます。
+            </div>
+        </div>
+
+        <!-- 問題73 -->
+        <div class="section">
+            <h2>問題73: メソッド参照</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+import java.util.function.Supplier;
+
+public class Test {
+    public static void main(String[] args) {
+        Supplier&lt;String> supplier = Test::getString;
+        System.out.println(supplier.get());
+    }
+
+    public static String getString() {
+        return "Hello, Method Reference!";
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(73)">答えを見る</button>
+            <div id="answer73" class="answer">
+                正解はB) Hello, Method Reference!が出力されます。<br>
+                <b>解説:</b> getStringメソッドをメソッド参照でSupplierに渡しています。supplier.get()でgetStringメソッドが呼び出され、その戻り値が出力されます。
+            </div>
+        </div>
+
+        <!-- 問題74 -->
+        <div class="section">
+            <h2>問題74: ラムダ式と変数スコープ</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        String message = "Hello";
+
+        Runnable r = () -> {
+            String message = "Inner Hello";
+            System.out.println(message);
+        };
+
+        r.run();
+        System.out.println(message);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(74)">答えを見る</button>
+            <div id="answer74" class="answer">
+                正解はD) Inner HelloとHelloが出力されます。<br>
+                <b>解説:</b> ラムダ式内で新しいローカル変数messageを定義していますが、mainメソッドの外側で定義されたmessageとは異なるスコープです。そのため、両方のメッセージが出力されます。
+            </div>
+        </div>
+
+        <!-- 問題75 -->
+        <div class="section">
+            <h2>問題75: スレッドと同期</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+public class Test {
+    private static int count = 0;
+
+    public static synchronized void increment() {
+        count++;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                increment();
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                increment();
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+
+        System.out.println("Count: " + count);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(75)">答えを見る</button>
+            <div id="answer75" class="answer">
+                正解はA) 2000が出力されます。<br>
+                <b>解説:</b> incrementメソッドがsynchronizedで修飾されているため、複数のスレッドが同時にこのメソッドを呼び出すことはありません。したがって、countは正しくインクリメントされ、最終的に2000が出力されます。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

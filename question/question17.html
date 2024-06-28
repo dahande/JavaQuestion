@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 8</h1>
+
+        <!-- 問題61 -->
+        <div class="section">
+            <h2>問題61</h2>
+            <p>次のJavaコードをコンパイルするとどうなりますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 0;
+        System.out.println(x / y);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(61)">答えを見る</button>
+            <div id="answer61" class="answer">
+                正解はA) ArithmeticExceptionが発生します。<br>
+                <b>解説:</b> yが0のため、x / y はArithmeticExceptionをスローします。そのため、このコードは実行時エラーとなります。
+            </div>
+        </div>
+
+        <!-- 問題62 -->
+        <div class="section">
+            <h2>問題62</h2>
+            <p>次のJavaコードをコンパイルするとどうなりますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        String str1 = "Java";
+        String str2 = new String("Java");
+        System.out.println(str1 == str2);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(62)">答えを見る</button>
+            <div id="answer62" class="answer">
+                正解はB) falseです。<br>
+                <b>解説:</b> str1はStringプールから参照され、str2は新しいStringオブジェクトを生成しています。== 演算子は参照の比較を行うため、str1とstr2は異なるオブジェクトを参照しているため false が出力されます。
+            </div>
+        </div>
+
+        <!-- 問題63 -->
+        <div class="section">
+            <h2>問題63</h2>
+            <p>次のJavaコードをコンパイルするとどうなりますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        int i = 1;
+        switch (i) {
+            case 1:
+                System.out.println("One");
+            case 2:
+                System.out.println("Two");
+            default:
+                System.out.println("Default");
+        }
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(63)">答えを見る</button>
+            <div id="answer63" class="answer">
+                正解はD) One Two Defaultです。<br>
+                <b>解説:</b> switch文でiが1と一致するため、case 1のブロックが実行されます。その後、case 2のラベルがないため、次のdefaultブロックも実行されます。したがって、"One Two Default"が出力されます。
+            </div>
+        </div>
+
+        <!-- 問題64 -->
+        <div class="section">
+            <h2>問題64</h2>
+            <p>次のJavaコードをコンパイルするとどうなりますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        int x = 5;
+        int y = x++ * 2 + x--;
+        System.out.println("x = " + x + ", y = " + y);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(64)">答えを見る</button>
+            <div id="answer64" class="answer">
+                正解はA) x = 5, y = 12です。<br>
+                <b>解説:</b> x++ * 2 + x-- は後置インクリメントと後置デクリメントを含みます。xはまず5で初期化され、yの計算中にxが6に増加し、それが2倍されて12になります。その後、xがデクリメントされ、最終的にx = 5となります。
+            </div>
+        </div>
+
+        <!-- 問題65 -->
+        <div class="section">
+            <h2>問題65</h2>
+            <p>次のJavaコードをコンパイルするとどうなりますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        int x = 0;
+        while (x < 5) {
+            System.out.print(x + " ");
+            x += 2;
+        }
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(65)">答えを見る</button>
+            <div id="answer65" class="answer">
+                正解はC) 0 2 4です。<br>
+                <b>解説:</b> whileループはxが5未満の間繰り返されます。xは0から始まり、2ずつ増加していきます。したがって、"0 2 4 "が出力されます。
+            </div>
+        </div>
+
+
+        <!-- 問題66 -->
+        <div class="section">
+            <h2>問題66</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            throw new RuntimeException();
+        } finally {
+            System.out.println("Finally block");
+        }
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(66)">答えを見る</button>
+            <div id="answer66" class="answer">
+                正解はD) Finally blockが出力されて、RuntimeExceptionがスローされます。<br>
+                <b>解説:</b> tryブロックでExceptionがスローされ、catchブロックでRuntimeExceptionがスローされます。finallyブロックは必ず実行されます。
+            </div>
+        </div>
+
+        <!-- 問題67 -->
+        <div class="section">
+            <h2>問題67</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+public interface MyInterface {
+    void performAction();
+}
+
+public class Test {
+    public static void main(String[] args) {
+        MyInterface action = () -> System.out.println("Performing action");
+        action.performAction();
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(67)">答えを見る</button>
+            <div id="answer67" class="answer">
+                正解はB) Performing actionが出力されます。<br>
+                <b>解説:</b> MyInterfaceをラムダ式で実装し、performActionメソッドをオーバーライドしています。このラムダ式は"Performing action"を出力します。
+            </div>
+        </div>
+
+        <!-- 問題68 -->
+        <div class="section">
+            <h2>問題68</h2>
+            <p>次のJavaコードを実行した場合、スレッドセーフですか？</p>
+            <pre><code>
+public class Test {
+    private static int count = 0;
+
+    public static synchronized void increment() {
+        count++;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                increment();
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                increment();
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+
+        System.out.println("Count: " + count);
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(68)">答えを見る</button>
+            <div id="answer68" class="answer">
+                正解はA) スレッドセーフではありません。<br>
+                <b>解説:</b> incrementメソッドはsynchronizedで修飾されていますが、このコードはスレッドセーフではありません。複数のスレッドが同時にincrementメソッドを呼び出す可能性があり、結果としてcountの値が正しくないことがあります。
+            </div>
+        </div>
+
+        <!-- 問題69 -->
+        <div class="section">
+            <h2>問題69:</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List&lt;? extends Number> list = new ArrayList&lt;Integer>();
+        list.add(null);
+        System.out.println(list.size());
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(69)">答えを見る</button>
+            <div id="answer69" class="answer">
+                正解はC) コンパイルエラーが発生します。<br>
+                <b>解説:</b> <? extends Number> は「Numberまたはそのサブクラス型のリスト」を表しますが、この型のリストにはnull以外の要素を追加することができません。そのため、コンパイルエラーが発生します。
+            </div>
+        </div>
+
+        <!-- 問題70 -->
+        <div class="section">
+            <h2>問題70</h2>
+            <p>次のJavaコードを実行した結果、何が出力されますか？</p>
+            <pre><code>
+public class Test {
+    public static void main(String[] args) {
+        Test test = null;
+        test.staticMethod();
+    }
+
+    public static void staticMethod() {
+        System.out.println("Static method called");
+    }
+
+    public void instanceMethod() {
+        System.out.println("Instance method called");
+    }
+}
+            </code></pre>
+            <button onclick="toggleAnswer(70)">答えを見る</button>
+            <div id="answer70" class="answer">
+                正解はD) NullPointerExceptionが発生します。<br>
+                <b>解説:</b> staticMethodは静的メソッドであり、インスタンスの生成なしに呼び出すことができます。ただし、インスタンスメソッドinstanceMethodはインスタンスが存在しないと呼び出すことができません。そのため、このコードはNullPointerExceptionをスローします。
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
