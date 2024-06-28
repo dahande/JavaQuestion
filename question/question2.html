@@ -75,6 +75,23 @@
             </p>
         </div>
 
+        <!-- 問題5: インタフェースと抽象クラスの違い -->
+        <div class="section">
+            <h2>問題: インタフェース (P227)</h2>
+            <p>インタフェースに関する説明として正しいものを2つ選びなさい</p>
+            <ul>
+                <li>A) アクセス修飾子を略してもpublicなメソッドとして扱われる</li>
+                <li>B) フィールドは一切定義できない</li>
+                <li>C) クラスは複数のインターフェイスを同時に実現できない</li>
+                <li>D) インターフェイスを継承することはできない</li>
+                <li>E) 抽象クラスは、インターフェイスに定義されているメソッドを実現しなくてもよい</li>
+            </ul>
+            <button id="toggleAnswer5">答えを見る</button>
+            <p id="answer5" style="display: none;">
+                正解はA,E) インターフェイスは、クラスから「型」だけを取り出したものです。アクセス修飾子を記述しなくても、インターフェースは自動的にpublicで修飾される。
+            </p>
+        </div>
+
         <div class="navigation">
             <a href="question3.html" class="next-page-button">次のページに行く</a>
             <button onclick="goBack()" class="back-button">前に戻る</button>
@@ -111,6 +128,15 @@
 
         document.getElementById('toggleAnswer4').addEventListener('click', function() {
             var answer = document.getElementById('answer4');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+
+        document.getElementById('toggleAnswer5').addEventListener('click', function() {
+            var answer = document.getElementById('answer5');
             if (answer.style.display === 'none') {
                 answer.style.display = 'block';
             } else {
