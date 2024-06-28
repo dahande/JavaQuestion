@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのオーバーライドの例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのオーバーライドの例</h1>
+
+        <!-- オーバーライドの説明 -->
+        <div class="section">
+            <h2>オーバーライドとは？</h2>
+            <p>Javaにおけるオーバーライド（override）とは、スーパークラス（親クラス）で定義されたメソッドを、サブクラス（子クラス）で再定義することです。オーバーライドすることで、親クラスのメソッドの振る舞いを子クラスで変更することができます。</p>
+        </div>
+
+        <!-- コード例 -->
+        <div class="section">
+            <h2>コード例</h2>
+            <p>以下は、親クラスと子クラスを使ってオーバーライドを示したJavaのコード例です。</p>
+            <pre><code>// 親クラスの定義
+class Animal {
+    void sound() {
+        System.out.println("動物の鳴き声");
+    }
+}
+
+// 子クラスの定義
+class Dog extends Animal {
+    // 親クラスのメソッドをオーバーライド
+    @Override
+    void sound() {
+        System.out.println("ワンワン");
+    }
+}
+
+// メインクラスの定義
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        myDog.sound(); // 出力: "ワンワン"
+    }
+}</code></pre>
+        </div>
+
+        <!-- 解説 -->
+        <div class="section">
+            <h2>解説</h2>
+            <p>このコードでは、`Animal` クラスが基本クラス（親クラス）として定義されており、その中に `sound()` メソッドがあります。`Dog` クラスは `Animal` クラスを継承しており、`sound()` メソッドをオーバーライドしています。</p>
+            <p>メインクラスでは、`Animal` 型の変数 `myDog` に `Dog` クラスのインスタンスを代入し、`myDog.sound()` を呼び出すことで、オーバーライドされた `Dog` クラスの `sound()` メソッドが実行され、「ワンワン」という出力が表示されます。</p>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

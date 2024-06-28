@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのコンストラクタの例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのコンストラクタの例</h1>
+
+        <!-- コンストラクタの説明 -->
+        <div class="section">
+            <h2>コンストラクタとは？</h2>
+            <p>Javaにおけるコンストラクタとは、オブジェクトのインスタンス生成時に呼び出される特殊なメソッドです。コンストラクタはクラス名と同じ名前を持ち、戻り値を持ちません。コンストラクタは通常、オブジェクトの初期化に使用されます。</p>
+        </div>
+
+        <!-- コード例 -->
+        <div class="section">
+            <h2>コード例</h2>
+            <p>以下は、コンストラクタを示したJavaのコード例です。</p>
+            <pre><code>// クラスの定義
+public class Person {
+    String name;
+    int age;
+
+    // デフォルトコンストラクタ
+    public Person() {
+        this.name = "名無し";
+        this.age = 0;
+    }
+
+    // 引数付きコンストラクタ
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // メソッド
+    public void displayInfo() {
+        System.out.println("名前: " + name + ", 年齢: " + age);
+    }
+}
+
+// メインクラスの定義
+public class Main {
+    public static void main(String[] args) {
+        // デフォルトコンストラクタを使用してインスタンスを生成
+        Person person1 = new Person();
+        person1.displayInfo(); // 出力: 名前: 名無し, 年齢: 0
+
+        // 引数付きコンストラクタを使用してインスタンスを生成
+        Person person2 = new Person("田中太郎", 25);
+        person2.displayInfo(); // 出力: 名前: 田中太郎, 年齢: 25
+    }
+}</code></pre>
+        </div>
+
+        <!-- 解説 -->
+        <div class="section">
+            <h2>解説</h2>
+            <p>このコードでは、`Person` クラスが2つのコンストラクタを持っています。</p>
+            <ul>
+                <li>デフォルトコンストラクタは引数を取らず、名前を "名無し" に、年齢を 0 に初期化します。</li>
+                <li>引数付きコンストラクタは、名前と年齢を引数として受け取り、それに基づいてフィールドを初期化します。</li>
+            </ul>
+            <p>メインクラスの `main` メソッドでは、これらのコンストラクタを使用して `Person` クラスのインスタンスを生成し、それぞれの初期化状態を `displayInfo` メソッドで出力しています。</p>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

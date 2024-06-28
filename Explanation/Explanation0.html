@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのインスタンスの例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのインスタンスの例</h1>
+
+        <!-- インスタンスの説明 -->
+        <div class="section">
+            <h2>インスタンスとは？</h2>
+            <p>Javaにおけるインスタンスとは、クラスを基にして生成された具体的なオブジェクトのことです。クラスは設計図として機能し、その設計図に基づいて生成された具体的なオブジェクトがインスタンスです。</p>
+        </div>
+
+        <!-- コード例 -->
+        <div class="section">
+            <h2>コード例</h2>
+            <p>以下は、インスタンスを生成し使用するJavaのコード例です。</p>
+            <pre><code>// クラスの定義
+public class Car {
+    String brand;
+    int speed;
+
+    // コンストラクタ
+    public Car(String brand, int speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    // メソッド
+    public void displayInfo() {
+        System.out.println("ブランド: " + brand + ", 速度: " + speed + " km/h");
+    }
+
+    // スピードアップメソッド
+    public void speedUp(int increment) {
+        speed += increment;
+        System.out.println("新しい速度: " + speed + " km/h");
+    }
+}
+
+// メインクラスの定義
+public class Main {
+    public static void main(String[] args) {
+        // インスタンスの生成
+        Car car1 = new Car("トヨタ", 120);
+        car1.displayInfo(); // 出力: ブランド: トヨタ, 速度: 120 km/h
+
+        // インスタンスのメソッドを呼び出す
+        car1.speedUp(30); // 出力: 新しい速度: 150 km/h
+
+        // 別のインスタンスを生成
+        Car car2 = new Car("ホンダ", 100);
+        car2.displayInfo(); // 出力: ブランド: ホンダ, 速度: 100 km/h
+    }
+}</code></pre>
+        </div>
+
+        <!-- 解説 -->
+        <div class="section">
+            <h2>解説</h2>
+            <p>このコードでは、`Car` クラスが定義されています。このクラスは車のブランドと速度を表すフィールドを持ち、これらを初期化するためのコンストラクタと、情報を表示するための `displayInfo` メソッド、および速度を上げるための `speedUp` メソッドを持っています。</p>
+            <ul>
+                <li>`Car` クラスのコンストラクタは、ブランドと速度を引数として受け取り、それらを対応するフィールドに設定します。</li>
+                <li>`displayInfo` メソッドは、車のブランドと速度をコンソールに出力します。</li>
+                <li>`speedUp` メソッドは、指定された値だけ速度を増加させ、新しい速度をコンソールに出力します。</li>
+            </ul>
+            <p>`Main` クラスでは、`Car` クラスのインスタンスを2つ生成し、それぞれのインスタンスのメソッドを呼び出して情報を表示し、速度を変更しています。このように、クラスを基にした具体的なオブジェクト（インスタンス）を生成し、操作することができます。</p>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

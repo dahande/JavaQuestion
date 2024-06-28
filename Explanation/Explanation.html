@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オブジェクト指向プログラミング入門</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>オブジェクト指向プログラミング（OOP）入門</h1>
+
+        <!-- オブジェクト指向とは -->
+        <div class="section">
+            <h2>オブジェクト指向とは？</h2>
+            <p>オブジェクト指向プログラミング（OOP）は、ソフトウェア設計の一つの方法で、データをオブジェクトとして扱い、それらを組み合わせてプログラムを構築します。オブジェクトはクラスのインスタンスとして生成され、データとメソッドを含みます。</p>
+        </div>
+
+        <!-- クラスとオブジェクト -->
+        <div class="section">
+            <h2>クラスとオブジェクト</h2>
+            <p>クラスはオブジェクトの設計図です。クラスには属性（データ）とメソッド（関数）が定義され、これに基づいてオブジェクトが生成されます。以下は、クラスとオブジェクトの関係を示す簡単な例です。</p>
+            <pre><code>// クラスの定義
+public class Car {
+    String brand;
+    int speed;
+
+    // コンストラクタ
+    public Car(String brand, int speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    // メソッド
+    public void displayInfo() {
+        System.out.println("ブランド: " + brand + ", 速度: " + speed + " km/h");
+    }
+}
+
+// メインクラスの定義
+public class Main {
+    public static void main(String[] args) {
+        // インスタンスの生成
+        Car car1 = new Car("トヨタ", 120);
+        car1.displayInfo(); // 出力: ブランド: トヨタ, 速度: 120 km/h
+
+        // 別のインスタンスを生成
+        Car car2 = new Car("ホンダ", 100);
+        car2.displayInfo(); // 出力: ブランド: ホンダ, 速度: 100 km/h
+    }
+}</code></pre>
+        </div>
+
+        <!-- オブジェクト指向の主要な原則 -->
+        <div class="section">
+            <h2>オブジェクト指向の主要な原則</h2>
+            <p>OOPには3つの主要な原則があります：</p>
+            <ul>
+                <li><strong>カプセル化（Encapsulation）</strong>: データを隠蔽し、データへのアクセスを制御するメソッドを提供します。</li>
+                <li><strong>継承（Inheritance）</strong>: 既存のクラス（親クラス）を基に新しいクラス（子クラス）を作成し、親クラスの属性とメソッドを再利用します。</li>
+                <li><strong>ポリモーフィズム（Polymorphism）</strong>: 同じメソッド名で異なる動作を実装できるようにします。</li>
+            </ul>
+        </div>
+
+        <!-- カプセル化の例 -->
+        <div class="section">
+            <h2>カプセル化の例</h2>
+            <pre><code>// カプセル化の例
+public class Person {
+    private String name;
+    private int age;
+
+    // コンストラクタ
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // ゲッターとセッター
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}</code></pre>
+            <p>この例では、`name` と `age` フィールドはプライベートに設定され、直接アクセスできません。これにより、データの整合性が保たれます。データにアクセスするために、ゲッターとセッターが提供されています。</p>
+        </div>
+
+        <!-- 継承の例 -->
+        <div class="section">
+            <h2>継承の例</h2>
+            <pre><code>// 継承の例
+// 親クラス
+public class Animal {
+    public void eat() {
+        System.out.println("食べる");
+    }
+}
+
+// 子クラス
+public class Dog extends Animal {
+    public void bark() {
+        System.out.println("吠える");
+    }
+}
+
+// メインクラス
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat(); // 出力: 食べる
+        dog.bark(); // 出力: 吠える
+    }
+}</code></pre>
+            <p>この例では、`Dog` クラスは `Animal` クラスを継承しています。`Dog` クラスは `Animal` クラスの `eat` メソッドを再利用でき、さらに `bark` メソッドを追加しています。</p>
+        </div>
+
+        <!-- ポリモーフィズムの例 -->
+        <div class="section">
+            <h2>ポリモーフィズムの例</h2>
+            <pre><code>// ポリモーフィズムの例
+public class Animal {
+    public void makeSound() {
+        System.out.println("動物の音");
+    }
+}
+
+public class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("ワンワン");
+    }
+}
+
+public class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("ニャーニャー");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+        myDog.makeSound(); // 出力: ワンワン
+        myCat.makeSound(); // 出力: ニャーニャー
+    }
+}</code></pre>
+            <p>この例では、`Animal` クラスに `makeSound` メソッドが定義されており、`Dog` クラスと `Cat` クラスでそれぞれオーバーライドされています。これにより、同じ `makeSound` メソッドが異なる動作を実行します。</p>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>
