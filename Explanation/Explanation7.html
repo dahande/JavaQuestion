@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのメソッド定義例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのメソッド定義例</h1>
+
+        <!-- メソッドの定義例 -->
+        <div class="section">
+            <h2>メソッドの定義</h2>
+            <p>Javaでメソッドを定義する際は、メソッド名、引数リスト、戻り値の型、メソッド本体を指定します。</p>
+            <pre><code>// メソッドの定義
+public class MyClass {
+
+    // メソッドの定義
+    public void printMessage() {
+        System.out.println("Hello, World!"); // メソッドの中で行う処理
+    }
+    
+    // 引数を受け取るメソッドの例
+    public void printWithPrefix(String prefix, String message) {
+        System.out.println(prefix + ": " + message);
+    }
+    
+    // 戻り値を持つメソッドの例
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    // メソッドをオーバーロードする例
+    public double add(double a, double b) {
+        return a + b;
+    }
+}
+
+// メインクラス
+public class Main {
+    public static void main(String[] args) {
+        MyClass myClass = new MyClass();
+        myClass.printMessage(); // 出力: Hello, World!
+        
+        myClass.printWithPrefix("Prefix", "Message"); // 出力: Prefix: Message
+        
+        int sum = myClass.add(3, 5); // sumは8
+        System.out.println("Sum: " + sum);
+        
+        double sumDouble = myClass.add(3.5, 2.5); // sumDoubleは6.0
+        System.out.println("Sum Double: " + sumDouble);
+    }
+}</code></pre>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

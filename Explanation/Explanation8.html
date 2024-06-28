@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのメソッドとコンストラクタの違い</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのメソッドとコンストラクタの違い</h1>
+
+        <!-- メソッドの説明 -->
+        <div class="section">
+            <h2>メソッド（Method）</h2>
+            <p>メソッドはクラス内で定義される処理のブロックであり、特定の動作や処理を実行するために使用されます。メソッドは以下の特徴を持ちます：</p>
+            <ul>
+                <li>メソッドは何度でも呼び出すことができ、同じ処理を再利用することができます。</li>
+                <li>メソッドはパラメータを受け取り、必要に応じて戻り値を返すことができます。</li>
+                <li>例えば、次のコードは「Hello, World!」を出力するメソッドの例です：</li>
+            </ul>
+            <pre><code>public class MyClass {
+    // メソッドの定義
+    public void sayHello() {
+        System.out.println("Hello, World!");
+    }
+
+    // メインメソッド（プログラムのエントリーポイント）
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.sayHello(); // 出力: Hello, World!
+    }
+}</code></pre>
+        </div>
+
+        <!-- コンストラクタの説明 -->
+        <div class="section">
+            <h2>コンストラクタ（Constructor）</h2>
+            <p>コンストラクタはクラスのインスタンスが作成される際に自動的に呼び出される特殊なメソッドです。主な目的は、インスタンス変数の初期化や必要な設定を行うことです。コンストラクタは以下の特徴を持ちます：</p>
+            <ul>
+                <li>クラスと同じ名前であり、戻り値を持ちません。</li>
+                <li>コンストラクタはnewキーワードを使用してインスタンスが作成されるときに呼び出されます。</li>
+                <li>次の例は、コンストラクタの定義例です：</li>
+            </ul>
+            <pre><code>public class Person {
+    private String name;
+    private int age;
+
+    // コンストラクタの定義
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // インスタンスの情報を表示するメソッド
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+
+    // メインメソッド（プログラムのエントリーポイント）
+    public static void main(String[] args) {
+        // コンストラクタを使用してインスタンスを作成
+        Person person1 = new Person("Alice", 30);
+        person1.displayInfo(); // 出力: Name: Alice, Age: 30
+
+        Person person2 = new Person("Bob", 25);
+        person2.displayInfo(); // 出力: Name: Bob, Age: 25
+    }
+}</code></pre>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>
