@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 基礎知識</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 基礎知識</h1>
+
+        <!-- Javaの基本構文 -->
+        <div class="section">
+            <h2>Javaの基本構文</h2>
+            <p>Javaの基本構文について学びます。変数、データ型、演算子、制御構文などの基本的な要素を理解することが重要です。</p>
+            <pre><code>// 変数の宣言と初期化
+int number = 10;
+String message = "Hello, World!";
+
+// 制御構文の例
+if (number > 5) {
+    System.out.println(message);
+} else {
+    System.out.println("Number is less than or equal to 5");
+}</code></pre>
+        </div>
+
+        <!-- オブジェクト指向の概念 -->
+        <div class="section">
+            <h2>オブジェクト指向の概念</h2>
+            <p>Javaはオブジェクト指向プログラミング言語です。クラス、オブジェクト、継承、ポリモーフィズムなどの基本的な概念を理解しましょう。</p>
+            <pre><code>// クラスとオブジェクトの例
+public class Dog {
+    String name;
+    int age;
+
+    public void bark() {
+        System.out.println(name + " says Woof!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.name = "Buddy";
+        myDog.age = 3;
+        myDog.bark(); // 出力: Buddy says Woof!
+    }
+}</code></pre>
+        </div>
+
+        <!-- メソッド -->
+        <div class="section">
+            <h2>メソッド</h2>
+            <p>メソッドは特定のタスクを実行するための関数です。Javaでは、メソッドはクラス内で定義され、クラスのオブジェクトによって呼び出されます。</p>
+            <pre><code>// メソッドの定義と呼び出し
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        int result = calc.add(5, 3);
+        System.out.println("結果: " + result); // 出力: 結果: 8
+    }
+}</code></pre>
+        </div>
+
+        <!-- 配列 -->
+        <div class="section">
+            <h2>配列</h2>
+            <p>配列は同じデータ型の複数の要素を格納するためのデータ構造です。配列の宣言と初期化の方法について学びましょう。</p>
+            <pre><code>// 配列の宣言と初期化
+int[] numbers = {1, 2, 3, 4, 5};
+
+// 配列の要素にアクセス
+for (int i = 0; i < numbers.length; i++) {
+    System.out.println("Number at index " + i + ": " + numbers[i]);
+}</code></pre>
+        </div>
+
+        <!-- 継承 -->
+        <div class="section">
+            <h2>継承</h2>
+            <p>継承は既存のクラスを基に新しいクラスを作成するための機能です。親クラスのメソッドやフィールドを子クラスに継承することができます。</p>
+            <pre><code>// 継承の例
+class Animal {
+    public void eat() {
+        System.out.println("食べる");
+    }
+}
+
+class Dog extends Animal {
+    public void bark() {
+        System.out.println("吠える");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat(); // 出力: 食べる
+        myDog.bark(); // 出力: 吠える
+    }
+}</code></pre>
+        </div>
+
+        <!-- インタフェース -->
+        <div class="section">
+            <h2>インタフェース</h2>
+            <p>インタフェースは、クラスが実装するメソッドの宣言のみを含む抽象型です。インタフェースを実装することで、クラスは特定のメソッドを必ず持つことが保証されます。</p>
+            <pre><code>// インタフェースの定義
+public interface Animal {
+    void makeSound();
+}
+
+// インタフェースの実装
+public class Dog implements Animal {
+    public void makeSound() {
+        System.out.println("ワンワン");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        myDog.makeSound(); // 出力: ワンワン
+    }
+}</code></pre>
+        </div>
+
+        <!-- 例外処理 -->
+        <div class="section">
+            <h2>例外処理</h2>
+            <p>例外処理は、プログラムの実行中に発生するエラーを処理するための仕組みです。try-catchブロックを使用して例外をキャッチし、適切に処理します。</p>
+            <pre><code>// 例外処理の例
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("エラー: 0で割ることはできません。");
+        }
+    }
+}</code></pre>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

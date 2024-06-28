@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのアクセス修飾子</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのアクセス修飾子</h1>
+
+        <!-- public -->
+        <div class="section">
+            <h2>public</h2>
+            <p><code>public</code>修飾子は、クラス、メソッド、フィールドがどこからでもアクセスできることを示します。プロジェクトの他のパッケージやクラスからもアクセス可能です。</p>
+            <pre><code>// public クラス
+public class MyClass {
+    // public フィールド
+    public int myNumber;
+
+    // public メソッド
+    public void myMethod() {
+        System.out.println("This is a public method.");
+    }
+}
+
+// 他のクラスからのアクセス
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.myNumber = 10;
+        obj.myMethod(); // 出力: This is a public method.
+    }
+}</code></pre>
+        </div>
+
+        <!-- private -->
+        <div class="section">
+            <h2>private</h2>
+            <p><code>private</code>修飾子は、クラス内でのみアクセスできることを示します。他のクラスやパッケージからはアクセスできません。</p>
+            <pre><code>// private フィールドとメソッド
+public class MyClass {
+    private int myNumber;
+
+    private void myMethod() {
+        System.out.println("This is a private method.");
+    }
+
+    public void accessPrivateMethod() {
+        myMethod(); // クラス内ではアクセス可能
+    }
+}
+
+// 他のクラスからのアクセス
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        // obj.myNumber = 10; // エラー: myNumberはprivate
+        // obj.myMethod(); // エラー: myMethodはprivate
+        obj.accessPrivateMethod(); // 出力: This is a private method.
+    }
+}</code></pre>
+        </div>
+
+        <!-- protected -->
+        <div class="section">
+            <h2>protected</h2>
+            <p><code>protected</code>修飾子は、同じパッケージ内のクラスおよびサブクラスからアクセスできることを示します。</p>
+            <pre><code>// protected フィールドとメソッド
+public class MyClass {
+    protected int myNumber;
+
+    protected void myMethod() {
+        System.out.println("This is a protected method.");
+    }
+}
+
+// サブクラスからのアクセス
+public class SubClass extends MyClass {
+    public void accessProtected() {
+        myNumber = 20;
+        myMethod(); // 出力: This is a protected method.
+    }
+}
+
+// 他のクラスからのアクセス
+public class Main {
+    public static void main(String[] args) {
+        SubClass obj = new SubClass();
+        obj.accessProtected();
+    }
+}</code></pre>
+        </div>
+
+        <!-- デフォルト（パッケージプライベート） -->
+        <div class="section">
+            <h2>デフォルト（パッケージプライベート）</h2>
+            <p>アクセス修飾子を指定しない場合、そのフィールドやメソッドはデフォルトで同じパッケージ内からのみアクセス可能になります。</p>
+            <pre><code>// デフォルトアクセスのフィールドとメソッド
+public class MyClass {
+    int myNumber; // デフォルト（パッケージプライベート）
+    
+    void myMethod() { // デフォルト（パッケージプライベート）
+        System.out.println("This is a package-private method.");
+    }
+}
+
+// 同じパッケージ内のクラスからのアクセス
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.myNumber = 30;
+        obj.myMethod(); // 出力: This is a package-private method.
+    }
+}</code></pre>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>
