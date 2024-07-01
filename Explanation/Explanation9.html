@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのラムダ式について</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのラムダ式について</h1>
+        <p>ラムダ式は、Java 8で導入された機能で、匿名関数（名前のない関数）を簡潔に表現するための構文です。ラムダ式は主にコレクションの操作やイベントハンドリングで使用され、コードをより簡潔で読みやすくします。</p>
+        
+        <h2>ラムダ式の基本構文</h2>
+        <p>ラムダ式の基本構文は以下の通りです。</p>
+        <pre><code>(引数) -> { 処理 }</code></pre>
+        <p>例えば、引数を1つ取り、その引数を標準出力に表示するラムダ式は次のようになります。</p>
+        <pre><code>(x) -> { System.out.println(x); }</code></pre>
+        
+        <h2>簡単な例</h2>
+        <p>リストの各要素を2倍にするラムダ式を使用した例を見てみましょう。</p>
+        <pre><code>import java.util.Arrays;
+import java.util.List;
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // ラムダ式を使用して各要素を2倍にする
+        numbers.forEach(n -> System.out.println(n * 2));
+    }
+}
+</code></pre>
+        
+        <h2>ラムダ式の利点</h2>
+        <ul>
+            <li>コードが簡潔になる</li>
+            <li>匿名クラスの代替として使用できる</li>
+            <li>関数型プログラミングのサポート</li>
+        </ul>
+
+        <h2>コード例: イベントハンドリング</h2>
+        <p>ラムダ式はイベントハンドリングでもよく使用されます。例えば、ボタンのクリックイベントを処理する場合です。</p>
+        <pre><code>import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class LambdaSwingExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Lambda Example");
+        JButton button = new JButton("Click Me");
+
+        // ラムダ式を使用してクリックイベントを処理
+        button.addActionListener(e -> System.out.println("Button Clicked"));
+
+        frame.add(button);
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+</code></pre>
+<h1>Javaのラムダ式の例と解説</h1>
+<p>このページでは、ラムダ式を使用してJavaプログラムを簡潔に記述する方法を解説します。以下のコード例では、ラムダ式を用いて名前を表示するシンプルなアルゴリズムを実装しています。</p>
+
+<h2>コード例</h2>
+<pre><code>public class Main {
+public static void main(String[] args) {        
+Algorithm algorithm = (name) -> {
+    System.out.println("hello," + name);
+};
+Service s = new Service();
+s.setLogic(algorithm);
+s.doProcess("Lambda");
+}
+}
+
+interface Algorithm {
+void perform(String name);
+}
+
+class Service {
+private Algorithm logic;
+
+public void setLogic(Algorithm logic){
+this.logic = logic;
+}
+
+public void doProcess(String name){
+System.out.println("start");
+this.logic.perform(name);
+System.out.println("end");
+}
+}</code></pre>
+
+<h2>コードの解説</h2>
+<p>このコードは、ラムダ式を使用して名前を表示するアルゴリズムを実装し、それをサービスクラスに設定して処理を実行する例です。</p>
+
+<h3>Mainクラス</h3>
+<p><code>Main</code>クラスはプログラムのエントリーポイントです。以下の部分でラムダ式を使って<code>Algorithm</code>インターフェースのメソッドを実装しています。</p>
+<pre><code>Algorithm algorithm = (name) -> {
+System.out.println("hello," + name);
+};</code></pre>
+<p>このラムダ式は、<code>Algorithm</code>インターフェースの<code>perform</code>メソッドを実装しています。</p>
+
+<h3>Algorithmインターフェース</h3>
+<p><code>Algorithm</code>インターフェースは、名前を引数として受け取り、それを表示するメソッド<code>perform</code>を定義しています。</p>
+<pre><code>interface Algorithm {
+void perform(String name);
+}</code></pre>
+
+<h3>Serviceクラス</h3>
+<p><code>Service</code>クラスは、<code>Algorithm</code>を用いて処理を実行するクラスです。<code>setLogic</code>メソッドでラムダ式を設定し、<code>doProcess</code>メソッドで処理を実行します。</p>
+<pre><code>class Service {
+private Algorithm logic;
+
+public void setLogic(Algorithm logic){
+this.logic = logic;
+}
+
+public void doProcess(String name){
+System.out.println("start");
+this.logic.perform(name);
+System.out.println("end");
+}
+}</code></pre>
+
+<p>この例では、以下のように出力されます。</p>
+<pre><code>start
+hello,Lambda
+end</code></pre>
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

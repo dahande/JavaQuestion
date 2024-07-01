@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaのメソッドとその使用例</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaのメソッドとその使用例</h1>
+        <p>このページでは、Javaのメソッドの定義とその使用例について説明します。</p>
+        
+        <h2>サンプルコード</h2>
+        <p>以下は、`Sample`クラスのメソッドを使ったサンプルコードです。</p>
+        <pre><code>public class Main {
+    public static void main(String[] args) {        
+        Sample s = new Sample();
+        String val = s.setValue("hello");
+        s.getValue();
+        System.out.println(val);
+    }
+}
+
+public class Sample{
+    private String num;
+    private String value;
+    
+    // 値を設定するメソッド
+    public void setValue(String value){
+        this.value = value;
+    }
+    
+    // 値を取得するメソッド
+    public String getValue(){
+        return this.value;
+    }
+}</code></pre>
+
+        <h2>解説</h2>
+        <p>このサンプルコードでは、`Sample`クラスに2つのメソッドがあります:</p>
+        <ul>
+            <li><code>setValue(String value)</code>: 引数として渡された文字列を`value`フィールドに設定します。</li>
+            <li><code>getValue()</code>: `value`フィールドの値を返します。</li>
+        </ul>
+        
+        <h2>修正後のコード</h2>
+        <p>元のコードにはいくつかの問題がありました。例えば、<code>setValue()</code>メソッドは戻り値がないのに対し、呼び出し元で戻り値を受け取ろうとしていました。以下は修正後のコードです。</p>
+        <pre><code>public class Main {
+    public static void main(String[] args) {        
+        Sample s = new Sample();
+        s.setValue("hello");
+        String val = s.getValue();
+        System.out.println(val); // 出力: hello
+    }
+}
+
+public class Sample{
+    private String num;
+    private String value;
+    
+    // 値を設定するメソッド
+    public void setValue(String value){
+        this.value = value;
+    }
+    
+    // 値を取得するメソッド
+    public String getValue(){
+        return this.value;
+    }
+}</code></pre>
+
+        <h2>修正点の説明</h2>
+        <p>修正後のコードでは、以下の点が改善されています:</p>
+        <ul>
+            <li><code>setValue()</code>メソッドは<code>void</code>型で戻り値がないため、その呼び出しは<code>String val = s.setValue("hello");</code>から<code>s.setValue("hello");</code>に変更されました。</li>
+            <li><code>getValue()</code>メソッドを呼び出してその戻り値を変数<code>val</code>に格納し、<code>System.out.println(val);</code>で出力しています。</li>
+        </ul>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの主要な関数型インターフェースの解説</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの主要な関数型インターフェースの解説</h1>
+        <p>このページでは、Javaの主要な関数型インターフェースである<code>Consumer</code>、<code>Function</code>、<code>Supplier</code>、および<code>Predicate</code>について説明します。</p>
+        
+        <h2>Consumer</h2>
+        <p><code>Consumer</code>は、単一の入力引数を受け取り、結果を返さない操作を行う関数型インターフェースです。典型的には入力引数に対して副作用を持つ操作を実行します。</p>
+        <pre><code>import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+        Consumer&lt;String&gt; consumer = (s) -> System.out.println(s);
+        consumer.accept("Hello, Consumer!"); // 出力: Hello, Consumer!
+    }
+}</code></pre>
+
+        <h2>Function</h2>
+        <p><code>Function</code>は、単一の入力引数を受け取り、それに基づいて結果を返す操作を行う関数型インターフェースです。</p>
+        <pre><code>import java.util.function.Function;
+
+public class Main {
+    public static void main(String[] args) {
+        Function&lt;String, Integer&gt; function = (s) -> s.length();
+        int length = function.apply("Hello, Function!"); // 出力: 15
+        System.out.println(length);
+    }
+}</code></pre>
+
+        <h2>Supplier</h2>
+        <p><code>Supplier</code>は、引数を受け取らずに結果を生成する操作を行う関数型インターフェースです。</p>
+        <pre><code>import java.util.function.Supplier;
+
+public class Main {
+    public static void main(String[] args) {
+        Supplier&lt;String&gt; supplier = () -> "Hello, Supplier!";
+        String message = supplier.get();
+        System.out.println(message); // 出力: Hello, Supplier!
+    }
+}</code></pre>
+
+        <h2>Predicate</h2>
+        <p><code>Predicate</code>は、単一の入力引数を受け取り、それに対して真偽値を返す操作を行う関数型インターフェースです。典型的には引数に対して条件をテストします。</p>
+        <pre><code>import java.util.function.Predicate;
+
+public class Main {
+    public static void main(String[] args) {
+        Predicate&lt;String&gt; predicate = (s) -> s.isEmpty();
+        boolean result = predicate.test(""); // 出力: true
+        System.out.println(result);
+    }
+}</code></pre>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>
