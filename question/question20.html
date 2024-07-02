@@ -42,8 +42,9 @@ public class Main {
                 <li>C) コンパイルエラーが発生する</li>
                 <li>D) ランタイムエラーが発生する</li>
             </ul>
-        <button data-answer-id="answer91">答えを見る</button>
-        <p id="answer91" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(91)">答えを見る</button>
+        <div id="answer91" class="answer">
                 正解は B) "Child" が出力される です。オーバーライドされたメソッドが実行時に実際のオブジェクトのタイプによって決定されます。
         </p>
         </div>
@@ -78,8 +79,9 @@ public class Main {
                 <li>C) ランタイムエラーが発生する</li>
                 <li>D) 何も出力されない</li>
             </ul>
-        <button data-answer-id="answer92">答えを見る</button>
-        <p id="answer92" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(92)">答えを見る</button>
+        <div id="answer92" class="answer">
                 正解は A) "Abstract class" が出力される です。抽象クラスはインターフェースのメソッドを実装しています。
         </p>
         </div>
@@ -104,8 +106,9 @@ public class Main {
                 <li>C) コンパイルエラーが発生する</li>
                 <li>D) ランタイムエラーが発生する</li>
             </ul>
-        <button data-answer-id="answer93">答えを見る</button>
-        <p id="answer93" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(93)">答えを見る</button>
+        <div id="answer93" class="answer">
                 正解は A) true が出力される です。"Java"の文字列長は4で、3より大きいです。
         </p>
         </div>
@@ -133,8 +136,9 @@ public class VarargsExample {
                 <li>C) "Hello World" が出力される</li>
                 <li>D) コンパイルエラーが発生する</li>
             </ul>
-        <button data-answer-id="answer94">答えを見る</button>
-        <p id="answer94" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(94)">答えを見る</button>
+        <div id="answer94" class="answer">
                 正解は C) "Hello World" が出力される です。可変長引数により、複数の値を渡すことができます。
         </p>
         </div>
@@ -158,8 +162,9 @@ public class Main {
                 <li>C) ランタイムエラーが発生する</li>
                 <li>D) 何も出力されない</li>
             </ul>
-        <button data-answer-id="answer95">答えを見る</button>
-        <p id="answer95" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(95)">答えを見る</button>
+        <div id="answer95" class="answer">
                 正解は A) 4.0 が出力される です。静的インポートにより、クラス名を省略して静的メソッドを呼び出すことができます。
         </p>
         </div>
@@ -186,8 +191,9 @@ public class Main {
                 <li>C) "WEDNESDAY" が出力される</li>
                 <li>D) コンパイルエラーが発生する</li>
             </ul>
-        <button data-answer-id="answer96">答えを見る</button>
-        <p id="answer96" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(96)">答えを見る</button>
+        <div id="answer96" class="answer">
                 正解は C) "WEDNESDAY" が出力される です。列挙型の値を出力しています。
         </p>
         </div>
@@ -215,8 +221,9 @@ public class ExceptionExample {
                 <li>C) "Arithmetic Exception" と "Finally block" が出力される</li>
                 <li>D) コンパイルエラーが発生する</li>
             </ul>
-        <button data-answer-id="answer97">答えを見る</button>
-        <p id="answer97" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(97)">答えを見る</button>
+        <div id="answer97" class="answer">
                 正解は C) "Arithmetic Exception" と "Finally block" が出力される です。例外がキャッチされ、finallyブロックも実行されます。
         </p>
         </div>
@@ -252,8 +259,9 @@ public class Main {
                 <li>C) ランタイムエラーが発生する</li>
                 <li>D) 何も出力されない</li>
             </ul>
-        <button data-answer-id="answer98">答えを見る</button>
-        <p id="answer98" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(98)">答えを見る</button>
+        <div id="answer98" class="answer">
                 正解は A) "1 Java" が出力される です。クラスはSerializableを実装しており、通常の出力が行われます。
         </p>
         </div>
@@ -278,8 +286,9 @@ public class StringComparison {
                 <li>C) true false が出力される</li>
                 <li>D) false false が出力される</li>
             </ul>
-        <button data-answer-id="answer99">答えを見る</button>
-        <p id="answer99" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(99)">答えを見る</button>
+        <div id="answer99" class="answer">
                 正解は B) false true が出力される です。== 演算子は参照を比較し、equals メソッドは値を比較します。
         </p>
         </div>
@@ -306,8 +315,9 @@ public class Main {
                 <li>C) ランタイムエラーが発生する</li>
                 <li>D) 何も出力されない</li>
             </ul>
-        <button data-answer-id="answer100">答えを見る</button>
-        <p id="answer100" style="display: none;">
+        </code></pre>
+        <button onclick="toggleAnswer(100)">答えを見る</button>
+        <div id="answer100" class="answer">
                 正解は A) "Annotation example" が出力される です。カスタムアノテーションがクラスに適用されていますが、実行に影響しません。
         </p>
         </div>
@@ -318,17 +328,14 @@ public class Main {
     </div>
 
     <script>
-        document.querySelectorAll('button[data-answer-id]').forEach(button => {
-            button.addEventListener('click', () => {
-                const answerId = button.getAttribute('data-answer-id');
-                const answer = document.getElementById(answerId);
-                if (answer.style.display === 'none') {
-                    answer.style.display = 'block';
-                } else {
-                    answer.style.display = 'none';
-                }
-            });
-        });
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
