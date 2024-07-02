@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java.util.Comparator インタフェースの解説</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>java.util.Comparator インタフェース</h1>
+        <p><code>java.util.Comparator</code> インタフェースは、オブジェクトの順序付けを定義するために使用されます。このインタフェースは、2つのオブジェクトを比較するためのメソッドを提供します。</p>
+
+        <h2>compare メソッド</h2>
+        <p><code>compare</code> メソッドは、2つのオブジェクトを比較し、その順序を示す整数を返します。メソッドシグネチャは以下の通りです:</p>
+        <pre><code>int compare(T o1, T o2)</code></pre>
+        <p>返り値の意味は以下の通りです:</p>
+        <ul>
+            <li>負の整数: <code>o1</code> が <code>o2</code> よりも小さい</li>
+            <li>ゼロ: <code>o1</code> が <code>o2</code> と等しい</li>
+            <li>正の整数: <code>o1</code> が <code>o2</code> よりも大きい</li>
+        </ul>
+
+        <h3>例: カスタムコンパレータの実装</h3>
+        <pre><code>
+import java.util.Comparator;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class AgeComparator implements Comparator&lt;Person&gt; {
+    @Override
+    public int compare(Person p1, Person p2) {
+        return Integer.compare(p1.age, p2.age);
+    }
+}
+
+public class ComparatorExample {
+    public static void main(String[] args) {
+        Person person1 = new Person("Alice", 30);
+        Person person2 = new Person("Bob", 25);
+        Comparator&lt;Person&gt; comparator = new AgeComparator();
+        int result = comparator.compare(person1, person2);
+        System.out.println("Comparison result: " + result);
+    }
+}
+        </code></pre>
+        <p>この例では、<code>Person</code> クラスのインスタンスを年齢で比較するために <code>AgeComparator</code> を実装しています。</p>
+
+        <h2>compareTo メソッドとの違い</h2>
+        <p><code>compareTo</code> メソッドは <code>Comparable</code> インタフェースに属し、オブジェクト自身と他のオブジェクトを比較するために使用されます。一方、<code>Comparator</code> インタフェースの <code>compare</code> メソッドは、外部から2つのオブジェクトを比較するために使用されます。</p>
+
+        <h3>Comparable インタフェースの例</h3>
+        <pre><code>
+class Person implements Comparable&lt;Person&gt; {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age);
+    }
+}
+
+public class ComparableExample {
+    public static void main(String[] args) {
+        Person person1 = new Person("Alice", 30);
+        Person person2 = new Person("Bob", 25);
+        int result = person1.compareTo(person2);
+        System.out.println("Comparison result: " + result);
+    }
+}
+        </code></pre>
+        <p>この例では、<code>Person</code> クラス自体が <code>Comparable</code> インタフェースを実装し、年齢での比較を提供しています。</p>
+
+        <h2>まとめ</h2>
+        <p><code>Comparator</code> インタフェースは、オブジェクトの順序付けを外部から定義するための便利なツールです。これに対し、<code>Comparable</code> インタフェースはオブジェクト自身の順序付けを定義します。これらのインタフェースを使用することで、柔軟な比較ロジックを実装することができます。</p>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

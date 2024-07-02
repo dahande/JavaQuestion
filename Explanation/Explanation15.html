@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Characterクラスの解説</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Characterクラスの解説</h1>
+        
+        <h2>Characterクラスとラッパークラス</h2>
+        <p>
+            <code>Character</code>クラスは、プリミティブ型の<code>char</code>データをオブジェクトで扱うためのラッパークラスです。ラッパークラスは、プリミティブデータ型をオブジェクトとして扱うために使用されるクラスであり、<code>Character</code>クラスは文字に関連する多くの便利なメソッドを提供します。
+        </p>
+        
+        <h2>isAlphabeticメソッド</h2>
+        <p>
+            <code>isAlphabetic</code>メソッドは、指定された文字がアルファベットかどうかを判定します。このメソッドは、文字がアルファベットであれば<code>true</code>を返し、そうでなければ<code>false</code>を返します。
+        </p>
+        <pre><code>
+public static boolean isAlphabetic(int codePoint)
+        </code></pre>
+        <p>例:</p>
+        <pre><code>
+public class CharacterExample {
+    public static void main(String[] args) {
+        char ch = 'A';
+        boolean result = Character.isAlphabetic(ch);
+        System.out.println(ch + " is alphabetic: " + result); // 出力: A is alphabetic: true
+    }
+}
+        </code></pre>
+
+        <h2>isDigitメソッド</h2>
+        <p>
+            <code>isDigit</code>メソッドは、指定された文字が数字かどうかを判定します。このメソッドは、文字が数字であれば<code>true</code>を返し、そうでなければ<code>false</code>を返します。
+        </p>
+        <pre><code>
+public static boolean isDigit(char ch)
+        </code></pre>
+        <p>例:</p>
+        <pre><code>
+public class CharacterExample {
+    public static void main(String[] args) {
+        char ch = '5';
+        boolean result = Character.isDigit(ch);
+        System.out.println(ch + " is digit: " + result); // 出力: 5 is digit: true
+    }
+}
+        </code></pre>
+
+        <h2>isLowerCaseメソッド</h2>
+        <p>
+            <code>isLowerCase</code>メソッドは、指定された文字が小文字かどうかを判定します。このメソッドは、文字が小文字であれば<code>true</code>を返し、そうでなければ<code>false</code>を返します。
+        </p>
+        <pre><code>
+public static boolean isLowerCase(char ch)
+        </code></pre>
+        <p>例:</p>
+        <pre><code>
+public class CharacterExample {
+    public static void main(String[] args) {
+        char ch = 'a';
+        boolean result = Character.isLowerCase(ch);
+        System.out.println(ch + " is lowercase: " + result); // 出力: a is lowercase: true
+    }
+}
+        </code></pre>
+
+        <h2>まとめ</h2>
+        <p>
+            <code>Character</code>クラスは、文字に関連する多くの便利なメソッドを提供します。これらのメソッドを使用することで、文字の判定や変換を簡単に行うことができます。<code>isAlphabetic</code>、<code>isDigit</code>、<code>isLowerCase</code>メソッドは、その一例です。
+        </p>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java.lang.Math クラスの解説</title>
+    <link rel="stylesheet" href="styles2.css">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>java.lang.Math クラス</h1>
+        <p><code>java.lang.Math</code> クラスは、数学的な演算を行うためのメソッドを提供するクラスです。このクラスには、基本的な算術演算や三角関数、対数関数などが含まれています。すべてのメソッドは静的メソッドであり、インスタンスを作成せずに使用することができます。</p>
+
+        <h2>主要メソッドの紹介</h2>
+
+        <h3>pow メソッド</h3>
+        <p><code>pow</code> メソッドは、指定された数のべき乗を計算します。具体的には、<code>Math.pow(double a, double b)</code> は <code>a</code> の <code>b</code> 乗を返します。</p>
+        <pre><code>double result = Math.pow(2, 3); // 2 の 3 乗、すなわち 8.0 が返されます。</code></pre>
+        
+        <h4>例:</h4>
+        <pre><code>
+public class MathExample {
+    public static void main(String[] args) {
+        double base = 2.0;
+        double exponent = 3.0;
+        double result = Math.pow(base, exponent);
+        System.out.println(base + " の " + exponent + " 乗は " + result + " です。");
+    }
+}
+        </code></pre>
+
+        <h3>sqrt メソッド</h3>
+        <p><code>sqrt</code> メソッドは、指定された数の平方根を計算します。具体的には、<code>Math.sqrt(double a)</code> は <code>a</code> の平方根を返します。</p>
+        <pre><code>double result = Math.sqrt(16); // 16 の平方根、すなわち 4.0 が返されます。</code></pre>
+
+        <h4>例:</h4>
+        <pre><code>
+public class MathExample {
+    public static void main(String[] args) {
+        double value = 16.0;
+        double result = Math.sqrt(value);
+        System.out.println(value + " の平方根は " + result + " です。");
+    }
+}
+        </code></pre>
+
+        <h2>その他のメソッド</h2>
+        <p><code>java.lang.Math</code> クラスには、その他にも多くの便利なメソッドがあります。例えば、以下のようなものがあります:</p>
+        <ul>
+            <li><code>abs(double a)</code>: 絶対値を返します。</li>
+            <li><code>max(double a, double b)</code>: 2つの値のうち大きい方を返します。</li>
+            <li><code>min(double a, double b)</code>: 2つの値のうち小さい方を返します。</li>
+            <li><code>random()</code>: 0.0 以上 1.0 未満のランダムな値を返します。</li>
+            <li><code>round(double a)</code>: 四捨五入した値を返します。</li>
+        </ul>
+
+        <h2>まとめ</h2>
+        <p><code>java.lang.Math</code> クラスは、数学的な計算を効率的に行うための豊富なメソッドを提供しています。これらのメソッドを活用することで、複雑な計算を簡単に実装することができます。</p>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

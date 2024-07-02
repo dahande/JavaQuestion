@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java `java.time` クラス</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Java `java.time` クラス</h1>
+        
+        <section>
+            <h2>概要</h2>
+            <p>`java.time`パッケージは、Java 8以降で導入された、日時の操作に特化したクラス群です。従来の`java.util.Date`や`java.util.Calendar`に代わり、より直感的で使いやすいAPIを提供します。</p>
+        </section>
+
+        <section>
+            <h2>主要クラス</h2>
+            <ul>
+                <li><a href="#localdate">LocalDate</a></li>
+                <li><a href="#localtime">LocalTime</a></li>
+                <li><a href="#localdatetime">LocalDateTime</a></li>
+                <li><a href="#zoneddatetime">ZonedDateTime</a></li>
+            </ul>
+        </section>
+
+        <section id="localdate">
+            <h2>LocalDate</h2>
+            <p>`LocalDate`は、年月日を表すクラスです。時間やタイムゾーンの情報は含まれません。</p>
+            <pre>
+import java.time.LocalDate;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.now();
+        System.out.println("現在の日付: " + date);
+
+        LocalDate specificDate = LocalDate.of(2024, 7, 1);
+        System.out.println("特定の日付: " + specificDate);
+    }
+}
+            </pre>
+        </section>
+
+        <section id="localtime">
+            <h2>LocalTime</h2>
+            <p>`LocalTime`は、時間（時、分、秒、ナノ秒）を表すクラスです。日付やタイムゾーンの情報は含まれません。</p>
+            <pre>
+import java.time.LocalTime;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalTime time = LocalTime.now();
+        System.out.println("現在の時刻: " + time);
+
+        LocalTime specificTime = LocalTime.of(14, 30, 15);
+        System.out.println("特定の時刻: " + specificTime);
+    }
+}
+            </pre>
+        </section>
+
+        <section id="localdatetime">
+            <h2>LocalDateTime</h2>
+            <p>`LocalDateTime`は、年月日と時間を合わせて表すクラスです。タイムゾーンの情報は含まれません。</p>
+            <pre>
+import java.time.LocalDateTime;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalDateTime dateTime = LocalDateTime.now();
+        System.out.println("現在の日時: " + dateTime);
+
+        LocalDateTime specificDateTime = LocalDateTime.of(2024, 7, 1, 14, 30, 15);
+        System.out.println("特定の日時: " + specificDateTime);
+    }
+}
+            </pre>
+        </section>
+
+        <section id="zoneddatetime">
+            <h2>ZonedDateTime</h2>
+            <p>`ZonedDateTime`は、日時とタイムゾーンを合わせて表すクラスです。</p>
+            <pre>
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+
+public class Main {
+    public static void main(String[] args) {
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+        System.out.println("現在の日時（タイムゾーン付き）: " + zonedDateTime);
+
+        ZonedDateTime specificZonedDateTime = ZonedDateTime.of(2024, 7, 1, 14, 30, 15, 0, ZoneId.of("Asia/Tokyo"));
+        System.out.println("特定の日時（タイムゾーン付き）: " + specificZonedDateTime);
+    }
+}
+            </pre>
+        </section>
+
+        <section id="additional-resources">
+            <h2>追加リソース</h2>
+            <ul>
+                <li><a href="https://docs.oracle.com/javase/jp/8/docs/api/java/time/package-summary.html" target="_blank">公式ドキュメント</a></li>
+                <li><a href="https://www.baeldung.com/java-8-date-time-intro" target="_blank">Baeldung: Java 8 Date and Time API</a></li>
+                <li><a href="https://www.geeksforgeeks.org/java-8-date-time-api-introduction/" target="_blank">GeeksforGeeks: Java 8 Date/Time API</a></li>
+            </ul>
+        </section>
+
+        <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+    </div>
+
+    <script>
+        // 必要に応じてスクリプトを追加
+    </script>
+</body>
+</html>
