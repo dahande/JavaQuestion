@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Java Silver 総合問題 - Part 10</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 パート10</h1>
+
+        <!-- 問題91 -->
+        <div class="section">
+            <h2>問題91: オーバーライドのルール</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+class Parent {
+    void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.show();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Parent" が出力される</li>
+                <li>B) "Child" が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button data-answer-id="answer91">答えを見る</button>
+        <p id="answer91" style="display: none;">
+                正解は B) "Child" が出力される です。オーバーライドされたメソッドが実行時に実際のオブジェクトのタイプによって決定されます。
+        </p>
+        </div>
+
+        <!-- 問題92 -->
+        <div class="section">
+            <h2>問題92: インターフェースと抽象クラス</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+interface MyInterface {
+    void display();
+}
+
+abstract class MyAbstractClass implements MyInterface {
+    public void display() {
+        System.out.println("Abstract class");
+    }
+}
+
+class MyClass extends MyAbstractClass {}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass myClass = new MyClass();
+        myClass.display();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Abstract class" が出力される</li>
+                <li>B) コンパイルエラーが発生する</li>
+                <li>C) ランタイムエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        <button data-answer-id="answer92">答えを見る</button>
+        <p id="answer92" style="display: none;">
+                正解は A) "Abstract class" が出力される です。抽象クラスはインターフェースのメソッドを実装しています。
+        </p>
+        </div>
+
+        <!-- 問題93 -->
+        <div class="section">
+            <h2>問題93: ラムダ式</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+import java.util.function.Predicate;
+
+public class Main {
+    public static void main(String[] args) {
+        Predicate<String> predicate = s -> s.length() > 3;
+        System.out.println(predicate.test("Java"));
+    }
+}
+            </pre>
+            <ul>
+                <li>A) true が出力される</li>
+                <li>B) false が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button data-answer-id="answer93">答えを見る</button>
+        <p id="answer93" style="display: none;">
+                正解は A) true が出力される です。"Java"の文字列長は4で、3より大きいです。
+        </p>
+        </div>
+
+        <!-- 問題94 -->
+        <div class="section">
+            <h2>問題94: 可変長引数</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class VarargsExample {
+    static void display(String... values) {
+        for (String value : values) {
+            System.out.print(value + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        display("Hello", "World");
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Hello" が出力される</li>
+                <li>B) "World" が出力される</li>
+                <li>C) "Hello World" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        <button data-answer-id="answer94">答えを見る</button>
+        <p id="answer94" style="display: none;">
+                正解は C) "Hello World" が出力される です。可変長引数により、複数の値を渡すことができます。
+        </p>
+        </div>
+
+        <!-- 問題95 -->
+        <div class="section">
+            <h2>問題95: スタティックインポート</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+import static java.lang.Math.*;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(sqrt(16));
+    }
+}
+            </pre>
+            <ul>
+                <li>A) 4.0 が出力される</li>
+                <li>B) コンパイルエラーが発生する</li>
+                <li>C) ランタイムエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        <button data-answer-id="answer95">答えを見る</button>
+        <p id="answer95" style="display: none;">
+                正解は A) 4.0 が出力される です。静的インポートにより、クラス名を省略して静的メソッドを呼び出すことができます。
+        </p>
+        </div>
+
+        <!-- 問題96 -->
+        <div class="section">
+            <h2>問題96: 列挙型</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Day day = Day.WEDNESDAY;
+        System.out.println(day);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "MONDAY" が出力される</li>
+                <li>B) "TUESDAY" が出力される</li>
+                <li>C) "WEDNESDAY" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        <button data-answer-id="answer96">答えを見る</button>
+        <p id="answer96" style="display: none;">
+                正解は C) "WEDNESDAY" が出力される です。列挙型の値を出力しています。
+        </p>
+        </div>
+
+        <!-- 問題97 -->
+        <div class="section">
+            <h2>問題97: 例外処理</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception");
+        } finally {
+            System.out.println("Finally block");
+        }
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Arithmetic Exception" が出力される</li>
+                <li>B) "Finally block" が出力される</li>
+                <li>C) "Arithmetic Exception" と "Finally block" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        <button data-answer-id="answer97">答えを見る</button>
+        <p id="answer97" style="display: none;">
+                正解は C) "Arithmetic Exception" と "Finally block" が出力される です。例外がキャッチされ、finallyブロックも実行されます。
+        </p>
+        </div>
+
+        <!-- 問題98 -->
+        <div class="section">
+            <h2>問題98: シリアライズ</h2>
+            <p>次のコードのコンパイル結果はどうなりますか？</p>
+            <pre>
+import java.io.Serializable;
+
+class MyClass implements Serializable {
+    private static final long serialVersionUID = 1L;
+    int id;
+    String name;
+
+    MyClass(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass(1, "Java");
+        System.out.println(obj.id + " " + obj.name);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "1 Java" が出力される</li>
+                <li>B) コンパイルエラーが発生する</li>
+                <li>C) ランタイムエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        <button data-answer-id="answer98">答えを見る</button>
+        <p id="answer98" style="display: none;">
+                正解は A) "1 Java" が出力される です。クラスはSerializableを実装しており、通常の出力が行われます。
+        </p>
+        </div>
+
+        <!-- 問題99 -->
+        <div class="section">
+            <h2>問題99: 文字列の比較</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class StringComparison {
+    public static void main(String[] args) {
+        String str1 = "Java";
+        String str2 = new String("Java");
+        System.out.println(str1 == str2);
+        System.out.println(str1.equals(str2));
+    }
+}
+            </pre>
+            <ul>
+                <li>A) true true が出力される</li>
+                <li>B) false true が出力される</li>
+                <li>C) true false が出力される</li>
+                <li>D) false false が出力される</li>
+            </ul>
+        <button data-answer-id="answer99">答えを見る</button>
+        <p id="answer99" style="display: none;">
+                正解は B) false true が出力される です。== 演算子は参照を比較し、equals メソッドは値を比較します。
+        </p>
+        </div>
+
+        <!-- 問題100 -->
+        <div class="section">
+            <h2>問題100: アノテーション</h2>
+            <p>次のコードのコンパイル結果はどうなりますか？</p>
+            <pre>
+@interface MyAnnotation {
+    String value();
+}
+
+@MyAnnotation(value = "Example")
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Annotation example");
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Annotation example" が出力される</li>
+                <li>B) コンパイルエラーが発生する</li>
+                <li>C) ランタイムエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        <button data-answer-id="answer100">答えを見る</button>
+        <p id="answer100" style="display: none;">
+                正解は A) "Annotation example" が出力される です。カスタムアノテーションがクラスに適用されていますが、実行に影響しません。
+        </p>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('button[data-answer-id]').forEach(button => {
+            button.addEventListener('click', () => {
+                const answerId = button.getAttribute('data-answer-id');
+                const answer = document.getElementById(answerId);
+                if (answer.style.display === 'none') {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

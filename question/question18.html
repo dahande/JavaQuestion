@@ -153,6 +153,170 @@ public class Test {
             </div>
         </div>
 
+        <div class="section">
+        <h2>問題76: 複数のインターフェースを実装するクラス</h2>
+        <p>次のコードの実行結果はどうなりますか？</p>
+        <pre>
+interface A {
+void methodA();
+}
+
+interface B {
+void methodB();
+}
+
+class C implements A, B {
+public void methodA() {
+    System.out.println("A");
+}
+
+public void methodB() {
+    System.out.println("B");
+}
+}
+
+public class Main {
+public static void main(String[] args) {
+    C c = new C();
+    c.methodA();
+    c.methodB();
+}
+}
+        </pre>
+        <ul>
+            <li>A) "A" が出力される</li>
+            <li>B) "B" が出力される</li>
+            <li>C) "A" と "B" が出力される</li>
+            <li>D) エラーが発生する</li>
+        </ul>
+
+        <button onclick="toggleAnswer(76)">答えを見る</button>
+        <p id="answer76" class="answer">
+            正解は C) "A" と "B" が出力される です。クラスCはインターフェースAとBを実装し、それぞれのメソッドをオーバーライドしています。
+        </p>
+    </div>
+
+    <!-- 問題77 -->
+    <div class="section">
+        <h2>問題77: ジェネリクスの使用</h2>
+        <p>次のコードのコンパイル結果はどうなりますか？</p>
+        <pre>
+import java.util.ArrayList;
+
+public class Main {
+public static void main(String[] args) {
+    ArrayList<String> list = new ArrayList<>();
+    list.add("Hello");
+    list.add("World");
+
+    for (String s : list) {
+        System.out.println(s);
+    }
+}
+}
+        </pre>
+        <ul>
+            <li>A) "Hello" が出力される</li>
+            <li>B) "World" が出力される</li>
+            <li>C) "Hello" と "World" が出力される</li>
+            <li>D) コンパイルエラーが発生する</li>
+        </ul>
+        <button onclick="toggleAnswer(77)">答えを見る</button>
+        <p id="answer77" class="answer">
+            正解は C) "Hello" と "World" が出力される です。ArrayListに文字列を追加し、それを順に出力しています。
+        </p>
+    </div>
+
+    <!-- 問題78 -->
+    <div class="section">
+        <h2>問題78: 継承とメソッドオーバーライド</h2>
+        <p>次のコードの実行結果はどうなりますか？</p>
+        <pre>
+class Parent {
+void show() {
+    System.out.println("Parent");
+}
+}
+
+class Child extends Parent {
+void show() {
+    System.out.println("Child");
+}
+}
+
+public class Main {
+public static void main(String[] args) {
+    Parent p = new Child();
+    p.show();
+}
+}
+        </pre>
+        <ul>
+            <li>A) "Parent" が出力される</li>
+            <li>B) "Child" が出力される</li>
+            <li>C) コンパイルエラーが発生する</li>
+            <li>D) ランタイムエラーが発生する</li>
+        </ul>
+        <button onclick="toggleAnswer(78)">答えを見る</button>
+        <p id="answer78" class="answer">
+            正解は B) "Child" が出力される です。Parent型の変数にChildのインスタンスを代入していますが、オーバーライドされたメソッドが実行されます。
+        </p>
+    </div>
+
+    <!-- 問題79 -->
+    <div class="section">
+        <h2>問題79: try-catchブロック</h2>
+        <p>次のコードの実行結果はどうなりますか？</p>
+        <pre>
+public class Main {
+public static void main(String[] args) {
+    try {
+        int result = 10 / 0;
+        System.out.println("Result: " + result);
+    } catch (ArithmeticException e) {
+        System.out.println("ArithmeticException caught");
+    }
+}
+}
+        </pre>
+        <ul>
+            <li>A) "Result: 0" が出力される</li>
+            <li>B) "ArithmeticException caught" が出力される</li>
+            <li>C) コンパイルエラーが発生する</li>
+            <li>D) ランタイムエラーが発生する</li>
+        </ul>
+        <button onclick="toggleAnswer(79)">答えを見る</button>
+        <p id="answer79" class="answer">
+            正解は B) "ArithmeticException caught" が出力される です。0で除算しようとするとArithmeticExceptionが発生し、キャッチブロックで処理されます。
+        </p>
+    </div>
+
+    <!-- 問題80 -->
+    <div class="section">
+        <h2>問題80: パッケージの使用</h2>
+        <p>次のコードの実行結果はどうなりますか？</p>
+        <pre>
+package com.example;
+
+public class Main {
+public static void main(String[] args) {
+    System.out.println("Hello, World!");
+}
+}
+        </pre>
+        <ul>
+            <li>A) "Hello, World!" が出力される</li>
+            <li>B) コンパイルエラーが発生する</li>
+            <li>C) ランタイムエラーが発生する</li>
+            <li>D) 何も出力されない</li>
+        </ul>
+        <button onclick="toggleAnswer(80)">答えを見る</button>
+        <p id="answer80" class="answer">
+            正解は A) "Hello, World!" が出力される です。パッケージを使用しているだけで、コード自体は正常に動作します。
+        </p>
+    </div>
+
+
         <div class="navigation">
             <button onclick="window.location.href='../index.html'">ホームに戻る</button>
         </div>

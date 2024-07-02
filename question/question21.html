@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part 9</h1>
+
+        <!-- 問題76 -->
+        <div class="section">
+            <h2>問題76</h2>
+            <p>抽象クラスに関する説明として正しいものを選びなさい。３つ</p>
+            <ul>
+                <li>A) インスタンス生成をすることはできない</li>
+                <li>B) 抽象クラスのメソッドはオーバーライドできない</li>
+                <li>C) サブクラスから抽象クラスの公開フィールドに自由にアクセスできる</li>
+                <li>D) 抽象クラスを継承した抽象クラス」を定義できる</li>
+				<li>E) 抽象メソッドは、すべてのサブクラスが実装しなければいけない</li>
+            </ul>
+            <button onclick="toggleAnswer(1)">答えを見る</button>
+            <div id="answer1" class="answer">
+                正解はA,C,D) <br>
+                <b>解説:</b> 抽象クラスは、インターフェースとクラスの両方の性質をもったクラスです。抽象クラスは、実装を持つ具像メソッドは、その抽象クラスを継承したサブクラスが引き継ぎます。
+            </div>
+        </div>
+
+		<!-- 問題 -->
+		<h2>問題</h2>
+		<p>問題内容</p>
+		<ul>
+			<li>A) </li>
+			<li>B) </li>
+			<li>C) </li>
+			<li>D) </li>
+		</ul>
+		<button onclick="toggleAnswer(2)">答えを見る</button>
+		<div id="answer2" class="answer">
+			正解はB) <br>
+			<b>解説:</b> 
+		</div>
+	</div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

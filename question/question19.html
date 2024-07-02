@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Java Silver 総合問題 - Part 9</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 パート9</h1>
+
+        <!-- 問題81 -->
+        <div class="section">
+            <h2>問題81: コンストラクタの継承</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+class Parent {
+    Parent() {
+        System.out.println("Parent Constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        System.out.println("Child Constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child c = new Child();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Parent Constructor" が出力される</li>
+                <li>B) "Child Constructor" が出力される</li>
+                <li>C) "Parent Constructor" と "Child Constructor" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(81)">答えを見る</button>
+        <div id="answer81" class="answer">
+                正解は C) "Parent Constructor" と "Child Constructor" が出力される です。子クラスのコンストラクタが呼ばれる際に、親クラスのコンストラクタも自動的に呼び出されます。
+            </p>
+        </div>
+
+        <!-- 問題82 -->
+        <div class="section">
+            <h2>問題82: メソッドのオーバーロード</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+class OverloadExample {
+    void display(int a) {
+        System.out.println("Integer: " + a);
+    }
+
+    void display(String a) {
+        System.out.println("String: " + a);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OverloadExample oe = new OverloadExample();
+        oe.display(10);
+        oe.display("Hello");
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Integer: 10" が出力される</li>
+                <li>B) "String: Hello" が出力される</li>
+                <li>C) "Integer: 10" と "String: Hello" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(82)">答えを見る</button>
+        <div id="answer82" class="answer">
+                正解は C) "Integer: 10" と "String: Hello" が出力される です。メソッドのオーバーロードにより、異なるパラメータ型でメソッドが呼び出されています。
+            </p>
+        </div>
+
+        <!-- 問題83 -->
+        <div class="section">
+            <h2>問題83: スタティックメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+class StaticExample {
+    static void display() {
+        System.out.println("Static method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        StaticExample.display();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Static method" が出力される</li>
+                <li>B) コンパイルエラーが発生する</li>
+                <li>C) ランタイムエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(83)">答えを見る</button>
+        <div id="answer83" class="answer">
+                正解は A) "Static method" が出力される です。スタティックメソッドはクラス名を使って直接呼び出すことができます。
+            </p>
+        </div>
+
+        <!-- 問題84 -->
+        <div class="section">
+            <h2>問題84: インスタンス初期化ブロック</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+class InitBlockExample {
+    {
+        System.out.println("Instance initializer block");
+    }
+
+    InitBlockExample() {
+        System.out.println("Constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        new InitBlockExample();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Instance initializer block" が出力される</li>
+                <li>B) "Constructor" が出力される</li>
+                <li>C) "Instance initializer block" と "Constructor" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(84)">答えを見る</button>
+        <div id="answer84" class="answer">
+                正解は C) "Instance initializer block" と "Constructor" が出力される です。インスタンス初期化ブロックはコンストラクタの前に実行されます。
+            </p>
+        </div>
+
+        <!-- 問題85 -->
+        <div class="section">
+            <h2>問題85: パッケージとimport文</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+package com.example;
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Hello");
+        list.add("World");
+
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Hello" が出力される</li>
+                <li>B) "World" が出力される</li>
+                <li>C) "Hello" と "World" が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(85)">答えを見る</button>
+        <div id="answer85" class="answer">
+                正解は C) "Hello" と "World" が出力される です。import文を使ってArrayListをインポートし、文字列を追加して出力しています。
+            </p>
+        </div>
+
+        <!-- 問題86 -->
+        <div class="section">
+            <h2>問題86: finalキーワード</h2>
+            <p>次のコードのコンパイル結果はどうなりますか？</p>
+            <pre>
+class FinalExample {
+    final void display() {
+        System.out.println("Final method");
+    }
+}
+
+class SubClass extends FinalExample {
+    void display() {
+        System.out.println("Overridden method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SubClass sc = new SubClass();
+        sc.display();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Final method" が出力される</li>
+                <li>B) "Overridden method" が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(86)">答えを見る</button>
+        <div id="answer86" class="answer">
+                正解は C) コンパイルエラーが発生する です。finalキーワードを使ったメソッドはオーバーライドできません。
+            </p>
+        </div>
+
+        <!-- 問題87 -->
+        <div class="section">
+            <h2>問題87: try-with-resourcesステートメント</h2>
+            <p>次のコードのコンパイル結果はどうなりますか？</p>
+            <pre>
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
+            System.out.println(br.readLine());
+        } catch (IOException e) {
+            System.out.println("IOException caught");
+        }
+    }
+}
+            </pre>
+            <ul>
+                <li>A) ファイルの最初の行が出力される</li>
+                <li>B) "IOException caught" が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(87)">答えを見る</button>
+        <div id="answer87" class="answer">
+                正解は A) ファイルの最初の行が出力される です。try-with-resourcesステートメントにより、リソースが自動的にクローズされます。
+            </p>
+        </div>
+
+        <!-- 問題88 -->
+        <div class="section">
+            <h2>問題88: 継承とアクセス修飾子</h2>
+            <p>次のコードのコンパイル結果はどうなりますか？</p>
+            <pre>
+class Parent {
+    protected void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    public void show() {
+        System.out.println("Child");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.show();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Parent" が出力される</li>
+                <li>B) "Child" が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(88)">答えを見る</button>
+        <div id="answer88" class="answer">
+                正解は B) "Child" が出力される です。protectedメソッドをpublicメソッドとしてオーバーライドすることは可能です。
+            </p>
+        </div>
+
+        <!-- 問題89 -->
+        <div class="section">
+            <h2>問題89: インターフェースのデフォルトメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+interface MyInterface {
+    default void display() {
+        System.out.println("Default method");
+    }
+}
+
+class MyClass implements MyInterface {}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass myClass = new MyClass();
+        myClass.display();
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "Default method" が出力される</li>
+                <li>B) コンパイルエラーが発生する</li>
+                <li>C) ランタイムエラーが発生する</li>
+                <li>D) 何も出力されない</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(89)">答えを見る</button>
+        <div id="answer89" class="answer">
+                正解は A) "Default method" が出力される です。インターフェースのデフォルトメソッドは実装クラスでオーバーライドされていない場合でも実行されます。
+            </p>
+        </div>
+
+        <!-- 問題90 -->
+        <div class="section">
+            <h2>問題90: メソッド参照</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] strings = {"C", "A", "B"};
+        Arrays.sort(strings, String::compareToIgnoreCase);
+        for (String s : strings) {
+            System.out.println(s);
+        }
+    }
+}
+            </pre>
+            <ul>
+                <li>A) "A", "B", "C" の順に出力される</li>
+                <li>B) "C", "A", "B" の順に出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(90)">答えを見る</button>
+        <div id="answer90" class="answer">
+                正解は A) "A", "B", "C" の順に出力される です。String::compareToIgnoreCase を使用して配列をソートしています。
+            </p>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(num) {
+            const answer = document.getElementById('answer' + num);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
