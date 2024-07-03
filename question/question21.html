@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Silver 総合問題 - Part 9</title>
+    <title>Java Silver 総合問題 Part11</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -63,41 +63,280 @@
 </head>
 <body>
     <div class="container">
-        <h1>Java Silver 総合問題 - Part 9</h1>
+        <h1>Java Silver 総合問題 - Part11</h1>
 
-        <!-- 問題76 -->
+        <!-- 問題101 -->
         <div class="section">
-            <h2>問題76</h2>
-            <p>抽象クラスに関する説明として正しいものを選びなさい。３つ</p>
+            <h2>問題101: java.lang.Math.powメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        double result = Math.pow(2, 3);
+        System.out.println(result);
+    }
+}
+            </pre>
             <ul>
-                <li>A) インスタンス生成をすることはできない</li>
-                <li>B) 抽象クラスのメソッドはオーバーライドできない</li>
-                <li>C) サブクラスから抽象クラスの公開フィールドに自由にアクセスできる</li>
-                <li>D) 抽象クラスを継承した抽象クラス」を定義できる</li>
-				<li>E) 抽象メソッドは、すべてのサブクラスが実装しなければいけない</li>
+                <li>A) 6.0 が出力される</li>
+                <li>B) 8.0 が出力される</li>
+                <li>C) 9.0 が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
             </ul>
-            <button onclick="toggleAnswer(1)">答えを見る</button>
-            <div id="answer1" class="answer">
-                正解はA,C,D) <br>
-                <b>解説:</b> 抽象クラスは、インターフェースとクラスの両方の性質をもったクラスです。抽象クラスは、実装を持つ具像メソッドは、その抽象クラスを継承したサブクラスが引き継ぎます。
-            </div>
+        </code></pre>
+        <button onclick="toggleAnswer(101)">答えを見る</button>
+        <div id="answer101" class="answer">
+                正解は B) 8.0 が出力される です。Math.pow(2, 3) は 2 の 3 乗を計算します。
+        </p>
         </div>
 
-		<!-- 問題 -->
-		<h2>問題</h2>
-		<p>問題内容</p>
-		<ul>
-			<li>A) </li>
-			<li>B) </li>
-			<li>C) </li>
-			<li>D) </li>
-		</ul>
-		<button onclick="toggleAnswer(2)">答えを見る</button>
-		<div id="answer2" class="answer">
-			正解はB) <br>
-			<b>解説:</b> 
-		</div>
-	</div>
+        <!-- 問題102 -->
+        <div class="section">
+            <h2>問題102: java.lang.Math.sqrtメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        double result = Math.sqrt(25);
+        System.out.println(result);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) 4.0 が出力される</li>
+                <li>B) 5.0 が出力される</li>
+                <li>C) 6.0 が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(102)">答えを見る</button>
+        <div id="answer102" class="answer">
+                正解は B) 5.0 が出力される です。Math.sqrt(25) は 25 の平方根を計算します。
+        </p>
+        </div>
+
+        <!-- 問題103 -->
+        <div class="section">
+            <h2>問題103: Comparatorインタフェース</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("banana", "apple", "cherry");
+        Collections.sort(list, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareTo(s2);
+            }
+        });
+        System.out.println(list);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) [apple, banana, cherry] が出力される</li>
+                <li>B) [cherry, banana, apple] が出力される</li>
+                <li>C) [banana, apple, cherry] が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        </code></pre>
+        <button onclick="toggleAnswer(103)">答えを見る</button>
+        <div id="answer103" class="answer">
+                正解は A) [apple, banana, cherry] が出力される です。Comparator インタフェースを使ってアルファベット順にソートしています。
+        </p>
+        </div>
+
+        <!-- 問題104 -->
+        <div class="section">
+            <h2>問題104: Comparatorインタフェースのラムダ式</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("banana", "apple", "cherry");
+        Collections.sort(list, (s1, s2) -> s2.compareTo(s1));
+        System.out.println(list);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) [apple, banana, cherry] が出力される</li>
+                <li>B) [cherry, banana, apple] が出力される</li>
+                <li>C) [banana, apple, cherry] が出力される</li>
+                <li>D) コンパイルエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(104)">答えを見る</button>
+        <div id="answer104" class="answer">
+                正解は B) [cherry, banana, apple] が出力される です。Comparator インタフェースのラムダ式を使って逆順にソートしています。
+        </p>
+        </div>
+
+        <!-- 問題105 -->
+        <div class="section">
+            <h2>問題105: Comparatorの比較方法変更</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+import java.util.*;
+
+class Person {
+    String name;
+    int age;
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Person> list = Arrays.asList(new Person("Alice", 30), new Person("Bob", 25));
+        Collections.sort(list, Comparator.comparingInt(p -> p.age));
+        for (Person p : list) {
+            System.out.println(p.name);
+        }
+    }
+}
+            </pre>
+            <ul>
+                <li>A) Alice Bob が出力される</li>
+                <li>B) Bob Alice が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(105)">答えを見る</button>
+        <div id="answer105" class="answer">
+                正解は B) Bob Alice が出力される です。Comparator.comparingInt を使用して年齢順にソートしています。
+        </p>
+        </div>
+
+        <!-- 問題106 -->
+        <div class="section">
+            <h2>問題106: Character.isAlphabeticメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        char ch = 'A';
+        boolean result = Character.isAlphabetic(ch);
+        System.out.println(result);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) true が出力される</li>
+                <li>B) false が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(106)">答えを見る</button>
+        <div id="answer106" class="answer">
+                正解は A) true が出力される です。Character.isAlphabetic('A') は true を返します。
+        </p>
+        </div>
+
+        <!-- 問題107 -->
+        <div class="section">
+            <h2>問題107: Character.isDigitメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        char ch = '5';
+        boolean result = Character.isDigit(ch);
+        System.out.println(result);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) true が出力される</li>
+                <li>B) false が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(107)">答えを見る</button>
+        <div id="answer107" class="answer">
+                正解は A) true が出力される です。Character.isDigit('5') は true を返します。
+        </p>
+        </div>
+
+        <!-- 問題108 -->
+        <div class="section">
+            <h2>問題108: Character.toUpperCaseメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        char ch = 'a';
+        char result = Character.toUpperCase(ch);
+        System.out.println(result);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) 'a' が出力される</li>
+                <li>B) 'A' が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(108)">答えを見る</button>
+        <div id="answer108" class="answer">
+                正解は B) 'A' が出力される です。Character.toUpperCase('a') は 'A' を返します。
+        </p>
+        </div>
+
+        <!-- 問題109 -->
+        <div class="section">
+            <h2>問題109: Character.toLowerCaseメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        char ch = 'A';
+        char result = Character.toLowerCase(ch);
+        System.out.println(result);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) 'a' が出力される</li>
+                <li>B) 'A' が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(109)">答えを見る</button>
+        <div id="answer109" class="answer">
+                正解は A) 'a' が出力される です。Character.toLowerCase('A') は 'a' を返します。
+        </p>
+        </div>
+
+        <!-- 問題110 -->
+        <div class="section">
+            <h2>問題110: Character.isUpperCaseメソッド</h2>
+            <p>次のコードの実行結果はどうなりますか？</p>
+            <pre>
+public class Main {
+    public static void main(String[] args) {
+        char ch = 'A';
+        boolean result = Character.isUpperCase(ch);
+        System.out.println(result);
+    }
+}
+            </pre>
+            <ul>
+                <li>A) true が出力される</li>
+                <li>B) false が出力される</li>
+                <li>C) コンパイルエラーが発生する</li>
+                <li>D) ランタイムエラーが発生する</li>
+            </ul>
+        <button onclick="toggleAnswer(110)">答えを見る</button>
+        <div id="answer110" class="answer">
+                正解は A) true が出力される です。Character.isUpperCase('A') は true を返します。
+        </p>
+        </div>
 
         <div class="navigation">
             <button onclick="window.location.href='../index.html'">ホームに戻る</button>
