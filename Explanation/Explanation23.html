@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java モジュールの基礎知識</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java モジュールの基礎知識</h1>
+
+        <section>
+            <h2>モジュールとは</h2>
+            <p>Javaモジュールは、Java 9で導入された機能で、プログラムをモジュール単位で管理するための仕組みです。モジュールを使うことで、大規模なアプリケーションを小さな部分に分割し、それぞれの部分が明確に定義されたインターフェースを通じて他の部分と通信できます。</p>
+        </section>
+
+        <section>
+            <h2>モジュールの構成要素</h2>
+            <p>モジュールの基本的な構成要素は以下の通りです：</p>
+            <ul>
+                <li><strong>モジュール宣言ファイル (module-info.java):</strong> モジュールの名前や依存関係を定義します。</li>
+                <li><strong>パッケージ:</strong> モジュール内に含まれるクラスやインターフェースをグループ化します。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>モジュールの宣言</h2>
+            <p>モジュール宣言は、モジュールの名前と、そのモジュールが依存する他のモジュールを指定します。以下は基本的なモジュール宣言の例です：</p>
+            <pre><code>module mymodule {
+    requires java.base;
+    exports com.example.mypackage;
+}
+            </code></pre>
+            <p>この例では、<code>mymodule</code>というモジュールを宣言し、<code>java.base</code>モジュールに依存していることを示しています。また、<code>com.example.mypackage</code>パッケージを他のモジュールに公開しています。</p>
+        </section>
+
+        <section>
+            <h2>モジュールの依存関係</h2>
+            <p>モジュールは、<code>requires</code>キーワードを使用して他のモジュールに依存することを宣言できます。これにより、依存モジュールの公開されたパッケージを使用することができます。</p>
+            <pre><code>module mymodule {
+    requires anothermodule;
+}
+            </code></pre>
+            <p>この例では、<code>mymodule</code>が<code>anothermodule</code>に依存していることを示しています。</p>
+        </section>
+
+        <section>
+            <h2>モジュールのエクスポート</h2>
+            <p>モジュールは、<code>exports</code>キーワードを使用して特定のパッケージを他のモジュールに公開することができます。公開されたパッケージ内のクラスやインターフェースは、他のモジュールからアクセス可能です。</p>
+            <pre><code>module mymodule {
+    exports com.example.mypackage;
+}
+            </code></pre>
+            <p>この例では、<code>com.example.mypackage</code>パッケージが他のモジュールに公開されています。</p>
+        </section>
+
+        <section>
+            <h2>モジュールの使用例</h2>
+            <p>以下に、モジュールを使用した簡単なJavaプロジェクトの例を示します：</p>
+            <h3>1. モジュール宣言ファイル</h3>
+            <pre><code>// module-info.java
+module myapp {
+    requires java.sql;
+    exports com.example.myapp;
+}
+            </code></pre>
+
+            <h3>2. パッケージとクラスの定義</h3>
+            <pre><code>// src/com/example/myapp/Main.java
+package com.example.myapp;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java Modules!");
+    }
+}
+            </code></pre>
+
+            <p>このプロジェクトでは、<code>myapp</code>モジュールが<code>java.sql</code>モジュールに依存し、<code>com.example.myapp</code>パッケージを公開しています。</p>
+        </section>
+
+        <div class="navigation">
+            <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+</body>
+</html>

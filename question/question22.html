@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 Part12</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .answer {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Silver 総合問題 - Part12</h1>
+
+        <!-- 問題111 -->
+        <div class="section">
+            <h2>問題111: モジュールの基本</h2>
+            <p>次のコードの正しいモジュール宣言はどれですか？</p>
+            <pre>
+module mymodule {
+    requires java.base;
+    exports com.example.mypackage;
+}
+            </pre>
+            <ul>
+                <li>A) module mymodule { requires java.base; }</li>
+                <li>B) module mymodule { exports com.example.mypackage; }</li>
+                <li>C) module mymodule { requires java.base; exports com.example.mypackage; }</li>
+                <li>D) module mymodule { requires java.base; exports com.example.mypackage; requires java.sql; }</li>
+            </ul>
+        <button onclick="toggleAnswer(111)">答えを見る</button>
+        <div id="answer111" class="answer">
+                正解は C) module mymodule { requires java.base; exports com.example.mypackage; } です。モジュール宣言には、依存関係とエクスポートするパッケージが含まれます。
+        </p>
+        </div>
+
+        <!-- 問題112 -->
+        <div class="section">
+            <h2>問題112: モジュール依存関係</h2>
+            <p>次のモジュール宣言において、モジュールが依存している他のモジュールを指定するキーワードは何ですか？</p>
+            <pre>
+module mymodule {
+    ___ java.sql;
+}
+            </pre>
+            <ul>
+                <li>A) exports</li>
+                <li>B) requires</li>
+                <li>C) imports</li>
+                <li>D) includes</li>
+            </ul>
+        <button onclick="toggleAnswer(112)">答えを見る</button>
+        <div id="answer112" class="answer">
+                正解は B) requires です。モジュールが他のモジュールに依存する場合、requires キーワードを使用します。
+        </p>
+        </div>
+
+        <!-- 問題113 -->
+        <div class="section">
+            <h2>問題113: モジュールエクスポート</h2>
+            <p>次のコードにおいて、どのパッケージが他のモジュールに公開されますか？</p>
+            <pre>
+module mymodule {
+    exports com.example.mypublicpackage;
+    requires java.base;
+}
+            </pre>
+            <ul>
+                <li>A) com.example.mypublicpackage</li>
+                <li>B) java.base</li>
+                <li>C) mymodule</li>
+                <li>D) すべてのパッケージ</li>
+            </ul>
+        <button onclick="toggleAnswer(113)">答えを見る</button>
+        <div id="answer113" class="answer">
+                正解は A) com.example.mypublicpackage です。exports キーワードを使って公開されたパッケージのみが他のモジュールからアクセス可能です。
+        </p>
+        </div>
+
+        <!-- 問題114 -->
+        <div class="section">
+            <h2>問題114: モジュール名のルール</h2>
+            <p>次のうち、正しいモジュール名のルールはどれですか？</p>
+            <ul>
+                <li>A) モジュール名は数字で始めてはいけない</li>
+                <li>B) モジュール名にはアンダースコアを含めることができる</li>
+                <li>C) モジュール名にはスペースを含めることができる</li>
+                <li>D) モジュール名は大文字で始めなければならない</li>
+            </ul>
+        <button onclick="toggleAnswer(114)">答えを見る</button>
+        <div id="answer114" class="answer">
+                正解は A) モジュール名は数字で始めてはいけない です。モジュール名は識別子のルールに従い、数字で始めることはできません。
+        </p>
+        </div>
+
+        <!-- 問題115 -->
+        <div class="section">
+            <h2>問題115: モジュールとパッケージ</h2>
+            <p>次のモジュール宣言において、モジュール mymodule が提供するパッケージはどれですか？</p>
+            <pre>
+module mymodule {
+    exports com.example.mypackage;
+    requires java.base;
+}
+            </pre>
+            <ul>
+                <li>A) mymodule</li>
+                <li>B) java.base</li>
+                <li>C) com.example.mypackage</li>
+                <li>D) すべてのパッケージ</li>
+            </ul>
+        <button onclick="toggleAnswer(115)">答えを見る</button>
+        <div id="answer115" class="answer">
+                正解は C) com.example.mypackage です。exports キーワードで公開されたパッケージが他のモジュールから利用可能になります。
+        </p>
+        </div>
+
+        <!-- 問題116 -->
+        <div class="section">
+            <h2>問題116: モジュールの宣言方法</h2>
+            <p>次のコードの正しいモジュール宣言はどれですか？</p>
+            <pre>
+module mymodule {
+    requires java.sql;
+    exports com.example.package1;
+    exports com.example.package2;
+}
+            </pre>
+            <ul>
+                <li>A) module mymodule { requires java.sql; }</li>
+                <li>B) module mymodule { exports com.example.package1; exports com.example.package2; }</li>
+                <li>C) module mymodule { requires java.sql; exports com.example.package1; exports com.example.package2; }</li>
+                <li>D) module mymodule { requires java.sql; exports com.example.package1; requires java.xml; }</li>
+            </ul>
+        <button onclick="toggleAnswer(116)">答えを見る</button>
+        <div id="answer116" class="answer">
+                正解は C) module mymodule { requires java.sql; exports com.example.package1; exports com.example.package2; } です。正しいモジュール宣言には依存関係とエクスポートパッケージの両方が含まれます。
+        </p>
+        </div>
+
+        <!-- 問題117 -->
+        <div class="section">
+            <h2>問題117: モジュールのエクスポート制限</h2>
+            <p>次のコードで、特定のモジュールにのみパッケージを公開するにはどうすればよいですか？</p>
+            <pre>
+module mymodule {
+    exports com.example.mypackage to anothermodule;
+}
+            </pre>
+            <ul>
+                <li>A) すべてのモジュールに公開される</li>
+                <li>B) anothermodule にのみ公開される</li>
+                <li>C) java.base にのみ公開される</li>
+                <li>D) どのモジュールにも公開されない</li>
+            </ul>
+        <button onclick="toggleAnswer(117)">答えを見る</button>
+        <div id="answer117" class="answer">
+                正解は B) anothermodule にのみ公開される です。exports ... to ... の形式で特定のモジュールにのみパッケージを公開できます。
+        </p>
+        </div>
+
+        <!-- 問題118 -->
+        <div class="section">
+            <h2>問題118: 自動モジュール</h2>
+            <p>次のうち、自動モジュールとして扱われるのはどれですか？</p>
+            <ul>
+                <li>A) モジュール宣言がない JAR ファイル</li>
+                <li>B) module-info.java ファイルを含む JAR ファイル</li>
+                <li>C) 任意のクラスファイル</li>
+                <li>D) Maven プロジェクト</li>
+            </ul>
+        <button onclick="toggleAnswer(118)">答えを見る</button>
+        <div id="answer118" class="answer">
+                正解は A) モジュール宣言がない JAR ファイル です。モジュール宣言のない JAR ファイルは自動モジュールとして扱われ、依存関係を自動的に解決します。
+        </p>
+        </div>
+
+        <!-- 問題119 -->
+        <div class="section">
+            <h2>問題119: サービスの使用</h2>
+            <p>次のコードで、サービスのプロバイダをモジュールに指定するキーワードは何ですか？</p>
+            <pre>
+module mymodule {
+    uses com.example.myservice;
+}
+            </pre>
+            <ul>
+                <li>A) provides</li>
+                <li>B) uses</li>
+                <li>C) exports</li>
+                <li>D) requires</li>
+            </ul>
+        <button onclick="toggleAnswer(119)">答えを見る</button>
+        <div id="answer119" class="answer">
+                正解は B) uses です。モジュールが特定のサービスを使用することを示すためには uses キーワードを使用します。
+        </p>
+        </div>
+
+        <!-- 問題120 -->
+        <div class="section">
+            <h2>問題120: サービスの提供</h2>
+            <p>次のコードで、サービスを提供するクラスを指定するキーワードは何ですか？</p>
+            <pre>
+module mymodule {
+    provides com.example.myservice with com.example.myserviceimpl;
+}
+            </pre>
+            <ul>
+                <li>A) uses</li>
+                <li>B) requires</li>
+                <li>C) provides</li>
+                <li>D) exports</li>
+            </ul>
+        <button onclick="toggleAnswer(120)">答えを見る</button>
+        <div id="answer120" class="answer">
+                正解は C) provides です。モジュールが特定のサービスを提供するクラスを指定するためには provides キーワードを使用します。
+        </p>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='page11.html'">前へ</button>
+            <button onclick="window.location.href='page13.html'">次へ</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answerElement = document.getElementById(`answer${questionNumber}`);
+            if (answerElement.style.display === "none") {
+                answerElement.style.display = "block";
+            } else {
+                answerElement.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

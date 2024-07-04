@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Arrays クラスの解説</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Arrays クラスの解説</h1>
+        
+        <section>
+            <h2>概要</h2>
+            <p><code>Arrays</code>クラスは、配列の操作を支援する静的メソッドを提供するユーティリティクラスです。配列のソート、検索、比較、および操作を簡単に行うことができます。</p>
+        </section>
+
+        <section>
+            <h2>mismatch メソッド</h2>
+            <p><code>mismatch</code>メソッドは、2つの配列間の最初の不一致を検出します。このメソッドは、2つの配列の最初の不一致要素のインデックスを返します。不一致が見つからなかった場合は、-1を返します。</p>
+            <p><strong>シグネチャ:</strong></p>
+            <ul>
+                <li><code>static int mismatch(int[] a, int[] b)</code></li>
+                <li><code>static int mismatch(long[] a, long[] b)</code></li>
+                <li><code>static int mismatch(double[] a, double[] b)</code></li>
+                <li>その他のプリミティブ型およびオブジェクト型のオーバーロード</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>compare メソッド</h2>
+            <p><code>compare</code>メソッドは、2つの配列を辞書順で比較します。このメソッドは、最初の配列が2番目の配列よりも小さい場合は負の値、等しい場合は0、大きい場合は正の値を返します。</p>
+            <p><strong>シグネチャ:</strong></p>
+            <ul>
+                <li><code>static int compare(int[] a, int[] b)</code></li>
+                <li><code>static int compare(long[] a, long[] b)</code></li>
+                <li><code>static int compare(double[] a, double[] b)</code></li>
+                <li>その他のプリミティブ型およびオブジェクト型のオーバーロード</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>サンプルコード</h2>
+            <pre><code>
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        // 配列の作成
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {1, 2, 0, 4, 5};
+        int[] array3 = {1, 2, 3, 4, 5};
+        
+        // mismatch メソッドの使用例
+        int mismatchIndex = Arrays.mismatch(array1, array2);
+        System.out.println("Mismatch index between array1 and array2: " + mismatchIndex);
+        
+        // compare メソッドの使用例
+        int comparisonResult = Arrays.compare(array1, array3);
+        if (comparisonResult < 0) {
+            System.out.println("array1 is less than array3");
+        } else if (comparisonResult == 0) {
+            System.out.println("array1 is equal to array3");
+        } else {
+            System.out.println("array1 is greater than array3");
+        }
+    }
+}
+            </code></pre>
+            <p>このサンプルコードでは、<code>mismatch</code>メソッドを使用して2つの配列間の最初の不一致を検出し、<code>compare</code>メソッドを使用して2つの配列を辞書順で比較しています。</p>
+        </section>
+
+        <div class="navigation">
+            <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+</body>
+</html>

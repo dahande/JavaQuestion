@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java トリック問題の解説</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java トリック問題の解説</h1>
+
+        <section>
+            <h2>問題のコード</h2>
+            <pre><code>
+package mypack;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class Main{
+    public static void main(String[] args) {
+        try(FileInputStream is = new FileInputStream("sample.text")){
+            throw new FileNotFoundException();
+        }catch(Exception e) {
+            System.out.print("A");
+        }finally {
+            if(is != null) {
+                is.close();
+            }
+            System.out.println("B");
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>解説</h2>
+            <p>このコードは、<code>try-with-resources</code>構文を使用してファイル操作を行い、例外処理をしています。以下に、各部分の詳細な解説を示します。</p>
+
+            <h3>1. <code>try-with-resources</code></h3>
+            <pre><code>try(FileInputStream is = new FileInputStream("sample.text")) {
+    throw new FileNotFoundException();
+}</code></pre>
+            <p><code>try-with-resources</code>構文は、リソース（ここでは<code>FileInputStream</code>）を自動的に閉じることができます。この構文を使用すると、<code>try</code>ブロックが終了したときにリソースが自動的に閉じられます。</p>
+
+            <h3>2. 例外のスロー</h3>
+            <pre><code>throw new FileNotFoundException();</code></pre>
+            <p><code>FileInputStream</code>を初期化するときに、"sample.text"というファイルを開こうとしています。ファイルが存在しない場合、<code>FileNotFoundException</code>がスローされます。この場合、明示的に<code>FileNotFoundException</code>をスローしています。</p>
+
+            <h3>3. 例外のキャッチ</h3>
+            <pre><code>}catch(Exception e) {
+    System.out.print("A");
+}</code></pre>
+            <p><code>catch</code>ブロックは、<code>Exception</code>をキャッチし、例外が発生したときに"A"を出力します。この場合、<code>FileNotFoundException</code>は<code>Exception</code>のサブクラスなのでキャッチされます。</p>
+
+            <h3>4. <code>finally</code>ブロック</h3>
+            <pre><code>}finally {
+    if(is != null) {
+        is.close();
+    }
+    System.out.println("B");
+}</code></pre>
+            <p><code>finally</code>ブロックは、例外が発生しても発生しなくても必ず実行されます。ここで<code>is</code>（<code>FileInputStream</code>オブジェクト）がnullでない場合、<code>is.close()</code>を呼び出してリソースを閉じようとしています。</p>
+
+            <h3>注意点</h3>
+            <p><code>try-with-resources</code>を使用しているので、<code>FileInputStream</code>は自動的に閉じられます。このため、<code>finally</code>ブロック内で再度<code>is.close()</code>を呼び出す必要はありません。また、<code>is</code>変数は<code>try-with-resources</code>のスコープ内でのみ有効です。そのため、<code>finally</code>ブロックで<code>is</code>を参照することはできません。このコードはコンパイルエラーになります。</p>
+
+            <h3>正しいコード例</h3>
+            <pre><code>
+package mypack;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class Main{
+    public static void main(String[] args) {
+        try(FileInputStream is = new FileInputStream("sample.text")){
+            throw new FileNotFoundException();
+        }catch(Exception e) {
+            System.out.print("A");
+        }finally {
+            System.out.println("B");
+        }
+    }
+}
+            </code></pre>
+            <p>この修正されたコードでは、<code>finally</code>ブロック内の<code>is</code>のチェックが削除されています。<code>try-with-resources</code>を使用することで、<code>FileInputStream</code>は自動的に閉じられるため、追加のクローズ操作は不要です。</p>
+        </section>
+
+        <div class="navigation">
+            <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+</body>
+</html>

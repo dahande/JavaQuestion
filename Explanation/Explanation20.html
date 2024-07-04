@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javaの例外処理の解説</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Javaの例外処理の解説</h1>
+        
+        <section>
+            <h2>プログラムの紹介</h2>
+            <p>このプログラムは、例外処理の流れを示しています。<code>test</code>メソッド内で<code>NullPointerException</code>が発生し、それをキャッチして特定の処理を行う例です。</p>
+        </section>
+
+        <section>
+            <h2>ソースコード</h2>
+            <pre><code>
+package mypack;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.print(test(null));
+    }
+
+    private static String test(Object obj) {
+        try {
+            System.out.println(obj.toString());
+        } catch (NullPointerException e) {
+            return "A";
+        } finally {
+            System.out.println("B");
+        }
+        return "C";
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>コードの解説</h2>
+            <p><strong>パッケージ宣言:</strong> この行は、クラスが <code>mypack</code> パッケージに属していることを示しています。</p>
+            <pre><code>package mypack;</code></pre>
+
+            <p><strong>クラス宣言:</strong> クラス <code>Main</code> を宣言しています。</p>
+            <pre><code>public class Main {</code></pre>
+
+            <p><strong>メインメソッド:</strong> プログラムのエントリーポイントです。<code>test(null)</code> を呼び出し、その結果を標準出力に出力します。</p>
+            <pre><code>public static void main(String[] args) {
+    System.out.print(test(null));
+}</code></pre>
+
+            <p><strong>テストメソッド:</strong> <code>test</code> メソッドは <code>Object</code> 型の引数 <code>obj</code> を受け取ります。</p>
+            <pre><code>private static String test(Object obj) {
+    try {
+        System.out.println(obj.toString());
+    } catch (NullPointerException e) {
+        return "A";
+    } finally {
+        System.out.println("B");
+    }
+    return "C";
+}</code></pre>
+            
+            <p>ここでは、<code>try</code> ブロック内で <code>obj.toString()</code> を呼び出しますが、<code>obj</code> が <code>null</code> のため <code>NullPointerException</code> が発生します。<code>catch (NullPointerException e)</code> ブロックで例外がキャッチされ、「A」を返そうとします。<code>finally</code> ブロックは必ず実行され、「B」が出力されます。<code>catch</code> ブロックが「A」を返すため、その後の <code>return "C";</code> は実行されません。</p>
+        </section>
+
+        <section>
+            <h2>実行結果</h2>
+            <p>プログラムの出力は次のようになります：</p>
+            <pre><code>BA</code></pre>
+            <p>ここで重要なのは、<code>finally</code> ブロックが <code>return</code> の前に必ず実行されるため、「B」が最初に出力され、その後「A」が出力される点です。</p>
+        </section>
+
+        <div class="navigation">
+            <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+</body>
+</html>

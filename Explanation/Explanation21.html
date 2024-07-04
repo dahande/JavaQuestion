@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java 例外クラスの解説</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Java 例外クラスの解説</h1>
+        
+        <section>
+            <h2>ArrayIndexOutOfBoundsException</h2>
+            <p><code>ArrayIndexOutOfBoundsException</code>は、配列の範囲外のインデックスにアクセスしようとしたときにスローされる例外です。例えば、次のようなコードが原因で発生します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3};
+        System.out.println(array[3]); // 有効なインデックス範囲外なので例外がスローされる
+    }
+}
+            </code></pre>
+            <p>この例外を処理するには、<code>try-catch</code>ブロックを使用します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3};
+        try {
+            System.out.println(array[3]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("配列の範囲外アクセスが発生しました: " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>NullPointerException</h2>
+            <p><code>NullPointerException</code>は、<code>null</code>参照を使用してオブジェクトのメソッドやプロパティにアクセスしようとしたときにスローされる例外です。例えば、次のようなコードが原因で発生します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        String str = null;
+        System.out.println(str.length()); // null参照でメソッドを呼び出そうとするので例外がスローされる
+    }
+}
+            </code></pre>
+            <p>この例外を処理するには、<code>try-catch</code>ブロックを使用します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        String str = null;
+        try {
+            System.out.println(str.length());
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerExceptionが発生しました: " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>ArithmeticException</h2>
+            <p><code>ArithmeticException</code>は、数値計算のエラー（例えば、ゼロ除算）によってスローされる例外です。例えば、次のようなコードが原因で発生します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        int result = 10 / 0; // ゼロ除算のため例外がスローされる
+    }
+}
+            </code></pre>
+            <p>この例外を処理するには、<code>try-catch</code>ブロックを使用します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("ArithmeticExceptionが発生しました: " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>ClassCastException</h2>
+            <p><code>ClassCastException</code>は、オブジェクトを不正なクラスにキャストしようとしたときにスローされる例外です。例えば、次のようなコードが原因で発生します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        Object obj = new String("Hello");
+        Integer num = (Integer) obj; // 不正なキャストのため例外がスローされる
+    }
+}
+            </code></pre>
+            <p>この例外を処理するには、<code>try-catch</code>ブロックを使用します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        Object obj = new String("Hello");
+        try {
+            Integer num = (Integer) obj;
+        } catch (ClassCastException e) {
+            System.out.println("ClassCastExceptionが発生しました: " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>IllegalArgumentException</h2>
+            <p><code>IllegalArgumentException</code>は、不正な引数がメソッドに渡されたときにスローされる例外です。例えば、次のようなコードが原因で発生します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        Thread t = new Thread();
+        t.setPriority(11); // 不正なスレッド優先度のため例外がスローされる
+    }
+}
+            </code></pre>
+            <p>この例外を処理するには、<code>try-catch</code>ブロックを使用します：</p>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        Thread t = new Thread();
+        try {
+            t.setPriority(11);
+        } catch (IllegalArgumentException e) {
+            System.out.println("IllegalArgumentExceptionが発生しました: " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <div class="navigation">
+            <button class="back-button" onclick="window.location.href='../index.html'">ホームに戻る</button>
+        </div>
+    </div>
+</body>
+</html>
