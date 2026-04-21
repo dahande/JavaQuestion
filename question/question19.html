@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Java Silver 総合問題 - Part 9</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Silver 総合問題 - Part 9</title>
+    <meta name="description" content="Java Silver試験対策の練習問題と解説。">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../app.js" defer></script>
+</head>
 <body>
+    <div class="topbar">
+        <a class="topbar-brand" href="../index.html">
+            <span class="topbar-logo" aria-hidden="true">J</span>
+            <span>Javaの基礎問題集</span>
+        </a>
+        <div class="topbar-actions">
+            <a class="icon-btn" href="../index.html" aria-label="ホームに戻る" title="ホームに戻る">⌂</a>
+            <button type="button" class="icon-btn" data-action="toggle-theme" aria-label="テーマを切り替え" title="テーマを切り替え">☽</button>
+        </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill"></div></div></div>
     <div class="container">
         <h1>Java Silver 総合問題 パート9</h1>
 
@@ -352,16 +365,5 @@ public class Main {
             <button onclick="window.location.href='../index.html'">ホームに戻る</button>
         </div>
     </div>
-
-    <script>
-        function toggleAnswer(num) {
-            const answer = document.getElementById('answer' + num);
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>

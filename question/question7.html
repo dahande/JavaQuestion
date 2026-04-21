@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javaの基礎</title>
+    <meta name="description" content="Java Silver試験対策の練習問題と解説。">
+    <meta name="theme-color" content="#2563eb">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../app.js" defer></script>
 </head>
 <body>
+    <div class="topbar">
+        <a class="topbar-brand" href="../index.html">
+            <span class="topbar-logo" aria-hidden="true">J</span>
+            <span>Javaの基礎問題集</span>
+        </a>
+        <div class="topbar-actions">
+            <a class="icon-btn" href="../index.html" aria-label="ホームに戻る" title="ホームに戻る">⌂</a>
+            <button type="button" class="icon-btn" data-action="toggle-theme" aria-label="テーマを切り替え" title="テーマを切り替え">☽</button>
+        </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill"></div></div></div>
     <div class="container">
         <h1>Javaの基礎</h1>
 
@@ -95,56 +109,5 @@
             <button onclick="goBack()" class="back-button">前に戻る</button>
         </div>
     </div>
-
-    <script>
-        document.getElementById('toggleAnswer1').addEventListener('click', function() {
-            var answer = document.getElementById('answer1');
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        });
-
-        document.getElementById('toggleAnswer2').addEventListener('click', function() {
-            var answer = document.getElementById('answer2');
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        });
-
-        document.getElementById('toggleAnswer3').addEventListener('click', function() {
-            var answer = document.getElementById('answer3');
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        });
-
-        document.getElementById('toggleAnswer4').addEventListener('click', function() {
-            var answer = document.getElementById('answer4');
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        });
-
-        document.getElementById('toggleAnswer5').addEventListener('click', function() {
-            var answer = document.getElementById('answer5');
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        });
-
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </body>
 </html>
