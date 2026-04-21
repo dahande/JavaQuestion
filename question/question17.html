@@ -4,64 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java Silver 総合問題 - Part 7</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #4CAF50;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px 0;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        p {
-            line-height: 1.6;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        .navigation {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .answer {
-            display: none;
-            background-color: #e0f7fa;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-    </style>
+    <meta name="description" content="Java Silver試験対策の練習問題と解説。">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../app.js" defer></script>
 </head>
 <body>
+    <div class="topbar">
+        <a class="topbar-brand" href="../index.html">
+            <span class="topbar-logo" aria-hidden="true">J</span>
+            <span>Javaの基礎問題集</span>
+        </a>
+        <div class="topbar-actions">
+            <a class="icon-btn" href="../index.html" aria-label="ホームに戻る" title="ホームに戻る">⌂</a>
+            <button type="button" class="icon-btn" data-action="toggle-theme" aria-label="テーマを切り替え" title="テーマを切り替え">☽</button>
+        </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill"></div></div></div>
     <div class="container">
         <h1>Java Silver 総合問題 - Part 7</h1>
 
@@ -316,16 +275,5 @@ public class Test {
             <button onclick="window.location.href='../index.html'">ホームに戻る</button>
         </div>
     </div>
-
-    <script>
-        function toggleAnswer(num) {
-            const answer = document.getElementById('answer' + num);
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
