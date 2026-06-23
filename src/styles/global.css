@@ -238,11 +238,12 @@ code {
   padding: 18px;
   color: var(--text);
   box-shadow: var(--shadow);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .course-card:hover {
-  transform: translateY(-3px);
+  box-shadow: 0 10px 34px rgba(15, 23, 42, 0.14);
+  border-color: color-mix(in srgb, var(--accent, var(--primary)) 40%, var(--border));
 }
 
 .course-card-top {
@@ -317,7 +318,12 @@ code {
 .progress-fill {
   height: 100%;
   border-radius: 999px;
-  transition: width 0.4s ease;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.28) 100%
+  );
 }
 
 /* ---------- パンくず / コースヘッダー ---------- */
@@ -374,11 +380,12 @@ code {
   padding: 16px 18px;
   color: var(--text);
   box-shadow: var(--shadow);
-  transition: transform 0.12s ease;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .lesson-item:hover {
-  transform: translateX(3px);
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.12);
+  border-color: color-mix(in srgb, var(--accent, var(--primary)) 35%, var(--border));
 }
 
 .lesson-check {
@@ -428,11 +435,107 @@ code {
 }
 
 /* ---------- レッスンプレーヤー ---------- */
+.lesson-sticky {
+  position: sticky;
+  top: 62px;
+  z-index: 5;
+  padding: 12px 0 10px;
+  margin-bottom: 8px;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(8px);
+}
+
 .lesson-progress-top {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
+}
+
+/* ---------- ステップ目次 ---------- */
+.step-indicator {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.step-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.15s ease,
+    background 0.15s ease, color 0.15s ease;
+}
+
+.step-dot.exercise {
+  border-style: dashed;
+}
+
+.step-dot:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent, var(--primary));
+  color: var(--text);
+}
+
+.step-dot.current {
+  border-color: var(--accent, var(--primary));
+  color: var(--accent, var(--primary));
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--accent, var(--primary)) 22%, transparent);
+}
+
+.step-dot.done {
+  background: var(--accent, var(--primary));
+  border-color: var(--accent, var(--primary));
+  border-style: solid;
+  color: #fff;
+}
+
+.step-dot.done.current {
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--accent, var(--primary)) 30%, transparent);
+  color: #fff;
+}
+
+.step-dot-icon {
+  line-height: 1;
+}
+
+.step-scroll-anchor {
+  position: relative;
+  top: -120px;
+  height: 0;
+}
+
+.step-stage {
+  position: relative;
+}
+
+.kbd-hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 18px;
+}
+
+kbd {
+  font-family: inherit;
+  font-size: 0.78rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  padding: 1px 7px;
+  margin: 0 1px;
 }
 
 .lesson-step-count {
@@ -710,5 +813,36 @@ code {
   }
   .step-card {
     padding: 18px;
+  }
+  .lesson-sticky {
+    top: 58px;
+  }
+  .step-dot {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ---------- フォーカス可視化 ---------- */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.course-card:focus-visible,
+.lesson-item:focus-visible {
+  outline-offset: 3px;
+}
+
+/* ---------- アニメーション抑制（視差効果を減らす設定） ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

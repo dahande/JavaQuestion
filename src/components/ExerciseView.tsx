@@ -1,8 +1,16 @@
 import { useMemo, useState } from 'react'
 import CodeMirror from '@uiw/react-codemirror'
 import { java } from '@codemirror/lang-java'
+import { oneDark } from '@codemirror/theme-one-dark'
+import {
+  AnimatePresence,
+  motion,
+  useAnimationControls,
+  useReducedMotion,
+} from 'framer-motion'
 import type { ExerciseStep } from '../types'
 import { validateExercise, type ValidationResult } from '../lib/validate'
+import { useTheme } from '../lib/theme'
 import { MiniMarkdown } from './MiniMarkdown'
 
 interface Props {
@@ -12,6 +20,10 @@ interface Props {
 }
 
 export function ExerciseView({ step, done, onSolved }: Props) {
+  const { theme } = useTheme()
+  const reduce = useReducedMotion()
+  const shake = useAnimationControls()
+
   // 穴埋め: starterCode を `___` で分割したテキスト断片
   const segments = useMemo(
     () => (step.kind === 'blank' ? step.starterCode.split('___') : []),
@@ -34,9 +46,16 @@ export function ExerciseView({ step, done, onSolved }: Props) {
       setSolved(true)
       onSolved()
     }
-    if (!res.correct && hintsShown < step.hints.length) {
-      // 間違えるたびに次のヒントを1つ開示
-      setHintsShown((n) => Math.min(n + 1, step.hints.length))
+    if (!res.correct) {
+      if (!reduce) {
+        shake.start({
+          x: [0, -9, 9, -7, 7, -3, 0],
+          transition: { duration: 0.42 },
+        })
+      }
+      if (hintsShown < step.hints.length) {
+        setHintsShown((n) => Math.min(n + 1, step.hints.length))
+      }
     }
   }
 
@@ -54,7 +73,7 @@ export function ExerciseView({ step, done, onSolved }: Props) {
         <MiniMarkdown text={step.prompt} />
       </div>
 
-      <div className="editor-area">
+      <motion.div className="editor-area" animate={shake}>
         {step.kind === 'blank' ? (
           <pre className="code-block blank-code">
             <code>
@@ -90,18 +109,25 @@ export function ExerciseView({ step, done, onSolved }: Props) {
             <CodeMirror
               value={code}
               height="220px"
+              theme={theme === 'dark' ? oneDark : 'light'}
               extensions={[java()]}
               editable={!solved}
               onChange={(v) => setCode(v)}
             />
           </div>
         )}
-      </div>
+      </motion.div>
 
       <div className="exercise-actions">
-        <button type="button" className="btn btn-primary" onClick={handleCheck}>
+        <motion.button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleCheck}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.96 }}
+        >
           答え合わせ
-        </button>
+        </motion.button>
         <button type="button" className="btn btn-ghost" onClick={handleReset}>
           リセット
         </button>
@@ -119,35 +145,65 @@ export function ExerciseView({ step, done, onSolved }: Props) {
         )}
       </div>
 
-      {result && !result.correct && (
-        <div className="feedback feedback-error">
-          {result.message ?? 'まだ正解ではありません。'}
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {result && !result.correct && (
+          <motion.div
+            key="err"
+            className="feedback feedback-error"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            {result.message ?? 'まだ正解ではありません。'}
+          </motion.div>
+        )}
+        {solved && (
+          <motion.div
+            key="ok"
+            className="feedback feedback-ok"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 18 }}
+          >
+            正解です！🎉 +20 XP
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {solved && (
-        <div className="feedback feedback-ok">正解です！🎉 +20 XP</div>
-      )}
+      <AnimatePresence initial={false}>
+        {hintsShown > 0 && (
+          <motion.div
+            className="hints"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <div className="hints-title">ヒント</div>
+            <ol>
+              {step.hints.slice(0, hintsShown).map((h, i) => (
+                <li key={i}>
+                  <pre className="hint-text">{h}</pre>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {hintsShown > 0 && (
-        <div className="hints">
-          <div className="hints-title">ヒント</div>
-          <ol>
-            {step.hints.slice(0, hintsShown).map((h, i) => (
-              <li key={i}>
-                <pre className="hint-text">{h}</pre>
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
-
-      {solved && (
-        <div className="console">
-          <div className="console-title">実行結果</div>
-          <pre className="console-output">{step.expectedOutput}</pre>
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {solved && (
+          <motion.div
+            className="console"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <div className="console-title">実行結果</div>
+            <pre className="console-output">{step.expectedOutput}</pre>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
