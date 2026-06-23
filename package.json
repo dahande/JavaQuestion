@@ -1,0 +1,27 @@
+{
+  "name": "java-study-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Progate風のJava学習アプリ。スライド学習と擬似実行の演習で基礎から学べます。",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@codemirror/lang-java": "^6.0.1",
+    "@uiw/react-codemirror": "^4.23.6",
+    "highlight.js": "^11.10.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}
