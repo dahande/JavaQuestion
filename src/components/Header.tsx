@@ -1,26 +1,8 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { useProgress } from '../lib/useProgress'
 import { levelFromXp } from '../lib/progress'
-
-const THEME_KEY = 'javalearn:theme'
-
-function useTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    const saved = localStorage.getItem(THEME_KEY)
-    if (saved === 'light' || saved === 'dark') return saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
-  })
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem(THEME_KEY, theme)
-  }, [theme])
-
-  return { theme, toggle: () => setTheme((t) => (t === 'dark' ? 'light' : 'dark')) }
-}
+import { useTheme } from '../lib/theme'
 
 export function Header() {
   const { theme, toggle } = useTheme()
@@ -38,22 +20,26 @@ export function Header() {
         <div className="level-badge" title={`累計 ${xp} XP`}>
           <span className="level-num">Lv.{level}</span>
           <span className="level-bar" aria-hidden="true">
-            <span
+            <motion.span
               className="level-bar-fill"
-              style={{ width: `${(intoLevel / needed) * 100}%` }}
+              initial={false}
+              animate={{ width: `${(intoLevel / needed) * 100}%` }}
+              transition={{ type: 'spring', stiffness: 200, damping: 28 }}
             />
           </span>
           <span className="level-xp">{xp} XP</span>
         </div>
-        <button
+        <motion.button
           type="button"
           className="icon-btn"
           onClick={toggle}
           aria-label="テーマを切り替え"
           title="テーマを切り替え (ダーク / ライト)"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.9, rotate: -20 }}
         >
           {theme === 'dark' ? '☀' : '☾'}
-        </button>
+        </motion.button>
       </div>
     </header>
   )

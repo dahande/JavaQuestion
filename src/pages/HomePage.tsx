@@ -1,8 +1,21 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { courses, courseStepKeys } from '../data/courses'
 import { completionRate, levelFromXp, resetProgress } from '../lib/progress'
 import { useProgress } from '../lib/useProgress'
 import { ProgressBar } from '../components/ProgressBar'
+
+const MotionLink = motion.create(Link)
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+}
+const cardVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE } },
+}
 
 export function HomePage() {
   const { xp } = useProgress()
@@ -11,10 +24,21 @@ export function HomePage() {
   return (
     <div className="page">
       <section className="hero">
-        <h1>ブラウザで学ぶ Java 入門</h1>
-        <p className="subtitle">
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+        >
+          ブラウザで学ぶ Java 入門
+        </motion.h1>
+        <motion.p
+          className="subtitle"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           スライドで学んで、その場でコードを書く。手を動かしながら Java の基礎を身につけよう。
-        </p>
+        </motion.p>
         <div className="hero-stats">
           <span className="stat">
             <strong>Lv.{level}</strong> レベル
@@ -27,15 +51,23 @@ export function HomePage() {
 
       <section>
         <h2 className="section-title">コース一覧</h2>
-        <div className="course-grid">
+        <motion.div
+          className="course-grid"
+          variants={gridVariants}
+          initial="hidden"
+          animate="show"
+        >
           {courses.map((course) => {
             const rate = completionRate(courseStepKeys(course))
             return (
-              <Link
+              <MotionLink
                 key={course.id}
                 to={`/course/${course.id}`}
                 className="course-card"
                 style={{ ['--accent' as string]: course.color }}
+                variants={cardVariants}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="course-card-top">
                   <span className="course-icon" aria-hidden="true">
@@ -55,10 +87,10 @@ export function HomePage() {
                 <span className="course-meta">
                   {course.lessons.length} レッスン
                 </span>
-              </Link>
+              </MotionLink>
             )
           })}
-        </div>
+        </motion.div>
       </section>
 
       <section className="reset-section">

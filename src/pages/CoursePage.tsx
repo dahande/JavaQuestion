@@ -1,8 +1,21 @@
 import { Link, useParams } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { getCourse, lessonStepKeys } from '../data/courses'
 import { completionRate } from '../lib/progress'
 import { useProgress } from '../lib/useProgress'
 import { ProgressBar } from '../components/ProgressBar'
+
+const MotionLink = motion.create(Link)
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
+const listVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+}
+const itemVariants = {
+  hidden: { opacity: 0, x: -16 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.35, ease: EASE } },
+}
 
 export function CoursePage() {
   const { courseId = '' } = useParams()
@@ -27,7 +40,10 @@ export function CoursePage() {
         <Link to="/">ホーム</Link> <span>/</span> {course.title}
       </nav>
 
-      <header className="course-header" style={{ ['--accent' as string]: course.color }}>
+      <header
+        className="course-header"
+        style={{ ['--accent' as string]: course.color }}
+      >
         <span className="course-icon-lg" aria-hidden="true">
           {course.icon}
         </span>
@@ -37,16 +53,23 @@ export function CoursePage() {
         </div>
       </header>
 
-      <ol className="lesson-list">
+      <motion.ol
+        className="lesson-list"
+        variants={listVariants}
+        initial="hidden"
+        animate="show"
+      >
         {course.lessons.map((lesson) => {
           const keys = lessonStepKeys(course.id, lesson)
           const rate = completionRate(keys)
           const isDone = rate === 100
           return (
-            <li key={lesson.id}>
-              <Link
+            <motion.li key={lesson.id} variants={itemVariants}>
+              <MotionLink
                 to={`/course/${course.id}/lesson/${lesson.id}`}
                 className="lesson-item"
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.99 }}
               >
                 <span
                   className={'lesson-check' + (isDone ? ' done' : '')}
@@ -62,11 +85,11 @@ export function CoursePage() {
                   </span>
                 </span>
                 <span className="lesson-rate">{rate}%</span>
-              </Link>
-            </li>
+              </MotionLink>
+            </motion.li>
           )
         })}
-      </ol>
+      </motion.ol>
     </div>
   )
 }
