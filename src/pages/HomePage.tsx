@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { courses, courseStepKeys } from '../data/courses'
 import { completionRate, levelFromXp, resetProgress } from '../lib/progress'
 import { useProgress } from '../lib/useProgress'
+import { useDocumentMeta } from '../lib/seo'
 import { ProgressBar } from '../components/ProgressBar'
 
 const MotionLink = motion.create(Link)
@@ -20,6 +21,10 @@ const cardVariants = {
 export function HomePage() {
   const { xp } = useProgress()
   const { level } = levelFromXp(xp)
+  useDocumentMeta(
+    undefined,
+    'Progateを参考にした無料のJava学習アプリ。スライドで学び、ブラウザ上でコードを書きながら、基礎からオブジェクト指向・Silver対策まで実践的に身につけられます。',
+  )
 
   return (
     <div className="page">
