@@ -25,6 +25,11 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      # Pages のソースを「GitHub Actions」に切り替え/有効化する
+      # (legacy=Deploy from a branch のままだと dist ではなくソースが配信され白画面になる)
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
