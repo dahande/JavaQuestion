@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { getLesson } from '../data/courses'
 import { completeStep, isStepDone, stepKey } from '../lib/progress'
 import { useProgress } from '../lib/useProgress'
+import { useDocumentMeta } from '../lib/seo'
 import { SlideView } from '../components/SlideView'
 import { ExerciseView } from '../components/ExerciseView'
 import { ProgressBar } from '../components/ProgressBar'
@@ -18,6 +19,12 @@ export function LessonPage() {
   // 進捗（完了状態）が変わったら目次を再描画するために購読
   useProgress()
   const reduce = useReducedMotion()
+  useDocumentMeta(
+    found ? `${found.lesson.title} - ${found.course.title}` : 'レッスン',
+    found
+      ? `${found.lesson.title}: ${found.lesson.summary}（${found.course.title}）スライドと演習でJavaを学べます。`
+      : 'レッスン | JavaLearn',
+  )
 
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(1)

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { getCourse, lessonStepKeys } from '../data/courses'
 import { completionRate } from '../lib/progress'
 import { useProgress } from '../lib/useProgress'
+import { useDocumentMeta } from '../lib/seo'
 import { ProgressBar } from '../components/ProgressBar'
 
 const MotionLink = motion.create(Link)
@@ -22,6 +23,12 @@ export function CoursePage() {
   // 進捗が変わったら再描画するために購読する
   useProgress()
   const course = getCourse(courseId)
+  useDocumentMeta(
+    course?.title,
+    course
+      ? `${course.title}（${course.level}）: ${course.subtitle} 全${course.lessons.length}レッスンをスライドと演習で学べます。`
+      : 'コース一覧 | JavaLearn',
+  )
 
   if (!course) {
     return (
