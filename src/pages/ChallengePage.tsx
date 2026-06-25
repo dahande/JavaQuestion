@@ -38,6 +38,7 @@ export function ChallengePage() {
   const [result, setResult] = useState<RunResult | null>(null)
   const [running, setRunning] = useState(false)
   const [judging, setJudging] = useState(false)
+  const [judgeIdx, setJudgeIdx] = useState(0)
   const [tests, setTests] = useState<TestResult[] | null>(null)
   const [hintsShown, setHintsShown] = useState(0)
   const [showSolution, setShowSolution] = useState(false)
@@ -71,7 +72,9 @@ export function ChallengePage() {
     setResult(null)
     setTests(null)
     const out: TestResult[] = []
-    for (const t of challenge.tests) {
+    for (let i = 0; i < challenge.tests.length; i++) {
+      const t = challenge.tests[i]
+      setJudgeIdx(i)
       const r = await runJava(code, t.stdin)
       if (r.error || r.compileError) {
         // 実行不能なら全体エラーとして表示して中断
@@ -144,7 +147,14 @@ export function ChallengePage() {
           whileHover={{ scale: busy ? 1 : 1.03 }}
           whileTap={{ scale: 0.96 }}
         >
-          {judging ? '採点中…' : '提出して採点'}
+          {judging ? (
+            <>
+              <span className="btn-spinner" aria-hidden="true" />
+              採点中…
+            </>
+          ) : (
+            '提出して採点'
+          )}
         </motion.button>
         <button
           type="button"
@@ -167,28 +177,51 @@ export function ChallengePage() {
       <RunOutput result={result} running={running} />
 
       {judging && (
-        <div className="console">
-          <div className="console-title">採点中…</div>
-          <pre className="console-output console-running">
-            各テストケースを実行しています…
-          </pre>
-        </div>
+        <motion.div
+          className="judging-box"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <span className="spinner" aria-hidden="true" />
+          <div className="judging-main">
+            <div className="judging-title">
+              採点中… テスト {Math.min(judgeIdx + 1, challenge.tests.length)} /{' '}
+              {challenge.tests.length} を実行
+            </div>
+            <div className="progress-track">
+              <div
+                className="progress-fill"
+                style={{
+                  width: `${(judgeIdx / challenge.tests.length) * 100}%`,
+                  backgroundColor: '#ea580c',
+                }}
+              />
+            </div>
+          </div>
+        </motion.div>
       )}
 
       {tests && (
         <div className="testresults">
-          <div
-            className={
-              'testresults-summary ' + (allPass ? 'pass' : 'fail')
-            }
+          <motion.div
+            className={'testresults-summary ' + (allPass ? 'pass' : 'fail')}
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 18 }}
           >
             {allPass
               ? `全テスト通過！🎉${solved ? '' : ' +20 XP'}`
               : `${tests.filter((t) => t.pass).length} / ${tests.length} テスト通過`}
-          </div>
+          </motion.div>
           <ul className="testcase-list">
             {tests.map((t, i) => (
-              <li key={i} className={t.pass ? 'tc ok' : 'tc ng'}>
+              <motion.li
+                key={i}
+                className={t.pass ? 'tc ok' : 'tc ng'}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+              >
                 <div className="tc-head">
                   <span className="tc-mark">{t.pass ? '✓' : '✕'}</span>
                   <span className="tc-name">テスト: {t.name}</span>
@@ -205,7 +238,7 @@ export function ChallengePage() {
                     </div>
                   </div>
                 )}
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>

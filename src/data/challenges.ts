@@ -12,7 +12,7 @@ export interface CodingTest {
 export interface Challenge {
   id: string
   title: string
-  level: '入門' | '初級' | '中級'
+  level: '入門' | '初級' | '中級' | '上級'
   category: string
   /** 問題文（簡易マークダウン対応） */
   description: string
@@ -210,6 +210,383 @@ export const challenges: Challenge[] = [
     ],
     solution:
       'import java.util.Scanner;\n\npublic class Main {\n  public static void main(String[] args) {\n    Scanner sc = new Scanner(System.in);\n    int n = sc.nextInt();\n    boolean prime = n >= 2;\n    for (int i = 2; (long) i * i <= n; i++) {\n      if (n % i == 0) { prime = false; break; }\n    }\n    System.out.println(prime ? "prime" : "not prime");\n  }\n}',
+  },
+  {
+    id: 'array-sum',
+    title: '配列の合計',
+    level: '初級',
+    category: '配列',
+    description:
+      '1行目に個数 N、2行目に N 個の整数（空白区切り）が与えられます。合計を出力してください。\n\n入力例:\n`3`\n`1 2 3`\n→ 出力: `6`',
+    starterCode: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    // 合計を出力
+  }
+}`,
+    tests: [
+      { name: '例1', stdin: '3\n1 2 3', expected: '6' },
+      { name: '例2', stdin: '5\n10 20 30 40 50', expected: '150' },
+      { name: '1個', stdin: '1\n7', expected: '7' },
+    ],
+    hints: ['配列をループして合計します。', '拡張for文 for(int x : a) sum += x; が便利です。'],
+    solution: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    int sum = 0;
+    for (int x : a) sum += x;
+    System.out.println(sum);
+  }
+}`,
+  },
+  {
+    id: 'array-max',
+    title: '配列の最大値',
+    level: '初級',
+    category: '配列',
+    description:
+      '1行目に個数 N、2行目に N 個の整数が与えられます。最大値を出力してください。',
+    starterCode: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    // 最大値を出力
+  }
+}`,
+    tests: [
+      { name: '例1', stdin: '5\n3 9 1 9 2', expected: '9' },
+      { name: '負の数', stdin: '3\n-5 -2 -9', expected: '-2' },
+      { name: '1個', stdin: '1\n42', expected: '42' },
+    ],
+    hints: ['最初の要素を仮の最大値にして、残りと比較します。', 'Math.max(max, a[i]) を使えます。'],
+    solution: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int max = Integer.MIN_VALUE;
+    for (int i = 0; i < n; i++) max = Math.max(max, sc.nextInt());
+    System.out.println(max);
+  }
+}`,
+  },
+  {
+    id: 'array-reverse',
+    title: '配列を逆順に出力',
+    level: '中級',
+    category: '配列',
+    description:
+      '1行目に個数 N、2行目に N 個の整数が与えられます。逆順にして空白区切りで1行に出力してください。\n\n入力例:\n`3`\n`1 2 3`\n→ 出力: `3 2 1`',
+    starterCode: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    // 逆順に出力
+  }
+}`,
+    tests: [
+      { name: '例1', stdin: '3\n1 2 3', expected: '3 2 1' },
+      { name: '例2', stdin: '5\n1 2 3 4 5', expected: '5 4 3 2 1' },
+    ],
+    hints: [
+      '末尾のインデックスから先頭へループします。',
+      'StringBuilder に追加して最後に出力すると簡単です。',
+    ],
+    solution: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    StringBuilder sb = new StringBuilder();
+    for (int i = n - 1; i >= 0; i--) {
+      sb.append(a[i]);
+      if (i > 0) sb.append(" ");
+    }
+    System.out.println(sb.toString());
+  }
+}`,
+  },
+  {
+    id: 'unique',
+    title: '重複の除去',
+    level: '中級',
+    category: 'コレクション',
+    description:
+      '1行目に個数 N、2行目に N 個の整数が与えられます。重複を取り除き、最初に現れた順番で空白区切りで出力してください。\n\n入力例:\n`6`\n`1 2 2 3 1 4`\n→ 出力: `1 2 3 4`',
+    starterCode: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    // 重複を除去して順番を保って出力
+  }
+}`,
+    tests: [
+      { name: '例1', stdin: '6\n1 2 2 3 1 4', expected: '1 2 3 4' },
+      { name: '全部同じ', stdin: '3\n5 5 5', expected: '5' },
+    ],
+    hints: [
+      '挿入順を保つ Set は LinkedHashSet です。',
+      'add した順に iterate されるので、そのまま出力できます。',
+    ],
+    solution: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    Set<Integer> set = new LinkedHashSet<>();
+    for (int i = 0; i < n; i++) set.add(sc.nextInt());
+    StringBuilder sb = new StringBuilder();
+    for (int x : set) {
+      if (sb.length() > 0) sb.append(" ");
+      sb.append(x);
+    }
+    System.out.println(sb.toString());
+  }
+}`,
+  },
+  {
+    id: 'sort-asc',
+    title: '昇順ソート',
+    level: '中級',
+    category: 'コレクション',
+    description:
+      '1行目に個数 N、2行目に N 個の整数が与えられます。昇順に並べ替えて空白区切りで出力してください。',
+    starterCode: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    // 昇順に並べ替えて出力
+  }
+}`,
+    tests: [
+      { name: '例1', stdin: '5\n3 1 4 1 5', expected: '1 1 3 4 5' },
+      { name: '例2', stdin: '3\n9 8 7', expected: '7 8 9' },
+    ],
+    hints: ['Arrays.sort(a) で昇順に並びます。', '空白区切りで連結して出力します。'],
+    solution: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+    Arrays.sort(a);
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < n; i++) {
+      if (i > 0) sb.append(" ");
+      sb.append(a[i]);
+    }
+    System.out.println(sb.toString());
+  }
+}`,
+  },
+  {
+    id: 'word-count',
+    title: '単語の出現回数',
+    level: '上級',
+    category: 'コレクション(Map)',
+    description:
+      '1行に空白区切りの単語が与えられます。各単語の出現回数を、**単語の辞書順**で `単語:回数` の形式で1行ずつ出力してください。\n\n入力例: `apple banana apple`\n→\n`apple:2`\n`banana:1`',
+    starterCode: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String line = sc.nextLine();
+    String[] words = line.split(" ");
+    // 出現回数を数えて辞書順に出力
+  }
+}`,
+    tests: [
+      {
+        name: '例1',
+        stdin: 'apple banana apple',
+        expected: 'apple:2\nbanana:1',
+      },
+      { name: '例2', stdin: 'a b a c b a', expected: 'a:3\nb:2\nc:1' },
+    ],
+    hints: [
+      '辞書順に並ぶ Map は TreeMap です。',
+      'map.merge(word, 1, Integer::sum) で集計できます。',
+      'entrySet() をループして key:value を出力します。',
+    ],
+    solution: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String[] words = sc.nextLine().split(" ");
+    Map<String, Integer> map = new TreeMap<>();
+    for (String w : words) map.merge(w, 1, Integer::sum);
+    StringBuilder sb = new StringBuilder();
+    for (Map.Entry<String, Integer> e : map.entrySet()) {
+      sb.append(e.getKey()).append(":").append(e.getValue()).append("\\n");
+    }
+    System.out.print(sb.toString().trim());
+  }
+}`,
+  },
+  {
+    id: 'safe-divide',
+    title: '安全な割り算（例外処理）',
+    level: '中級',
+    category: '例外処理',
+    description:
+      '空白区切りで2つの整数 a b が与えられます。a を b で割った整数の商を出力してください。ただし b が 0 の場合は **例外を捕捉**して `error` と出力してください。',
+    starterCode: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    // try-catch で ArithmeticException を捕捉
+  }
+}`,
+    tests: [
+      { name: '通常', stdin: '10 2', expected: '5' },
+      { name: 'ゼロ除算', stdin: '7 0', expected: 'error' },
+      { name: '切り捨て', stdin: '9 4', expected: '2' },
+    ],
+    hints: [
+      '整数の 0 除算は ArithmeticException を投げます。',
+      'try { System.out.println(a / b); } catch (ArithmeticException e) { System.out.println("error"); }',
+    ],
+    solution: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    try {
+      System.out.println(a / b);
+    } catch (ArithmeticException e) {
+      System.out.println("error");
+    }
+  }
+}`,
+  },
+  {
+    id: 'parse-int',
+    title: '数値パース（例外処理）',
+    level: '中級',
+    category: '例外処理',
+    description:
+      '1行の文字列が与えられます。整数として解釈できればその **2倍** を出力し、解釈できなければ `invalid` と出力してください（`NumberFormatException` を利用）。',
+    starterCode: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine().trim();
+    // Integer.parseInt と try-catch
+  }
+}`,
+    tests: [
+      { name: '整数', stdin: '21', expected: '42' },
+      { name: '不正', stdin: 'abc', expected: 'invalid' },
+      { name: '負の数', stdin: '-5', expected: '-10' },
+    ],
+    hints: [
+      'Integer.parseInt は数値でない文字列で NumberFormatException を投げます。',
+      'catch (NumberFormatException e) で "invalid" を出力します。',
+    ],
+    solution: `import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine().trim();
+    try {
+      int n = Integer.parseInt(s);
+      System.out.println(n * 2);
+    } catch (NumberFormatException e) {
+      System.out.println("invalid");
+    }
+  }
+}`,
+  },
+  {
+    id: 'balanced-parens',
+    title: '括弧の対応チェック',
+    level: '上級',
+    category: 'アルゴリズム(スタック)',
+    description:
+      '丸括弧 `()`・角括弧 `[]`・波括弧 `{}` からなる文字列が与えられます。すべての括弧の対応が正しく取れていれば `valid`、そうでなければ `invalid` と出力してください。',
+    starterCode: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    // Deque をスタックとして使って判定
+  }
+}`,
+    tests: [
+      { name: '対応OK', stdin: '([])', expected: 'valid' },
+      { name: '交差', stdin: '([)]', expected: 'invalid' },
+      { name: '閉じ不足', stdin: '(((', expected: 'invalid' },
+      { name: '複合', stdin: '{[()]}', expected: 'valid' },
+    ],
+    hints: [
+      '開き括弧はスタックに push します。',
+      '閉じ括弧では、スタックの先頭が対応する開き括弧か確認しながら pop します。',
+      '最後にスタックが空なら valid です。',
+    ],
+    solution: `import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    Deque<Character> stack = new ArrayDeque<>();
+    boolean ok = true;
+    for (char c : s.toCharArray()) {
+      if (c == '(' || c == '[' || c == '{') {
+        stack.push(c);
+      } else if (c == ')' || c == ']' || c == '}') {
+        if (stack.isEmpty()) { ok = false; break; }
+        char open = stack.pop();
+        if ((c == ')' && open != '(') ||
+            (c == ']' && open != '[') ||
+            (c == '}' && open != '{')) { ok = false; break; }
+      }
+    }
+    if (!stack.isEmpty()) ok = false;
+    System.out.println(ok ? "valid" : "invalid");
+  }
+}`,
   },
 ]
 
