@@ -24,7 +24,7 @@ export interface Lesson {
   steps: Step[]
 }
 
-export type Step = SlideStep | ExerciseStep
+export type Step = SlideStep | ExerciseStep | QuizStep
 
 export interface SlideStep {
   type: 'slide'
@@ -61,4 +61,24 @@ export interface ExerciseStep {
   expectedOutput: string
   /** 段階的に開示するヒント */
   hints: string[]
+}
+
+/**
+ * 選択式クイズステップ（Java Silver の試験対策など）。
+ * answer に正解の選択肢インデックスを入れる。複数なら複数選択問題になる。
+ */
+export interface QuizStep {
+  type: 'quiz'
+  id: string
+  title: string
+  /** 設問文（簡易マークダウン対応） */
+  question: string
+  /** 設問に添えるコードスニペット（任意） */
+  code?: string
+  /** 選択肢 */
+  choices: string[]
+  /** 正解の選択肢インデックス（複数可。2つ以上なら複数選択問題） */
+  answer: number[]
+  /** 解答後に表示する解説（簡易マークダウン対応） */
+  explanation: string
 }

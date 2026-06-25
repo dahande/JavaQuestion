@@ -7,6 +7,7 @@ import { useProgress } from '../lib/useProgress'
 import { useDocumentMeta } from '../lib/seo'
 import { SlideView } from '../components/SlideView'
 import { ExerciseView } from '../components/ExerciseView'
+import { QuizView } from '../components/QuizView'
 import { ProgressBar } from '../components/ProgressBar'
 import { StepIndicator } from '../components/StepIndicator'
 
@@ -143,6 +144,13 @@ export function LessonPage() {
           >
             {step.type === 'slide' ? (
               <SlideView step={step} />
+            ) : step.type === 'quiz' ? (
+              <QuizView
+                key={step.id}
+                step={step}
+                done={stepDone}
+                onSolved={() => completeStep(key, true)}
+              />
             ) : (
               <ExerciseView
                 key={step.id}
