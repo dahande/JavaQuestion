@@ -17,45 +17,76 @@ export interface RunResult {
 class BackendError extends Error {}
 
 // ---------- Wandbox ----------
+// 有効なJavaコンパイラ名は固定せず、list.json から動的に取得する
+// （'openjdk-head' などは時期により無効化され HTTP 500 になるため）。
+let wandboxJavaCompilers: string[] | null = null
+
+async function getWandboxJavaCompilers(signal: AbortSignal): Promise<string[]> {
+  if (wandboxJavaCompilers) return wandboxJavaCompilers
+  const res = await fetch('https://wandbox.org/api/list.json', { signal })
+  if (!res.ok) throw new BackendError(`Wandbox list HTTP ${res.status}`)
+  const list: Array<{ name: string; language: string }> = await res.json()
+  const javas = list
+    .filter((c) => c.language === 'Java')
+    .map((c) => c.name)
+  // 安定版の openjdk を優先し、head 系は後回しにする
+  const stable = javas.filter((n) => /openjdk/i.test(n) && !/head/i.test(n))
+  const head = javas.filter((n) => /head/i.test(n))
+  const rest = javas.filter((n) => !stable.includes(n) && !head.includes(n))
+  wandboxJavaCompilers = [...stable, ...rest, ...head]
+  if (wandboxJavaCompilers.length === 0) {
+    throw new BackendError('Wandbox: 利用可能なJavaコンパイラが見つかりません')
+  }
+  return wandboxJavaCompilers
+}
+
 async function runWandbox(
   source: string,
   stdin: string,
   signal: AbortSignal,
 ): Promise<RunResult> {
-  const res = await fetch('https://wandbox.org/api/compile.json', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    signal,
-    body: JSON.stringify({
-      compiler: 'openjdk-head',
-      code: source,
-      stdin,
-      save: false,
-    }),
-  })
-  if (!res.ok) throw new BackendError(`Wandbox HTTP ${res.status}`)
-  const d = await res.json()
-  const status = String(d.status ?? '')
-  const compileErr = (d.compiler_error ?? '').trim()
-  const stdout = d.program_output ?? ''
-  const stderr = d.program_error ?? ''
-
-  // コンパイル失敗（プログラム出力が無く、コンパイルエラーがある）
-  if (compileErr && stdout === '' && stderr === '' && status !== '0') {
+  const compilers = await getWandboxJavaCompilers(signal)
+  let lastStatus = 0
+  // 先頭の候補から順に試し、500（コンパイラ不調）なら次へ
+  for (const compiler of compilers.slice(0, 4)) {
+    const res = await fetch('https://wandbox.org/api/compile.json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal,
+      body: JSON.stringify({ compiler, code: source, stdin, save: false }),
+    })
+    if (res.status >= 500) {
+      lastStatus = res.status
+      continue
+    }
+    if (!res.ok) throw new BackendError(`Wandbox HTTP ${res.status}`)
+    // 成功した候補を以後も使うよう先頭へ
+    wandboxJavaCompilers = [
+      compiler,
+      ...compilers.filter((c) => c !== compiler),
+    ]
+    const d = await res.json()
+    const status = String(d.status ?? '')
+    const compileErr = (d.compiler_error ?? '').trim()
+    const stdout = d.program_output ?? ''
+    const stderr = d.program_error ?? ''
+    if (compileErr && stdout === '' && stderr === '' && status !== '0') {
+      return {
+        ran: false,
+        compileError: compileErr,
+        stdout: '',
+        stderr: '',
+        exitCode: Number(status) || null,
+      }
+    }
     return {
-      ran: false,
-      compileError: compileErr,
-      stdout: '',
-      stderr: '',
-      exitCode: Number(status) || null,
+      ran: true,
+      stdout,
+      stderr: stderr || (compileErr ? compileErr : ''),
+      exitCode: Number.isNaN(Number(status)) ? null : Number(status),
     }
   }
-  return {
-    ran: true,
-    stdout,
-    stderr: stderr || (compileErr ? compileErr : ''),
-    exitCode: Number.isNaN(Number(status)) ? null : Number(status),
-  }
+  throw new BackendError(`Wandbox HTTP ${lastStatus || 'error'}`)
 }
 
 // ---------- Piston (emkc) ----------
