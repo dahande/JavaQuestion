@@ -588,6 +588,546 @@ public class Main {
   }
 }`,
   },
+  {
+    id: 'class-rectangle',
+    title: 'クラスとメソッド（長方形）',
+    level: '初級',
+    category: 'クラス',
+    description:
+      '`Rectangle` クラスの `area()` メソッドを実装してください。空白区切りで幅と高さが与えられ、面積を出力します。\n\n入力例: `3 4` → 出力: `12`',
+    starterCode: `import java.util.Scanner;
+
+class Rectangle {
+  int width, height;
+  Rectangle(int w, int h) {
+    width = w;
+    height = h;
+  }
+  int area() {
+    // 面積を返すように実装
+    return 0;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Rectangle r = new Rectangle(sc.nextInt(), sc.nextInt());
+    System.out.println(r.area());
+  }
+}`,
+    tests: [
+      { name: '3 4', stdin: '3 4', expected: '12' },
+      { name: '5 6', stdin: '5 6', expected: '30' },
+      { name: '2 9', stdin: '2 9', expected: '18' },
+    ],
+    hints: ['面積は 幅 × 高さ です。', 'return width * height;'],
+    solution: `import java.util.Scanner;
+
+class Rectangle {
+  int width, height;
+  Rectangle(int w, int h) {
+    width = w;
+    height = h;
+  }
+  int area() {
+    return width * height;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Rectangle r = new Rectangle(sc.nextInt(), sc.nextInt());
+    System.out.println(r.area());
+  }
+}`,
+  },
+  {
+    id: 'class-user',
+    title: 'コンストラクタとメソッド（あいさつ）',
+    level: '初級',
+    category: 'クラス',
+    description:
+      '`User` クラスの `greet()` を実装してください。名前が1行で与えられ、`Hello, 名前!` と出力します。\n\n入力例: `Taro` → 出力: `Hello, Taro!`',
+    starterCode: `import java.util.Scanner;
+
+class User {
+  String name;
+  User(String name) {
+    this.name = name;
+  }
+  void greet() {
+    // "Hello, 名前!" と出力
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    User u = new User(sc.nextLine());
+    u.greet();
+  }
+}`,
+    tests: [
+      { name: 'Taro', stdin: 'Taro', expected: 'Hello, Taro!' },
+      { name: 'Java', stdin: 'Java', expected: 'Hello, Java!' },
+    ],
+    hints: ['フィールドは this.name で参照できます。', 'System.out.println("Hello, " + name + "!");'],
+    solution: `import java.util.Scanner;
+
+class User {
+  String name;
+  User(String name) {
+    this.name = name;
+  }
+  void greet() {
+    System.out.println("Hello, " + name + "!");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    User u = new User(sc.nextLine());
+    u.greet();
+  }
+}`,
+  },
+  {
+    id: 'tostring-point',
+    title: 'toString のオーバーライド',
+    level: '初級',
+    category: 'クラス',
+    description:
+      '`Point` クラスの `toString()` をオーバーライドし、`(x, y)` の形式を返してください。空白区切りで x y が与えられます。\n\n入力例: `3 4` → 出力: `(3, 4)`',
+    starterCode: `import java.util.Scanner;
+
+class Point {
+  int x, y;
+  Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+  @Override
+  public String toString() {
+    // "(x, y)" を返す
+    return "";
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Point p = new Point(sc.nextInt(), sc.nextInt());
+    System.out.println(p);
+  }
+}`,
+    tests: [
+      { name: '3 4', stdin: '3 4', expected: '(3, 4)' },
+      { name: '-1 0', stdin: '-1 0', expected: '(-1, 0)' },
+    ],
+    hints: [
+      'println(オブジェクト) は内部で toString() を呼びます。',
+      'return "(" + x + ", " + y + ")";',
+    ],
+    solution: `import java.util.Scanner;
+
+class Point {
+  int x, y;
+  Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+  @Override
+  public String toString() {
+    return "(" + x + ", " + y + ")";
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Point p = new Point(sc.nextInt(), sc.nextInt());
+    System.out.println(p);
+  }
+}`,
+  },
+  {
+    id: 'inherit-animal',
+    title: '継承とオーバーライド（鳴き声）',
+    level: '中級',
+    category: '継承',
+    description:
+      '`Dog` と `Cat` の `sound()` をオーバーライドしてください。`Dog` は `Wan`、`Cat` は `Nyan` を返します。入力 `dog` または `cat` に応じて鳴き声を出力します。',
+    starterCode: `import java.util.Scanner;
+
+abstract class Animal {
+  abstract String sound();
+}
+class Dog extends Animal {
+  String sound() {
+    return "";
+  }
+}
+class Cat extends Animal {
+  String sound() {
+    return "";
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String kind = sc.next();
+    Animal a = kind.equals("dog") ? new Dog() : new Cat();
+    System.out.println(a.sound());
+  }
+}`,
+    tests: [
+      { name: 'dog', stdin: 'dog', expected: 'Wan' },
+      { name: 'cat', stdin: 'cat', expected: 'Nyan' },
+    ],
+    hints: [
+      'サブクラスで sound() の中身を実装します。',
+      'Dog は return "Wan"; / Cat は return "Nyan";',
+    ],
+    solution: `import java.util.Scanner;
+
+abstract class Animal {
+  abstract String sound();
+}
+class Dog extends Animal {
+  String sound() {
+    return "Wan";
+  }
+}
+class Cat extends Animal {
+  String sound() {
+    return "Nyan";
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String kind = sc.next();
+    Animal a = kind.equals("dog") ? new Dog() : new Cat();
+    System.out.println(a.sound());
+  }
+}`,
+  },
+  {
+    id: 'interface-shape',
+    title: 'インタフェースの実装（面積）',
+    level: '中級',
+    category: 'インタフェース',
+    description:
+      '`Shape` インタフェースの `area()` を、`Square`（1辺）と `Rect`（幅・高さ）で実装してください。\n\n入力例: `square 4` → `16` / `rect 3 5` → `15`',
+    starterCode: `import java.util.Scanner;
+
+interface Shape {
+  int area();
+}
+class Square implements Shape {
+  int side;
+  Square(int s) { side = s; }
+  public int area() {
+    return 0;
+  }
+}
+class Rect implements Shape {
+  int w, h;
+  Rect(int w, int h) { this.w = w; this.h = h; }
+  public int area() {
+    return 0;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String t = sc.next();
+    Shape s;
+    if (t.equals("square")) s = new Square(sc.nextInt());
+    else s = new Rect(sc.nextInt(), sc.nextInt());
+    System.out.println(s.area());
+  }
+}`,
+    tests: [
+      { name: 'square', stdin: 'square 4', expected: '16' },
+      { name: 'rect', stdin: 'rect 3 5', expected: '15' },
+      { name: 'square2', stdin: 'square 7', expected: '49' },
+    ],
+    hints: [
+      'Square の面積は side * side です。',
+      'Rect の面積は w * h です。',
+    ],
+    solution: `import java.util.Scanner;
+
+interface Shape {
+  int area();
+}
+class Square implements Shape {
+  int side;
+  Square(int s) { side = s; }
+  public int area() {
+    return side * side;
+  }
+}
+class Rect implements Shape {
+  int w, h;
+  Rect(int w, int h) { this.w = w; this.h = h; }
+  public int area() {
+    return w * h;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String t = sc.next();
+    Shape s;
+    if (t.equals("square")) s = new Square(sc.nextInt());
+    else s = new Rect(sc.nextInt(), sc.nextInt());
+    System.out.println(s.area());
+  }
+}`,
+  },
+  {
+    id: 'static-counter',
+    title: 'staticフィールド（インスタンス数）',
+    level: '中級',
+    category: 'static',
+    description:
+      '`Counter` クラスに `static` なカウンタを持たせ、インスタンスを生成するたびに1増やしてください。N が与えられ、N個生成した後のカウンタ値を出力します。',
+    starterCode: `import java.util.Scanner;
+
+class Counter {
+  static int count = 0;
+  Counter() {
+    // 生成のたびにカウントを増やす
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    for (int i = 0; i < n; i++) new Counter();
+    System.out.println(Counter.count);
+  }
+}`,
+    tests: [
+      { name: '5', stdin: '5', expected: '5' },
+      { name: '0', stdin: '0', expected: '0' },
+      { name: '3', stdin: '3', expected: '3' },
+    ],
+    hints: [
+      'static フィールドは全インスタンスで共有されます。',
+      'コンストラクタ内で count++; とします。',
+    ],
+    solution: `import java.util.Scanner;
+
+class Counter {
+  static int count = 0;
+  Counter() {
+    count++;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    for (int i = 0; i < n; i++) new Counter();
+    System.out.println(Counter.count);
+  }
+}`,
+  },
+  {
+    id: 'bank-account',
+    title: '銀行口座（カプセル化と状態）',
+    level: '上級',
+    category: 'クラス設計',
+    description:
+      '`BankAccount` の `deposit`（入金）と `withdraw`（出金）を実装してください。出金は残高不足なら何もしません。\n\n入力: 1行目に初期残高。以降は `deposit 金額` または `withdraw 金額`、最後に `end`。最終残高を出力します。',
+    starterCode: `import java.util.Scanner;
+
+class BankAccount {
+  private int balance;
+  BankAccount(int initial) {
+    balance = initial;
+  }
+  void deposit(int amount) {
+    // 入金
+  }
+  void withdraw(int amount) {
+    // 残高が足りる場合のみ出金
+  }
+  int getBalance() {
+    return balance;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    BankAccount acc = new BankAccount(sc.nextInt());
+    while (sc.hasNext()) {
+      String cmd = sc.next();
+      if (cmd.equals("end")) break;
+      int amount = sc.nextInt();
+      if (cmd.equals("deposit")) acc.deposit(amount);
+      else if (cmd.equals("withdraw")) acc.withdraw(amount);
+    }
+    System.out.println(acc.getBalance());
+  }
+}`,
+    tests: [
+      {
+        name: '入出金',
+        stdin: '100\ndeposit 50\nwithdraw 30\nend',
+        expected: '120',
+      },
+      { name: '残高不足', stdin: '100\nwithdraw 200\nend', expected: '100' },
+      {
+        name: '複数',
+        stdin: '0\ndeposit 100\ndeposit 50\nwithdraw 70\nend',
+        expected: '80',
+      },
+    ],
+    hints: [
+      'deposit は balance += amount;',
+      'withdraw は if (balance >= amount) balance -= amount;',
+    ],
+    solution: `import java.util.Scanner;
+
+class BankAccount {
+  private int balance;
+  BankAccount(int initial) {
+    balance = initial;
+  }
+  void deposit(int amount) {
+    balance += amount;
+  }
+  void withdraw(int amount) {
+    if (balance >= amount) balance -= amount;
+  }
+  int getBalance() {
+    return balance;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    BankAccount acc = new BankAccount(sc.nextInt());
+    while (sc.hasNext()) {
+      String cmd = sc.next();
+      if (cmd.equals("end")) break;
+      int amount = sc.nextInt();
+      if (cmd.equals("deposit")) acc.deposit(amount);
+      else if (cmd.equals("withdraw")) acc.withdraw(amount);
+    }
+    System.out.println(acc.getBalance());
+  }
+}`,
+  },
+  {
+    id: 'composition-team',
+    title: 'コンポジション（チームと選手）',
+    level: '上級',
+    category: 'クラス設計',
+    description:
+      '`Player`（名前・得点）と、それらを保持する `Team` を使います。N 人ぶんの `名前 得点` が与えられます。1行目に**合計得点**、2行目に**最高得点の選手名**を出力してください（最高得点が複数なら先に入力された方）。',
+    starterCode: `import java.util.*;
+
+class Player {
+  String name;
+  int score;
+  Player(String name, int score) {
+    this.name = name;
+    this.score = score;
+  }
+}
+class Team {
+  List<Player> players = new ArrayList<>();
+  void add(Player p) {
+    players.add(p);
+  }
+  int totalScore() {
+    // 合計得点を返す
+    return 0;
+  }
+  String topPlayer() {
+    // 最高得点の選手名を返す
+    return "";
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    Team team = new Team();
+    for (int i = 0; i < n; i++) {
+      team.add(new Player(sc.next(), sc.nextInt()));
+    }
+    System.out.println(team.totalScore());
+    System.out.println(team.topPlayer());
+  }
+}`,
+    tests: [
+      { name: '例1', stdin: '2\nA 10\nB 20', expected: '30\nB' },
+      { name: '例2', stdin: '3\nTaro 5\nJiro 8\nSaburo 8', expected: '21\nJiro' },
+    ],
+    hints: [
+      'totalScore は players をループして score を合計します。',
+      'topPlayer は最大の score を持つ Player を探します（> で比較すれば同点は先勝ち）。',
+    ],
+    solution: `import java.util.*;
+
+class Player {
+  String name;
+  int score;
+  Player(String name, int score) {
+    this.name = name;
+    this.score = score;
+  }
+}
+class Team {
+  List<Player> players = new ArrayList<>();
+  void add(Player p) {
+    players.add(p);
+  }
+  int totalScore() {
+    int sum = 0;
+    for (Player p : players) sum += p.score;
+    return sum;
+  }
+  String topPlayer() {
+    Player top = players.get(0);
+    for (Player p : players) {
+      if (p.score > top.score) top = p;
+    }
+    return top.name;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    Team team = new Team();
+    for (int i = 0; i < n; i++) {
+      team.add(new Player(sc.next(), sc.nextInt()));
+    }
+    System.out.println(team.totalScore());
+    System.out.println(team.topPlayer());
+  }
+}`,
+  },
 ]
 
 export function getChallenge(id: string): Challenge | undefined {
