@@ -6,7 +6,7 @@
   "description": "Progate風のJava学習アプリ。スライド学習と擬似実行の演習で基礎から学べます。",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

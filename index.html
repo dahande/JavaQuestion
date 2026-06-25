@@ -3,6 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- GitHub Pages SPA: 404.html からのリダイレクトを復元して正しいパスに戻す -->
+    <script>
+      (function () {
+        var l = window.location;
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })();
+    </script>
 
     <!-- 基本SEO -->
     <title>JavaLearn | ブラウザで学ぶ無料Java入門・プログラミング学習</title>
@@ -79,7 +95,7 @@
             "@type": "Course",
             "name": "Java I 入門",
             "description": "出力・変数・演算・条件分岐・ループ・配列・メソッドまで、Javaの基礎をスライドと演習で学ぶ入門コース。",
-            "url": "https://dahande.github.io/JavaQuestion/#/course/java-intro",
+            "url": "https://dahande.github.io/JavaQuestion/course/java-intro/",
             "inLanguage": "ja",
             "isAccessibleForFree": true,
             "provider": {
