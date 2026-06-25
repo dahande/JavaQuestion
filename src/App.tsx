@@ -6,6 +6,9 @@ import { HomePage } from './pages/HomePage'
 import { CoursePage } from './pages/CoursePage'
 import { LessonPage } from './pages/LessonPage'
 import { ExamPage } from './pages/ExamPage'
+import { CodingPage } from './pages/CodingPage'
+import { ChallengePage } from './pages/ChallengePage'
+import { PlaygroundPage } from './pages/PlaygroundPage'
 
 export default function App() {
   const location = useLocation()
@@ -44,6 +47,30 @@ export default function App() {
               element={
                 <PageTransition>
                   <ExamPage />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/coding"
+              element={
+                <PageTransition>
+                  <CodingPage />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/coding/:id"
+              element={
+                <PageTransition>
+                  <ChallengePage />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/playground"
+              element={
+                <PageTransition>
+                  <PlaygroundPage />
                 </PageTransition>
               }
             />
