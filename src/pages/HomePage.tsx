@@ -69,6 +69,23 @@ export function HomePage() {
         </Link>
       </section>
 
+      <section className="feature-row">
+        <Link to="/coding" className="feature-card coding">
+          <span className="feature-icon" aria-hidden="true">⌨️</span>
+          <div>
+            <h3 className="feature-title">コーディング問題</h3>
+            <p className="feature-sub">実際にコードを書いて実行・自動採点</p>
+          </div>
+        </Link>
+        <Link to="/playground" className="feature-card playground">
+          <span className="feature-icon" aria-hidden="true">🧪</span>
+          <div>
+            <h3 className="feature-title">プレイグラウンド</h3>
+            <p className="feature-sub">自由にJavaを書いて動かす</p>
+          </div>
+        </Link>
+      </section>
+
       <section>
         <h2 className="section-title">コース一覧</h2>
         <motion.div
