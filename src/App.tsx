@@ -5,6 +5,7 @@ import { PageTransition } from './components/PageTransition'
 import { HomePage } from './pages/HomePage'
 import { CoursePage } from './pages/CoursePage'
 import { LessonPage } from './pages/LessonPage'
+import { ExamPage } from './pages/ExamPage'
 
 export default function App() {
   const location = useLocation()
@@ -35,6 +36,14 @@ export default function App() {
               element={
                 <PageTransition>
                   <LessonPage />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/exam"
+              element={
+                <PageTransition>
+                  <ExamPage />
                 </PageTransition>
               }
             />

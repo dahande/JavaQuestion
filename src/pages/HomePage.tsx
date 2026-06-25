@@ -55,6 +55,21 @@ export function HomePage() {
       </section>
 
       <section>
+        <Link to="/exam" className="exam-banner">
+          <div className="exam-banner-main">
+            <span className="exam-banner-icon" aria-hidden="true">📝</span>
+            <div>
+              <h2 className="exam-banner-title">Java Silver 模擬試験（80問）</h2>
+              <p className="exam-banner-sub">
+                本番形式・制限時間90分・合格ライン63%。まとめて採点して合否判定。
+              </p>
+            </div>
+          </div>
+          <span className="exam-banner-cta">挑戦する →</span>
+        </Link>
+      </section>
+
+      <section>
         <h2 className="section-title">コース一覧</h2>
         <motion.div
           className="course-grid"
