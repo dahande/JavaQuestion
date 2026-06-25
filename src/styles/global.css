@@ -804,22 +804,251 @@ kbd {
   cursor: not-allowed;
 }
 
+/* ---------- クイズ（選択式） ---------- */
+.quiz-kind {
+  color: #0e7490;
+  background: #cffafe;
+}
+
+[data-theme='dark'] .quiz-kind {
+  color: #67e8f9;
+  background: #0b3b46;
+}
+
+.step-dot.quiz {
+  border-style: dotted;
+}
+
+.choices {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.97rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease,
+    transform 0.08s ease;
+}
+
+.choice:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.choice:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.choice:disabled {
+  cursor: default;
+}
+
+.choice-mark {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.choice-text {
+  flex: 1;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.choice-chosen {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.choice-chosen .choice-mark {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.choice-correct {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.choice-correct .choice-mark {
+  background: var(--ok);
+  color: #fff;
+  border-color: var(--ok);
+}
+
+.choice-wrong {
+  border-color: var(--error);
+  background: var(--error-soft);
+}
+
+.choice-wrong .choice-mark {
+  background: var(--error);
+  color: #fff;
+  border-color: var(--error);
+}
+
+.explanation {
+  overflow: hidden;
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.explanation-title {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.explanation-body {
+  padding: 12px 16px;
+}
+
+.explanation-body .md-p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- レスポンシブ（タブレット） ---------- */
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 16px 56px;
+  }
+  .course-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .slide-title {
+    font-size: 1.3rem;
+  }
+  .step-card {
+    padding: 20px;
+  }
+}
+
+/* ---------- レスポンシブ（スマートフォン） ---------- */
 @media (max-width: 560px) {
+  .topbar {
+    padding: 10px 14px;
+  }
+  .topbar-brand {
+    font-size: 1.05rem;
+  }
+  .topbar-actions {
+    gap: 8px;
+  }
   .level-xp {
     display: none;
   }
+  .level-bar {
+    width: 48px;
+  }
+  .level-badge {
+    padding: 4px 9px;
+    font-size: 0.74rem;
+  }
+
+  .page {
+    padding: 16px 12px 48px;
+  }
+  .hero {
+    padding: 18px 6px 24px;
+  }
   .hero-stats {
-    gap: 18px;
+    gap: 16px;
   }
+
+  /* コースカードは1カラムで見やすく */
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-header {
+    gap: 12px;
+  }
+  .course-icon-lg {
+    width: 52px;
+    height: 52px;
+    font-size: 2rem;
+  }
+
+  .lesson-item {
+    padding: 14px;
+    gap: 12px;
+  }
+
   .step-card {
-    padding: 18px;
+    padding: 16px;
+    border-radius: 12px;
   }
+  .slide-title {
+    font-size: 1.2rem;
+  }
+  .slide-body,
+  .choice {
+    font-size: 0.95rem;
+  }
+
   .lesson-sticky {
-    top: 58px;
+    top: 54px;
   }
   .step-dot {
     width: 30px;
     height: 30px;
+    font-size: 0.72rem;
+  }
+
+  /* ナビ・操作ボタンは押しやすく、はみ出さないように */
+  .step-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .step-nav .btn {
+    flex: 1 1 auto;
+  }
+  .lesson-finish {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 8px;
+  }
+  .exercise-actions {
+    gap: 8px;
+  }
+  .exercise-actions .btn {
+    flex: 1 1 auto;
+  }
+  .code-block {
+    font-size: 0.82rem;
+    padding: 14px;
+  }
+  .kbd-hint {
+    display: none;
   }
 }
 

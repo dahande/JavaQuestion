@@ -28,10 +28,15 @@ export function StepIndicator({
       {steps.map((step, i) => {
         const done = isDone(i)
         const current = i === currentIndex
-        const isExercise = step.type === 'exercise'
-        const label = `${i + 1}. ${
-          step.type === 'slide' ? step.title : step.title
-        }（${isExercise ? '演習' : 'スライド'}）`
+        const kindLabel =
+          step.type === 'slide'
+            ? 'スライド'
+            : step.type === 'quiz'
+              ? '問題'
+              : '演習'
+        const label = `${i + 1}. ${step.title}（${kindLabel}）`
+        const icon =
+          step.type === 'slide' ? i + 1 : step.type === 'quiz' ? '?' : '{ }'
         return (
           <button
             key={step.id}
@@ -40,7 +45,8 @@ export function StepIndicator({
               'step-dot' +
               (current ? ' current' : '') +
               (done ? ' done' : '') +
-              (isExercise ? ' exercise' : ' slide')
+              ' ' +
+              step.type
             }
             onClick={() => onJump(i)}
             aria-label={label}
@@ -48,7 +54,7 @@ export function StepIndicator({
             title={label}
           >
             <span className="step-dot-icon" aria-hidden="true">
-              {done ? '✓' : isExercise ? '{ }' : i + 1}
+              {done ? '✓' : icon}
             </span>
           </button>
         )
