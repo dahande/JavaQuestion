@@ -46,6 +46,13 @@ async function runWandbox(
   signal: AbortSignal,
 ): Promise<RunResult> {
   const compilers = await getWandboxJavaCompilers(signal)
+  // Wandbox はコードを prog.java として保存するため、トップレベルの public
+  // 修飾子を外して「public クラスはファイル名と一致が必要」エラーを回避する
+  // （クラス名は維持され、main を持つクラスが実行される）。
+  const code = source.replace(
+    /\bpublic\s+(?=(?:final\s+|abstract\s+|strictfp\s+|sealed\s+|non-sealed\s+)*(?:class|interface|enum|record)\b)/g,
+    '',
+  )
   let lastStatus = 0
   // 先頭の候補から順に試し、500（コンパイラ不調）なら次へ
   for (const compiler of compilers.slice(0, 4)) {
@@ -53,7 +60,7 @@ async function runWandbox(
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal,
-      body: JSON.stringify({ compiler, code: source, stdin, save: false }),
+      body: JSON.stringify({ compiler, code, stdin, save: false }),
     })
     if (res.status >= 500) {
       lastStatus = res.status
